@@ -11,8 +11,11 @@ namespace WEB_520_Dynamic.Model
     {
         [Key]
         public int MaNhaCungCap { get; set; }
+        [MaxLength(50)]
         public string TenNhaCungCap { get; set; }
+        [MaxLength(100)]
         public string DiaChi { get; set; }
+        [MaxLength(10)]
         public string SoDienThoai { get; set; }
         public string MaSoThue { get; set; }
         public string SoTaiKhoan { get; set; }

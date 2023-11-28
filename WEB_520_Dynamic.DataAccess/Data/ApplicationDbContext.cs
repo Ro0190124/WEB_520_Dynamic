@@ -14,12 +14,12 @@ namespace WEB_520_Dynamic.DataAccess.Data
         {
             
         }
-        public DbSet<NHA_CUNG_CAP> NHA_CUNG_CAP { get; set; }
-        public DbSet<SAN_PHAM> SAN_PHAM { get; set; }
-        public DbSet<LO> LO { get; set; }
-        public DbSet<BIEN_LAI> BIEN_LAI { get; set; }
-        public DbSet<BIEN_LAI_CHI_TIET> BIEN_LAI_CHI_TIET { get; set; }
-        public DbSet<NGUOI_DUNG> NGUOI_DUNG { get; set; }
+        public DbSet<NHA_CUNG_CAP> NHA_CUNG_CAPs { get; set; }
+        public DbSet<SAN_PHAM> SAN_PHAMs { get; set; }
+        public DbSet<LO> LOs { get; set; }
+        public DbSet<BIEN_LAI> BIEN_LAIs { get; set; }
+        public DbSet<BIEN_LAI_CHI_TIET> BIEN_LAI_CHI_TIETs { get; set; }
+        public DbSet<NGUOI_DUNG> NGUOI_DUNGs { get; set; }
         
     }
 }

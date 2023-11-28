@@ -12,6 +12,7 @@ namespace WEB_520_Dynamic.Model
     {
         [Key]
         public int MaLo { get; set; }
+        [MaxLength(50)]
         public string TenLo { get; set; }
         public int MaSanPham { get; set; }
         [ForeignKey("MaSanPham")]

@@ -13,7 +13,7 @@ namespace WEB_520_Dynamic.Model
         [Key]
         public int MaBienLai { get; set; }
         public DateTime NgayLap { get; set; } = DateTime.Now;
-        public byte LoaiBienLai { get; set; }
+        public bool LoaiBienLai { get; set; }
         public DateTime NgayGiao { get; set; }
         public int? MaNguoiDung { get; set; }
         [ForeignKey("MaNguoiDung")]
@@ -21,7 +21,10 @@ namespace WEB_520_Dynamic.Model
         public int? MaNhaCungCap { get; set; }
         [ForeignKey("MaNhaCungCap")]
         public NHA_CUNG_CAP NHA_CUNG_CAP { get; set; }
+        [MaxLength(100)]
         public string ThongTinGiaoHang { get; set; }
+        public byte TrangThai { get; set; }
+        [MaxLength(100)]
         public string? GhiChu { get; set; }
     }
 }

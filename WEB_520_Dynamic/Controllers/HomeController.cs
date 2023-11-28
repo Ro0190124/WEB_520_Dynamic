@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using WEB_520_Dynamic.Models;
+using WEB_520_Dynamic.Model;
 
 namespace WEB_520_Dynamic.Controllers
 {

@@ -17,6 +17,7 @@ namespace WEB_520_Dynamic.Model
         public int MaLo { get; set; }
         [ForeignKey("MaLo")]
         public LO LO { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
     }
 }

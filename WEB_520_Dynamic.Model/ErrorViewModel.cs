@@ -1,4 +1,4 @@
-namespace WEB_520_Dynamic.Models
+namespace WEB_520_Dynamic.Model
 {
     public class ErrorViewModel
     {
