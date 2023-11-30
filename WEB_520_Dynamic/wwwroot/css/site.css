@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -15,4 +15,167 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+.container {
+    width: 100%;
+    height: 100%;
+}
+/* phần này là của đăng nhập (login) */
+.lg_container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to right, #ECBC76 50%, white 50%);
+}
+
+.lg_TuanVu p {
+    margin: 20px;
+    color: brown;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.lg_container .lg_Hinh1 img {
+    width: 200px;
+    height: 200px;
+    transform: scaleX(-1);
+}
+
+.lg_container .lg_Hinh2 img {
+    width: 450px;
+    height: 450px;
+}
+
+.lg_container .lg_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lg_form {
+    width: 500px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    background: white;
+    border: 1px solid #ADADAD;
+    border-radius: 40px;
+    padding: 50px;
+}
+
+    .lg_form p {
+        color: black;
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 20px;
+    }
+/*.register {
+    display: flex;
+    justify-content:flex-end;
+}
+    .register p {
+        color: #8D8D8D;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .register a {
+        color: #B87514;
+        font-size: 16px;
+        font-weight: 400;
+    }*/
+.lg_register {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .lg_register p {
+        margin: 0;
+        margin-right: 10px;
+    }
+
+    .lg_register a {
+        color: orangered;
+        text-decoration: none;
+    }
+
+        .lg_register a:hover {
+            text-decoration: underline;
+            color: blue;
+        }
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.lg_TK, .lg_MK {
+    margin-bottom: 10px;
+}
+
+.lg_form p {
+    margin: 0;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.lg_form input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 40px;
+}
+
+.lg_QMK {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+    .lg_QMK a {
+        text-decoration: none;
+        color: orangered;
+    }
+
+        .lg_QMK a:hover {
+            text-decoration: underline;
+            color: blue;
+        }
+
+.lg_form .lg_DN {
+    display: flex;
+    justify-content: center;
+}
+
+    .lg_form .lg_DN button {
+        width: 100%;
+        padding: 10px;
+        background-color: orangered;
+        color: white;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 40px;
+    }
+
+.lg_form button:hover {
+    background-color: blue;
+}
+
+/*phần đăng ký*/
+
+.dk_HT_SDT{
+    display:flex;
+    justify-content:center;
+}
+.dk_SDT{
+    padding-left:10px;
+}
+.dk_HT{
+    padding-right:10px;
+}
+.lg_DK {
+    padding-top: 25px;
 }
