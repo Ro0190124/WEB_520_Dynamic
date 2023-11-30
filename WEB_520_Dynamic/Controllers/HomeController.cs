@@ -15,11 +15,14 @@ namespace WEB_520_Dynamic.Controllers
 
         public IActionResult Index()
         {
+            ViewData["HideHeader"] = true;
             return View();
+
         }
 
         public IActionResult Privacy()
         {
+            ViewData["HideHeader"] = true;
             return View();
         }
 
