@@ -211,3 +211,48 @@ header ul li a {
     text-decoration:none;
 }
 
+/*Phần người dùng*/
+.ND_TimKiem{
+    width:600px;
+    height:40px;
+    margin-top:20px;
+}
+.ND_TimKiem input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.Them_ND{
+    margin-top:50px;
+}
+
+    .Them_ND button {
+        width: 15%;
+        height: 40px;
+        border: none;
+        border-radius: 5px;
+        background-color: orange;
+        color: white;
+        cursor: pointer;
+    }
+
+.Tb-Container{
+    margin-top:15px;
+}
+
+    .Tb-Container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+        .Tb-Container table th {
+            background-color: whitesmoke;
+        }
+    .Tb-Container table th,td{
+        padding:10px;
+        text-align:left;
+        border:1px solid #ccc;
+
+    }

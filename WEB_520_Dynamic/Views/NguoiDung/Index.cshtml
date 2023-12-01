@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NGUOI_DUNG>
+
+<div class="container">
+	<div class="ND_TimKiem">
+		<input type="text" placeholder="Tìm kiếm người dùng...">
+	</div>
+	<div class="Them_ND">
+		<button class="Them-TK">Thêm tài khoản</button>
+	</div>
+	<div class="Tb-Container">
+		<table class="table_user responsive-table">
+			<thead>
+				<tr>
+					<th> ID</th>
+					<th> Tên người dùng</th>
+					<th> Giới tính</th>
+					<th> Số điện thoại</th>
+					<th> Ngày sinh</th>
+					<th> Tên tài khoản</th>
+					<th> Mật khẩu</th>
+					<th> Ngày tạo</th>
+					<th> Trạng thái</th>
+					<th> Chỉnh sửa</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var i in Model)
+				{
+					<tr>
+					<td>@i.MaNguoiDung</td>
+					<td>@i.TenNguoiDung</td>
+					<td>@i.GioiTinh</td>
+					<td>@i.SoDienThoai</td>
+					<td>@i.NgaySinh</td>
+					<td>@i.TenTaiKhoan</td>
+					<td>@i.MatKhau</td>
+					<td>@i.NgayTao</td>
+					<td>@i.TrangThai</td>
+					<td>123</td>
+					</tr>
+
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
