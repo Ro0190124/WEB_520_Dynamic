@@ -21,11 +21,14 @@ namespace WEB_520_Dynamic.Controllers
 
         public IActionResult DangNhap()
         {
+            ViewData["HideHeader"] = true;
             return View();
+
         }
        
         public IActionResult DangKi()
         {
+            ViewData["HideHeader"] = true;
             return View();
         }
         [HttpPost]

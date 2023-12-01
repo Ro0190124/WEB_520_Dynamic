@@ -15,6 +15,7 @@ html {
 
 body {
   margin-bottom: 60px;
+/*  position:relative;*/
 }
 .container {
     width: 100%;
@@ -179,3 +180,34 @@ h1 {
 .lg_DK {
     padding-top: 25px;
 }
+
+/*phần layout */
+.lo_logo {
+    display:flex;
+    align-items:center;
+}
+header{
+/*    background-color:aqua;*/
+    height:500px;
+    width:200px;
+    position:absolute;
+    z-index:1;
+    margin-top:50px;
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+}
+header ul li {
+    margin:5px;
+}
+
+header ul li a {
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+}
+
