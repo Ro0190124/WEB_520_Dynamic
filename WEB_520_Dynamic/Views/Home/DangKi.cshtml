@@ -1,5 +1,6 @@
 ﻿@model NGUOI_DUNG
 
+
 <form method="post">
 	
 <div class="lg_container">
@@ -45,7 +46,10 @@
             <div class="lg_DN lg_DK">
                 <button type="submit" >Đăng kí</button>
             </div>
-           
+                @if (TempData["ThongBao"] != null)
+                {
+                    <p> @TempData["ThongBao"]</p>
+                }
         </div>
 
         <div class="lg_Hinh2">
@@ -56,3 +60,4 @@
 </div>
 
 </form>
+

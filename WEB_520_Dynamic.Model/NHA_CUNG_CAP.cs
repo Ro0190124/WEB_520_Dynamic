@@ -19,12 +19,10 @@ namespace WEB_520_Dynamic.Model
         public string SoDienThoai { get; set; }
         [StringLength(10)]
         public string MaSoThue { get; set; }
-        [MaxLength(20)]
-        public string SoTaiKhoan { get; set; }
         [MaxLength(30)]
-        public string TenNganHang { get; set; }
+        public string SoTaiKhoan { get; set; }
         [MaxLength(50)]
         public string NguoiDaiDien { get; set; }
-        public bool TrangThai { get; set; }
+        public bool TrangThai { get; set; } = true;
     }
 }

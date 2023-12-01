@@ -25,7 +25,7 @@ namespace WEB_520_Dynamic.Controllers
             return View();
 
         }
-       
+
         public IActionResult DangKi()
         {
             ViewData["HideHeader"] = true;
@@ -35,26 +35,41 @@ namespace WEB_520_Dynamic.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DangKi(NGUOI_DUNG nguoiDung)
         {
+            ViewData["HideHeader"] = true;
             Console.WriteLine("Submit");
-            /* if (nguoiDung.TenTaiKhoan != @"^[a-zA-Z0-9]+$")
-             {
-                 ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản chỉ được chứa ký tự và số");
-             }*/
-
+          
             if (ModelState.IsValid)
             {
-
-                Console.WriteLine("Create user");
+                
                 _db.NGUOI_DUNGs.Add(nguoiDung);
                 _db.SaveChanges();
-                return RedirectToAction("DangNhap");
+                TempData["ThongBao"] = "Đăng kí thành công";
+                return View();
+              
             }
             else
             {
-                Console.WriteLine("No, i can't create");
-                return View(nguoiDung);
+                return View(nguoiDung);      
             }
 
+        }
+
+        [HttpPost]
+        public IActionResult DangNhap(string tenTaiKhoan, string matKhau)
+        {
+            ViewData["HideHeader"] = true;
+            var nguoiDung = _db.NGUOI_DUNGs.First(x => x.TenTaiKhoan == tenTaiKhoan && x.MatKhau == matKhau);
+
+            if (nguoiDung == null)
+            {
+                TempData["ThongBaoDangNhap"] = "Tên tài khoản hoặc mật khẩu không đúng";
+                return View();
+            }
+            else
+            {
+
+                return RedirectToAction("DangKi");
+            }
         }
 
 

@@ -41,8 +41,7 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                     DiaChi = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     SoDienThoai = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     MaSoThue = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    SoTaiKhoan = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    TenNganHang = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    SoTaiKhoan = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     NguoiDaiDien = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     TrangThai = table.Column<bool>(type: "bit", nullable: false)
                 },

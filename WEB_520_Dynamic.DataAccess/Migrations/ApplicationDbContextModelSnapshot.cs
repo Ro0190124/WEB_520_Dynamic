@@ -188,11 +188,6 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
                     b.Property<string>("SoTaiKhoan")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("TenNganHang")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
