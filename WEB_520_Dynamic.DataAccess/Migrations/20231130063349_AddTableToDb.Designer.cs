@@ -12,7 +12,7 @@ using WEB_520_Dynamic.DataAccess.Data;
 namespace WEB_520_Dynamic.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231128131356_AddTableToDb")]
+    [Migration("20231130063349_AddTableToDb")]
     partial class AddTableToDb
     {
         /// <inheritdoc />
@@ -54,8 +54,8 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
                     b.Property<string>("ThongTinGiaoHang")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<byte>("TrangThai")
                         .HasColumnType("tinyint");
@@ -144,6 +144,7 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("TenNguoiDung")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -170,16 +171,18 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
                     b.Property<string>("DiaChi")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("MaSoThue")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("NguoiDaiDien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("SoDienThoai")
                         .IsRequired()
@@ -188,19 +191,21 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
                     b.Property<string>("SoTaiKhoan")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("TenNganHang")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("TenNhaCungCap")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<byte>("TrangThai")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
 
                     b.HasKey("MaNhaCungCap");
 

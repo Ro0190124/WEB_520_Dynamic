@@ -13,7 +13,8 @@ namespace WEB_520_Dynamic.Model
         [Key]
         public int MaLo { get; set; }
         [MaxLength(50)]
-        public string TenLo { get; set; }
+        [MinLength(5, ErrorMessage ="Tên lô không dưới 5 kí tự")]
+        public string TenLo { get; set;}
         public int MaSanPham { get; set; }
         [ForeignKey("MaSanPham")]
         public SAN_PHAM SAN_PHAM { get; set; }

@@ -17,7 +17,7 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                 {
                     MaNguoiDung = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TenNguoiDung = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    TenNguoiDung = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     GioiTinh = table.Column<bool>(type: "bit", nullable: true),
                     SoDienThoai = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     NgaySinh = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -38,13 +38,13 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                     MaNhaCungCap = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TenNhaCungCap = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    DiaChi = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DiaChi = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     SoDienThoai = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    MaSoThue = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SoTaiKhoan = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TenNganHang = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NguoiDaiDien = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TrangThai = table.Column<byte>(type: "tinyint", nullable: false)
+                    MaSoThue = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    SoTaiKhoan = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    TenNganHang = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    NguoiDaiDien = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,7 +78,7 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                     NgayGiao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MaNguoiDung = table.Column<int>(type: "int", nullable: true),
                     MaNhaCungCap = table.Column<int>(type: "int", nullable: true),
-                    ThongTinGiaoHang = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ThongTinGiaoHang = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     TrangThai = table.Column<byte>(type: "tinyint", nullable: false),
                     GhiChu = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },

@@ -13,14 +13,18 @@ namespace WEB_520_Dynamic.Model
         public int MaNhaCungCap { get; set; }
         [MaxLength(50)]
         public string TenNhaCungCap { get; set; }
-        [MaxLength(100)]
+        [MaxLength(150)]
         public string DiaChi { get; set; }
-        [MaxLength(10)]
+        [StringLength(10)]
         public string SoDienThoai { get; set; }
+        [StringLength(10)]
         public string MaSoThue { get; set; }
+        [MaxLength(20)]
         public string SoTaiKhoan { get; set; }
+        [MaxLength(30)]
         public string TenNganHang { get; set; }
+        [MaxLength(50)]
         public string NguoiDaiDien { get; set; }
-        public byte TrangThai { get; set; }
+        public bool TrangThai { get; set; }
     }
 }

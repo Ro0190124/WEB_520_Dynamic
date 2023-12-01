@@ -21,7 +21,8 @@ namespace WEB_520_Dynamic.Model
         public int? MaNhaCungCap { get; set; }
         [ForeignKey("MaNhaCungCap")]
         public NHA_CUNG_CAP NHA_CUNG_CAP { get; set; }
-        [MaxLength(100)]
+        [MaxLength(150)]
+        [MinLength(10, ErrorMessage ="Thông tin giao hàng không dưới 10 kí tự")]
         public string ThongTinGiaoHang { get; set; }
         public byte TrangThai { get; set; }
         [MaxLength(100)]
