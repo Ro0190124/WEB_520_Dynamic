@@ -18,7 +18,6 @@ namespace WEB_520_Dynamic.Controllers
         {
             _db = db;
         }
-
         public IActionResult DangNhap()
         {
             ViewData["HideHeader"] = true;
@@ -68,7 +67,7 @@ namespace WEB_520_Dynamic.Controllers
             else
             {
 
-                return RedirectToAction("DangKi");
+                return RedirectToAction("Index", "NguoiDung");
             }
         }
 
