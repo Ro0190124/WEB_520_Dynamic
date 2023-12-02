@@ -1,0 +1,44 @@
+﻿@model IEnumerable<NHA_CUNG_CAP>
+
+<div class="container">
+	<div class="ND_TimKiem">
+		<input type="text" placeholder="Tìm kiếm người dùng...">
+	</div>
+	<div class="Them_ND">
+		<button class="Them-TK">Thêm tài khoản</button>
+	</div>
+	<div class="Tb-Container">
+		<table class="table_user responsive-table">
+			<thead>
+				<tr>
+					<th> ID</th>
+					<th> Tên nhà cung cấp</th>
+					<th> Địa chỉ</th>
+					<th> Số điện thoại</th>
+					<th> Mã số thuế</th>
+					<th> Số tài khoản</th>
+					<th> Người đại diện</th>
+					<th> Trạng thái</th>
+					<th> Chỉnh sửa</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var i in Model)
+				{
+					<tr>
+						<td>@i.MaNhaCungCap</td>
+						<td>@i.TenNhaCungCap</td>
+						<td>@i.DiaChi</td>
+						<td>@i.SoDienThoai</td>
+						<td>@i.MaSoThue</td>
+						<td>@i.SoTaiKhoan</td>
+						<td>@i.NguoiDaiDien</td>
+						<td>@i.TrangThai</td>
+						<td>123</td>
+					</tr>
+
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
