@@ -1,11 +1,11 @@
-﻿@model IEnumerable<NGUOI_DUNG>
-
+﻿@model UserViewModel
 <div class="container">
 	<div class="ND_TimKiem">
 		<input type="text" placeholder="Tìm kiếm người dùng...">
 	</div>
 	<div class="Them_ND">
-		<button class="Them-TK">Thêm tài khoản</button>
+		@*<button class="Them-TK">Thêm tài khoản</button>*@
+		<a asp-action="ThemNguoiDung"><button class="Them-TK">Thêm tài khoản</button></a>
 	</div>
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">
@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach(var i in Model)
+				@foreach (var i in Model.UserList)
 				{
 					<tr>
 					<td>@i.MaNguoiDung</td>
@@ -50,9 +50,91 @@
 							</a>
 						</td>
 					</tr>
-
 				}
 			</tbody>
 		</table>
 	</div>
+	@*<div id="ThemNguoiDungForm" style="display: none;" onsubmit="reloadPage()" >
+		<form method="post" asp-controller="NguoiDung" asp-action="ThemNguoiDung" >
+			
+			<div class="lg_TK">
+				<p>Nhập tên tài khoản hoặc email của bạn</p>
+				<input asp-for="@Model.SingleUser.TenTaiKhoan" type="text" placeholder="Tên tài khoản hoặc email">
+				<span asp-validation-for="@Model.SingleUser.TenTaiKhoan" class="text-danger"></span>
+			</div>
+			<div class="dk_HT_SDT">
+				<div class="dk_HT">
+					<p>Nhập họ và tên</p>
+					<input asp-for="@Model.SingleUser.TenNguoiDung" type="text" placeholder="Họ và tên" />
+					<span asp-validation-for="@Model.SingleUser.TenNguoiDung" class="text-danger"></span>
+				</div>
+				<div class="dk_SDT">
+					<p>Nhập số điện thoại</p>
+					<input asp-for="@Model.SingleUser.SoDienThoai" type="text" placeholder="Số điện thoại" />
+					<span asp-validation-for="@Model.SingleUser.SoDienThoai" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="lg_MK">
+				<p>Nhập mật khẩu</p>
+				<input asp-for="@Model.SingleUser.MatKhau" type="password" placeholder="Mật khẩu">
+				<span asp-validation-for="@Model.SingleUser.MatKhau" class="text-danger"></span>
+			</div>
+			<div class="lg_DN lg_DK">
+				<button type="submit">Đăng kí</button>
+			</div>
+			@if (TempData["ThongBaoThem"] != null)
+			{
+				<p> @TempData["ThongBaoThem"]</p>
+			}
+		</form>
+		
+	</div>*@
+
 </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$(".Them-TK").on("click", function () {
+			// Hiển thị biểu mẫu
+			$("#ThemNguoiDungForm").show();
+
+			// Xử lý việc gửi biểu mẫu
+			$("#ThemNguoiDungForm form").submit(function (e) {
+				e.preventDefault(); // Ngăn biểu mẫu gửi theo cách truyền thống
+
+				// Thực hiện yêu cầu Ajax
+				$.ajax({
+					url: "/NguoiDung/ThemNguoiDung", // Cập nhật URL với hành động điều khiển của bạn
+					type: "POST",
+					data: $(this).serialize(),
+					success: function (result) {
+						// Xử lý phản hồi thành công
+						// Cập nhật bảng hoặc thực hiện bất kỳ hành động khác cần thiết
+						console.log(result);
+					},
+					error: function (error) {
+						// Xử lý phản hồi lỗi
+						console.error(error);
+					}
+				});
+			});
+		});
+	});
+</script>
+@*<script>
+	function reloadPage() {
+		let a = document.getElementById('SingleUser_TenTaiKhoan').value
+		let b = document.getElementById('SingleUser_TenNguoiDung').value
+		let c = document.getElementById('SingleUser_SoDienThoai').value
+		let d = document.getElementById('SingleUser_MatKhau').value
+		console.log(a)
+		if (a != '')
+		setTimeout(function () {
+			location.reload();
+		}, 500);
+	}
+</script>*@
