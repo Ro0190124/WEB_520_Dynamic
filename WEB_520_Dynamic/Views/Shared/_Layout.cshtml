@@ -20,7 +20,7 @@
                 <p>TUẤN VŨ</p>
             </div>
             <ul>
-                <li><a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Tranh chủ</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="TranhChu" asp-action="Index">Trang chủ</a></li>
                 <li><a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Người dùng</a></li>
                 <li><a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Sản phẩm</a></li>
                 <li><a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Biên lai</a></li>
@@ -41,6 +41,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -256,3 +256,46 @@ header ul li a {
         border:1px solid #ccc;
 
     }
+/*Trang chủ nè*/
+.container .CT_TT {
+    background-color: black;
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+    .container .CT_TT .CT_sp{
+        background-color:aqua;
+        width:28%;
+        height:120px;
+        display:flex;
+        align-items:center;
+        justify-content:space-around;
+    }
+.CT_TT .CT_sp .CT_Icon {
+    background-color:crimson;
+    width: 30%;
+    height: 80px;
+}
+
+.CT_TT .CT_sp .CT_Chu_So{
+    background-color:burlywood;
+    width:70%;
+    height:80px;
+}
+.CT_sp .CT_Chu_So .CT_So {
+    background-color: deeppink;
+    height: 50%;
+    width: 100%;
+}
+.CT_sp .CT_Chu_So .CT_Chu {
+    background-color:dimgray;
+    height:50%;
+    width:100%;
+}
+
+.container .CT_Canva {
+    width: 100%;
+    height: 350px;
+}
