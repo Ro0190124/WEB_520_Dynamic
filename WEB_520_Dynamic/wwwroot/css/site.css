@@ -247,6 +247,12 @@ header ul li a {
         width: 100%;
         border-collapse: collapse;
     }
+        .Tb-Container table tr:nth-child(2n+1) {
+            background-color: #FFCC99;
+        }
+        .Tb-Container table tr:nth-child(2n) {
+            background-color #FFFF66;
+        }
         .Tb-Container table th {
             background-color: whitesmoke;
         }
@@ -256,15 +262,19 @@ header ul li a {
         border:1px solid #ccc;
 
     }
-/*Trang chủ nè*/
-.container .CT_TT {
-    background-color: black;
-    width: 100%;
-    height: 130px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .Tb-Container table .ND_Table_Icon {
+            display:flex;
+            justify-content:space-around;
+        }
+        /*Trang chủ nè*/
+        .container .CT_TT {
+            background-color: black;
+            width: 100%;
+            height: 130px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     .container .CT_TT .CT_sp{
         background-color:aqua;
         width:28%;
@@ -288,14 +298,23 @@ header ul li a {
     background-color: deeppink;
     height: 50%;
     width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.CT_Chu_So .CT_So p {
+    font-size: 20px;
+    color: black;
+
 }
 .CT_sp .CT_Chu_So .CT_Chu {
-    background-color:dimgray;
-    height:50%;
-    width:100%;
+    background-color: dimgray;
+    height: 50%;
+    width: 100%;
+    color: #929292;
 }
 
 .container .CT_Canva {
-    width: 100%;
+    width:100%;
     height: 350px;
 }
