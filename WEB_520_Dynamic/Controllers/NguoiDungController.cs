@@ -69,7 +69,36 @@ namespace WEB_520_Dynamic.Controllers
             {
                 return View(nguoiDung);
             }
+            
         }
-	}
+		public IActionResult SuaNguoiDung(int? ID)
+		{
+            if (ID == null || ID == 0)
+            {
+                return NotFound();
+            }
+            NGUOI_DUNG nguoiDung = _db.NGUOI_DUNGs.First(x => x.MaNguoiDung == ID);
+            if (nguoiDung == null)
+            {
+                return NotFound();
+            }
+            return View(nguoiDung);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(NGUOI_DUNG nguoiDung)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _db.NGUOI_DUNGs.Update(nguoiDung);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(nguoiDung);
+
+
+        }
+    }
 
 }

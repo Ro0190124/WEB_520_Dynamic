@@ -2,7 +2,7 @@
 
 namespace WEB_520_Dynamic.Controllers
 {
-    public class TranhChuController : Controller
+    public class TrangChuController : Controller
     {
         public IActionResult Index()
         {
