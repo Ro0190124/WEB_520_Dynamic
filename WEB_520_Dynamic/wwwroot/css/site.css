@@ -266,8 +266,12 @@ header ul li a {
             display:flex;
             justify-content:space-around;
         }
-        /*Trang chủ nè*/
-        .container .CT_TT {
+        .Tb-Container table .ND_Table_Icon a {
+            background:none;
+            color:black;
+        }
+            /*Trang chủ nè*/
+            .container .CT_TT {
             background-color: black;
             width: 100%;
             height: 130px;
