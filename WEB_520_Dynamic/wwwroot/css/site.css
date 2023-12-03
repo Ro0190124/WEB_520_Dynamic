@@ -21,6 +21,10 @@ body {
     width: 100%;
     height: 100%;
 }
+/*html chung chung :V*/
+.magrin_Input{
+    margin-top:15px;
+}
 /* phần này là của đăng nhập (login) */
 .lg_container {
     width: 100%;
@@ -63,6 +67,21 @@ body {
     border-radius: 40px;
     padding: 50px;
 }
+.Them_form {
+    width: 500px;
+    height: 800px;
+    top: 50%;
+    left: 50%;
+    background: white;
+    border: 1px solid #ADADAD;
+    border-radius: 40px;
+    padding: 50px;
+}
+    .Them_form p {
+        color: black;
+        font-size: 16px;
+        font-weight: 400;
+    }
 
     .lg_form p {
         color: black;
@@ -121,7 +140,7 @@ h1 {
     font-weight: bold;
 }
 
-.lg_form input[type=text], input[type=password] {
+.lg_form,.Them_form input[type=text], input[type=password] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -145,7 +164,7 @@ h1 {
             color: blue;
         }
 
-.lg_form .lg_DN {
+.lg_form ,.Them_form .lg_DN {
     display: flex;
     justify-content: center;
 }
@@ -180,11 +199,38 @@ h1 {
 .lg_DK {
     padding-top: 25px;
 }
+/*phần thêm người dùng*/
+/*.ND_body .ND_GT {
+    margin-top: 10px;
+}*/
+    .ND_body .ND_GT input[type="radio"] {
+        background-color:chartreuse;
+        width: 25px; /* Kích thước radio button */
+        height: 25px; /* Kích thước radio button */
+        margin: 0; /* Để điều chỉnh khoảng cách */
+    }
 
+.ND_body input[type="radio"]:checked {
+    background-color: #FF8A00; /* Màu nền khi checked */
+    width: 27px;
+    height: 27px;
+}
+.ND_body .ND_GT .ND_CheckGT {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.ND_body .ND_NgaySinh input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 40px;
+}
 /*phần layout */
 .lo_logo {
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
 }
 header{
 /*    background-color:aqua;*/
