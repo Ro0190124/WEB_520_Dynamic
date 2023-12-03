@@ -57,7 +57,7 @@ namespace WEB_520_Dynamic.Controllers
         public IActionResult DangNhap(string tenTaiKhoan, string matKhau)
         {
             ViewData["HideHeader"] = true;
-            var nguoiDung = _db.NGUOI_DUNGs.First(x => x.TenTaiKhoan == tenTaiKhoan && x.MatKhau == matKhau);
+            var nguoiDung = _db.NGUOI_DUNGs.First(x => x.TenTaiKhoan == tenTaiKhoan && x.MatKhau == matKhau && x.TrangThai == true);
 
             if (nguoiDung == null)
             {

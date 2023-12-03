@@ -13,16 +13,9 @@ namespace WEB_520_Dynamic.Controllers
 		}
 		public IActionResult Index()
 		{
-			NGUOI_DUNG singleUser = new NGUOI_DUNG();// lấy thông tin của một người dùng cụ thể
-			var userList = _db.NGUOI_DUNGs.ToList();// lấy danh sách người dùng
-
-			var viewModel = new UserViewModel
-			{
-				SingleUser = singleUser,
-				UserList = userList
-			};
-			
-			return View(viewModel);
+            IEnumerable<NGUOI_DUNG> nguoiDung = _db.NGUOI_DUNGs.Where(x=>x.TrangThai == true).ToList();
+		
+			return View(nguoiDung);
 		}
 		public IActionResult ThemNguoiDung()
 		{
@@ -86,19 +79,39 @@ namespace WEB_520_Dynamic.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(NGUOI_DUNG nguoiDung)
+        public IActionResult SuaNguoiDung(NGUOI_DUNG nguoiDung)
         {
-
-            if (ModelState.IsValid)
+			if (ModelState.IsValid)
             {
-                _db.NGUOI_DUNGs.Update(nguoiDung);
-                _db.SaveChanges();
+				_db.NGUOI_DUNGs.Update(nguoiDung);
+				_db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(nguoiDung);
+			return View(nguoiDung);
 
 
+		}
+        public ActionResult XoaNguoiDung(int? ID)
+        {
+            if (ID == null || ID == 0)
+            {
+                return NotFound();
+            }
+            NGUOI_DUNG nguoiDung = _db.NGUOI_DUNGs.First(x => x.MaNguoiDung == ID);
+            if (nguoiDung == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                nguoiDung.TrangThai = false;
+                _db.NGUOI_DUNGs.Update(nguoiDung);
+                _db.SaveChanges();
+               
+            }
+            return RedirectToAction("Index");
         }
+        
     }
 
 }
