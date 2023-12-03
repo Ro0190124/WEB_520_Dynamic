@@ -3,13 +3,11 @@
 	ViewData["Title"] = "Error";
 }*@
 @model NGUOI_DUNG
-
 <div class="container">
 <form method="post">
         <div class="lg_body">
             
             <div class="lg_form">
-               
                
                 <h1>Thêm Người dùng</h1>
                 <div class="lg_TK">
@@ -39,7 +37,7 @@
 
                 <div class="lg_MK">
                     <p>Nhập mật khẩu</p>
-                    <input asp-for="MatKhau" type="password" placeholder="Mật khẩu">
+                    <input asp-for="MatKhau" type="password" placeholder="Mật khẩu" >
                     <span asp-validation-for="MatKhau" class="text-danger"></span>
                 </div>
                 <div class="lg_DN lg_DK">
