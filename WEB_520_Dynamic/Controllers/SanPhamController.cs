@@ -21,5 +21,21 @@ namespace WEB_520_Dynamic.Controllers
 		{
 			return View();
 		}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ThemSanPham(SAN_PHAM sanPham)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.SAN_PHAMs.Add(sanPham);
+                _db.SaveChanges(); 
+                TempData["ThongBao"] = "Thêm sản phẩm thành công";
+				return RedirectToAction("Index", "Lo");
+			}
+            else
+            {
+                return View(sanPham);
+            }
+        }
 	}
 }

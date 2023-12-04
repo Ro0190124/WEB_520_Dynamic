@@ -26,7 +26,7 @@ namespace WEB_520_Dynamic.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult ThemNguoiDung(NGUOI_DUNG nguoiDung)
 		{
-            /*// Xử lý dữ liệu biểu mẫu và lưu vào cơ sở dữ liệu
+			/*// Xử lý dữ liệu biểu mẫu và lưu vào cơ sở dữ liệu
 			// ...
 			Console.WriteLine(nguoiDung.SingleUser.TenNguoiDung);
 			Console.WriteLine("11111111111111");
@@ -49,19 +49,55 @@ namespace WEB_520_Dynamic.Controllers
 				Console.WriteLine(nguoiDung.SingleUser.TenTaiKhoan);
                 return View(nguoiDung);
             }*/
-            if (ModelState.IsValid)
-            {
+			var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).FirstOrDefault();
+			if (n != null)
+			{
+				ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản đã tồn tại");
+				return View(nguoiDung);
+			}
+			/*if ( == "")
+			{
+				ModelState.AddModelError("TenTaiKhoan", "Không được bỏ trống");
+				return View(nguoiDung);
+			}
+			if (nguoiDung.MatKhau == "")
+			{
+				ModelState.AddModelError("MatKhau", "Không được bỏ trống");
+				return View(nguoiDung);
+			}
+			if (nguoiDung.TenNguoiDung == "")
+			{
+				ModelState.AddModelError("TenNguoiDung", "Không được bỏ trống");
+				return View(nguoiDung);
+			}
+			if (nguoiDung.SoDienThoai == "")
+			{
+				ModelState.AddModelError("SoDienThoai", "không được bỏ trống");
+				return View(nguoiDung);
+			}
+			if (nguoiDung.NgaySinh.Value.Year > DateTime.Now.Year - 18)
+			{
+				ModelState.AddModelError("NgaySinh", "Ngày sinh không hợp lệ");
+				return View(nguoiDung);
+			}*/
+			
+			else
+			{
+				if (ModelState.IsValid)
+				{
 
-                _db.NGUOI_DUNGs.Add(nguoiDung);
-                _db.SaveChanges();
-                TempData["ThongBao"] = "Thêm người dùng thành công";
-                return RedirectToAction("Index", "NguoiDung");
+					_db.NGUOI_DUNGs.Add(nguoiDung);
+					_db.SaveChanges();
+					TempData["ThongBao"] = "Thêm người dùng thành công";
+					return RedirectToAction("Index", "NguoiDung");
 
-            }
-            else
-            {
-                return View(nguoiDung);
-            }
+				}
+				else
+				{
+					return View(nguoiDung);
+				}
+			}
+			
             
         }
 		public IActionResult SuaNguoiDung(int? ID)
