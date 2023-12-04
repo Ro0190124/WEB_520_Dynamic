@@ -54,8 +54,8 @@ namespace WEB_520_Dynamic.Controllers
 
                 _db.NGUOI_DUNGs.Add(nguoiDung);
                 _db.SaveChanges();
-                TempData["ThongBao"] = "Đăng kí thành công";
-                return View();
+                TempData["ThongBao"] = "Thêm người dùng thành công";
+                return RedirectToAction("Index", "NguoiDung");
 
             }
             else
@@ -85,7 +85,8 @@ namespace WEB_520_Dynamic.Controllers
             {
 				_db.NGUOI_DUNGs.Update(nguoiDung);
 				_db.SaveChanges();
-                return RedirectToAction("Index");
+				TempData["ThongBao"] = "Sửa người dùng thành công";
+				return RedirectToAction("Index");
             }
 			return View(nguoiDung);
 

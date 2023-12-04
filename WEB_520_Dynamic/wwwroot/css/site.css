@@ -140,7 +140,7 @@ h1 {
     font-weight: bold;
 }
 
-.lg_form,.Them_form input[type=text], input[type=password] {
+.lg_form input[type=text], input[type=password] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -164,7 +164,7 @@ h1 {
             color: blue;
         }
 
-.lg_form ,.Them_form .lg_DN {
+.lg_form  .lg_DN {
     display: flex;
     justify-content: center;
 }
