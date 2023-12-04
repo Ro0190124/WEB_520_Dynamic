@@ -1,0 +1,37 @@
+﻿
+@model BIEN_LAI
+<div class="container">
+    <form method="post">
+        <div class="ND_body">
+
+            <div class="BienLai_Form">
+
+                <h1 class="BL_h1_Ten">Thêm biên lai</h1>
+                <div class="BL_H1">
+                    <div class="BL_Loai magrin_Input">
+                        <p>Chọn loại biên lai</p>
+                        <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox">
+                        </select>
+                    </div>
+                    <div class="BL_NCC magrin_Input">
+                        <p>Tên nhà cung cấp</p>
+                        <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="lg_DN lg_DK">
+                    <button type="submit">Thêm Biên Lai</button>
+                </div>
+                @if (TempData["ThongBao"] != null)
+                {
+                    <p> @TempData["ThongBao"]</p>
+                }
+            </div>
+
+
+
+        </div>
+
+    </form>
+</div>
