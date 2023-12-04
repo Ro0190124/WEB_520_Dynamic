@@ -1,0 +1,48 @@
+﻿@*@{
+	ViewData["Title"] = "Error";
+}*@
+@model SAN_PHAM
+<div class="container">
+    <form method="post">
+        <div class="ND_body">
+
+            <div class="lg_form">
+
+                <h1>Thêm Sản Phẩm</h1>
+                <div class="lg_TK magrin_Input">
+                    <p>Nhập tên sản phẩm</p>
+                    <input asp-for="TenSanPham" type="text" placeholder="Tên sản phẩm ">
+                    <span asp-validation-for="TenSanPham" class="text-danger"></span>
+                </div>
+
+                <div class="dk_HT magrin_Input">
+                    <p>Nhập quy cách</p>
+                    <input asp-for="QuyCach" type="text" placeholder="Quy cách" />
+                    <span asp-validation-for="QuyCach" class="text-danger"></span>
+                </div>
+                <div class="dk_SDT magrin_Input">
+                    <p>Nhập đơn giá</p>
+                    <input asp-for="DonGia" type="text" placeholder="Đơn giá" />
+                    <span asp-validation-for="DonGia" class="text-danger"></span>
+                </div>
+                <div class="dk_SDT magrin_Input">
+                    <p>Nhập đơn vị</p>
+                    <input asp-for="DonVi" type="text" placeholder="Đơn vị" />
+                    <span asp-validation-for="DonVi" class="text-danger"></span>
+                </div>
+
+                <div class="lg_DN lg_DK">
+                    <button type="submit">Thêm sản phẩm</button>
+                </div>
+                @if (TempData["ThongBao"] != null)
+                {
+                    <p> @TempData["ThongBao"]</p>
+                }
+            </div>
+
+
+
+        </div>
+
+    </form>
+</div>

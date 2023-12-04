@@ -140,7 +140,14 @@ h1 {
     font-weight: bold;
 }
 
-.lg_form,.Them_form input[type=text], input[type=password] {
+.lg_form input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 40px;
+}
+.Them_form input[type=text], input[type=password] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -164,7 +171,11 @@ h1 {
             color: blue;
         }
 
-.lg_form ,.Them_form .lg_DN {
+.lg_form .lg_DN {
+    display: flex;
+    justify-content: center;
+}
+.Them_form .lg_DN {
     display: flex;
     justify-content: center;
 }
@@ -180,9 +191,27 @@ h1 {
         border-radius: 40px;
     }
 
+
 .lg_form button:hover {
     background-color: blue;
 }
+
+.Them_form .lg_DN button {
+    width: 100%;
+    padding: 10px;
+    background-color: #E48700;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 40px;
+}
+
+
+.Them_form button:hover {
+    background-color: blue;
+}
+
 
 /*phần đăng ký*/
 
@@ -190,12 +219,12 @@ h1 {
     display:flex;
     justify-content:center;
 }
-.dk_SDT{
+/*.dk_SDT{
     padding-left:10px;
 }
 .dk_HT{
     padding-right:10px;
-}
+}*/
 .lg_DK {
     padding-top: 25px;
 }
