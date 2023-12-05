@@ -11,11 +11,17 @@ namespace WEB_520_Dynamic.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Index()
+		public IActionResult Index(string searchString)
 		{
-            IEnumerable<NGUOI_DUNG> nguoiDung = _db.NGUOI_DUNGs.Where(x=>x.TrangThai == true).ToList();
-		
-			return View(nguoiDung);
+            var nguoiDung = from u in _db.NGUOI_DUNGs
+							where u.TrangThai == true// lấy toàn bộ liên kết
+                        select u;
+           // IEnumerable<NGUOI_DUNG> nguoiDung = _db.NGUOI_DUNGs.Where(x=>x.TrangThai == true).ToList();
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                nguoiDung = nguoiDung.Where(s => s.TenTaiKhoan.Contains(searchString) || s.SoDienThoai.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(nguoiDung);
 		}
 		public IActionResult ThemNguoiDung()
 		{

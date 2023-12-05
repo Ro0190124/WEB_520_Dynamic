@@ -20,5 +20,6 @@ namespace WEB_520_Dynamic.Model
 		public string DonVi { get; set; } = "Thùng";
 		[MaxLength(30)]
         public string QuyCach { get; set; }
+        public bool TrangThai { get; set; } = true;
     }
 }

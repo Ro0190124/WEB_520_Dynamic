@@ -1,6 +1,7 @@
 ﻿
 @model SAN_PHAM
 <div class="container">
+    <partial name="_Notification" />
     <form method="post">
         <div class="ND_body">
 
@@ -26,10 +27,7 @@
                 <div class="lg_DN lg_DK">
                     <button type="submit">Thêm sản phẩm</button>
                 </div>
-                @if (TempData["ThongBao"] != null)
-                {
-                    <p> @TempData["ThongBao"]</p>
-                }
+               
             </div>
 
 

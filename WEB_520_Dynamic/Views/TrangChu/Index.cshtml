@@ -1,7 +1,21 @@
 ﻿<div class="container">
-    <div class="ND_TimKiem">
-        <input type="text" placeholder="Tìm kiếm người dùng...">
-    </div>
+   @* <div class="ND_TimKiem">
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("SearchString")
+            <input type="text"  placeholder="Tìm kiếm người dùng..." >
+            <input type="submit" placeholder="tìm"> 
+        }
+        
+    </div>*@
+    @using (Html.BeginForm())
+    {
+        <p>
+
+            Nhập thông tin: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+
+        </p>
+    }
     <div class="CT_TT">
         <div class="CT_sp">
             <div class="CT_Icon">

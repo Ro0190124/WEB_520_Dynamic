@@ -66,6 +66,28 @@ namespace WEB_520_Dynamic.Controllers
 				return View(sanPham);
 			}
 		}
+		public IActionResult XoaSanPham(int? ID)
+		{
+			if (ID == null || ID == 0)
+			{
+				return NotFound();
+			}
+			SAN_PHAM sanPham = _db.SAN_PHAMs.First(x => x.MaSanPham == ID);
+			if (sanPham == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				sanPham.TrangThai = false;
+				_db.SAN_PHAMs.Update(sanPham);
+				TempData["ThongBaoXoa"] = "Xóa Sàn Phẩm thành công";
+				_db.SaveChanges();
+
+			}
+			return RedirectToAction("Index");
+		}
+		
 
 	}
 }

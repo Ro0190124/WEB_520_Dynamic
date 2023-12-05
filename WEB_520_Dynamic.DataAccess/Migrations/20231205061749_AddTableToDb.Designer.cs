@@ -12,7 +12,7 @@ using WEB_520_Dynamic.DataAccess.Data;
 namespace WEB_520_Dynamic.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231201072304_AddTableToDb")]
+    [Migration("20231205061749_AddTableToDb")]
     partial class AddTableToDb
     {
         /// <inheritdoc />
@@ -232,6 +232,9 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
 
                     b.HasKey("MaSanPham");
 

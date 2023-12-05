@@ -36,28 +36,30 @@ namespace WEB_520_Dynamic.Controllers
         {
             ViewData["HideHeader"] = true;
             Console.WriteLine("Submit");
-			if (ModelState.IsValid)
-			{
-				_db.NGUOI_DUNGs.Add(nguoiDung);
-				_db.SaveChanges();
-				TempData["ThongBao"] = "Đăng kí thành công";
-				return View();
+            var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).FirstOrDefault();
+            if (n != null)
+            {
+                ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản đã tồn tại");
+                return View(nguoiDung);
 
-			}
-			else
-			{
-				return View(nguoiDung);
-			}
-			/*//var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).First();
-			if (n != null)
-			{
-				ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản đã tồn tại");
-				return View(nguoiDung);
-			}
+            }
             else
             {
-				
-			}*/
+                if (ModelState.IsValid)
+                {
+                    _db.NGUOI_DUNGs.Add(nguoiDung);
+                    _db.SaveChanges();
+                    TempData["ThongBao"] = "Đăng kí thành công";
+                    return RedirectToAction("DangNhap", "Home");
+
+                }
+                else
+                {
+                    return View(nguoiDung);
+                }
+            }
+            
+		
 			
 
         }
@@ -66,7 +68,7 @@ namespace WEB_520_Dynamic.Controllers
         public IActionResult DangNhap(string tenTaiKhoan, string matKhau)
         {
             ViewData["HideHeader"] = true;
-            var nguoiDung = _db.NGUOI_DUNGs.First(x => x.TenTaiKhoan == tenTaiKhoan && x.MatKhau == matKhau && x.TrangThai == true);
+            var nguoiDung = _db.NGUOI_DUNGs.FirstOrDefault(x => x.TenTaiKhoan == tenTaiKhoan && x.MatKhau == matKhau && x.TrangThai == true);
 
             if (nguoiDung == null)
             {

@@ -230,6 +230,9 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
+
                     b.HasKey("MaSanPham");
 
                     b.ToTable("SAN_PHAMs");

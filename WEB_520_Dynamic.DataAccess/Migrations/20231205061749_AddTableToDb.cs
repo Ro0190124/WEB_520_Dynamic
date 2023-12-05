@@ -59,7 +59,8 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                     TenSanPham = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DonGia = table.Column<double>(type: "float", nullable: false),
                     DonVi = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    QuyCach = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                    QuyCach = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
