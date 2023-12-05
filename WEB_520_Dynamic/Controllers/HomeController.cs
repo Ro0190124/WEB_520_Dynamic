@@ -57,7 +57,7 @@ namespace WEB_520_Dynamic.Controllers
                     _db.NGUOI_DUNGs.Add(nguoiDung);
                     _db.SaveChanges();
                     TempData["ThongBao"] = "Đăng kí thành công";
-                    return View();
+                    return RedirectToAction("DangNhap", "Home");
 
                 }
                 else

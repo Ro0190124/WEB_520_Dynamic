@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<NGUOI_DUNG>
 <div class="container">
-	<div class="ND_TimKiem">
-		<input type="text" placeholder="Tìm kiếm người dùng..." >
-	</div>
-	<div class="Them_ND">
-		@*<button class="Them-TK">Thêm tài khoản</button>*@
-		<a asp-action="ThemNguoiDung"><button class="Them-TK">Thêm tài khoản</button></a>
-	</div>
+	
+	<form  method="get">
+		<div class="ND_TimKiem">
+			<input type="text" placeholder="Tìm kiếm người dùng..." name="searchString">
+		</div>
+	</form>
 	<partial name="_Notification" />
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">
@@ -69,40 +68,6 @@
 			</tbody>
 		</table>
 	</div>
-	<!--<div id="ThemNguoiDungForm" style="display: none;" onsubmit="reloadPage()" >
-		<form method="post" asp-controller="NguoiDung" asp-action="ThemNguoiDung" >
-			
-			<div class="lg_TK">
-				<p>Nhập tên tài khoản hoặc email của bạn</p>
-				<input asp-for="Model.SingleUser.TenTaiKhoan" type="text" placeholder="Tên tài khoản hoặc email">
-				<span asp-validation-for="Model.SingleUser.TenTaiKhoan" class="text-danger"></span>
-			</div>
-			<div class="dk_HT_SDT">
-				<div class="dk_HT">
-					<p>Nhập họ và tên</p>
-					<input asp-for="Model.SingleUser.TenNguoiDung" type="text" placeholder="Họ và tên" />
-					<span asp-validation-for="Model.SingleUser.TenNguoiDung" class="text-danger"></span>
-				</div>
-				<div class="dk_SDT">
-					<p>Nhập số điện thoại</p>
-					<input asp-for="Model.SingleUser.SoDienThoai" type="text" placeholder="Số điện thoại" />
-					<span asp-validation-for="Model.SingleUser.SoDienThoai" class="text-danger"></span>
-				</div>
-			</div>
-
-			<div class="lg_MK">
-				<p>Nhập mật khẩu</p>
-				<input asp-for="Model.SingleUser.MatKhau" type="password" placeholder="Mật khẩu">
-				<span asp-validation-for="Model.SingleUser.MatKhau" class="text-danger"></span>
-			</div>
-			<div class="lg_DN lg_DK">
-				<button type="submit">Đăng kí</button>
-			</div>
-		
-		</form>
-		
-	</div>-->
-
 </div>
 
 
@@ -150,4 +115,3 @@
 		}, 500);
 	}
 </script>-->
-
