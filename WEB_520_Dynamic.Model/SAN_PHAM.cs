@@ -17,8 +17,8 @@ namespace WEB_520_Dynamic.Model
         [Range(0, double.MaxValue, ErrorMessage = "Đơn giá phải lớn hơn 0")]
         public double DonGia { get; set; }
         [MaxLength(20)]
-        public string DonVi { get; set; }
-        [MaxLength(30)]
+		public string DonVi { get; set; } = "Thùng";
+		[MaxLength(30)]
         public string QuyCach { get; set; }
     }
 }

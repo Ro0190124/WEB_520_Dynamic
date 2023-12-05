@@ -26,29 +26,7 @@ namespace WEB_520_Dynamic.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult ThemNguoiDung(NGUOI_DUNG nguoiDung)
 		{
-			/*// Xử lý dữ liệu biểu mẫu và lưu vào cơ sở dữ liệu
-			// ...
-			Console.WriteLine(nguoiDung.SingleUser.TenNguoiDung);
-			Console.WriteLine("11111111111111");
-			*//*Console.WriteLine(ModelState.Count);
-			foreach (var key in ModelState.Keys)
-			{
-				Console.WriteLine(key);
-				Console.WriteLine(ModelState[key].RawValue);
-			}*//*
-			if (ModelState.IsValid)
-            {
-				Console.WriteLine("222222222222222222");
-				_db.NGUOI_DUNGs.Add(nguoiDung.SingleUser);
-                _db.SaveChanges();
-                
-				return RedirectToAction("Index", "NguoiDung");
-			}
-            else
-            {
-				Console.WriteLine(nguoiDung.SingleUser.TenTaiKhoan);
-                return View(nguoiDung);
-            }*/
+			
 			var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).FirstOrDefault();
 			if (n != null)
 			{
@@ -74,13 +52,13 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				ModelState.AddModelError("SoDienThoai", "không được bỏ trống");
 				return View(nguoiDung);
-			}
-			if (nguoiDung.NgaySinh.Value.Year > DateTime.Now.Year - 18)
+			}*/
+			if (nguoiDung.NgaySinh.HasValue && nguoiDung.NgaySinh.Value.Year > DateTime.Now.Year - 18)
 			{
 				ModelState.AddModelError("NgaySinh", "Ngày sinh không hợp lệ");
 				return View(nguoiDung);
-			}*/
-			
+
+			}
 			else
 			{
 				if (ModelState.IsValid)
@@ -117,6 +95,12 @@ namespace WEB_520_Dynamic.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SuaNguoiDung(NGUOI_DUNG nguoiDung)
         {
+			if (nguoiDung.NgaySinh.HasValue && nguoiDung.NgaySinh.Value.Year > DateTime.Now.Year - 18)
+			{
+				ModelState.AddModelError("NgaySinh", "Ngày sinh không hợp lệ");
+				return View(nguoiDung);
+
+			}
 			if (ModelState.IsValid)
             {
 				_db.NGUOI_DUNGs.Update(nguoiDung);
@@ -143,7 +127,8 @@ namespace WEB_520_Dynamic.Controllers
             {
                 nguoiDung.TrangThai = false;
                 _db.NGUOI_DUNGs.Update(nguoiDung);
-                _db.SaveChanges();
+				TempData["ThongBaoXoa"] = "Xóa người dùng thành công";
+				_db.SaveChanges();
                
             }
             return RedirectToAction("Index");
