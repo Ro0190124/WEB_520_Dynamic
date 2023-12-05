@@ -16,5 +16,10 @@ namespace WEB_520_Dynamic.Controllers
 			IEnumerable<NHA_CUNG_CAP> obj = _db.NHA_CUNG_CAPs.ToList();
 			return View(obj);
 		}
+
+		public IActionResult ThemNhaCungCap()
+		{
+			return View();
+		}
 	}
 }
