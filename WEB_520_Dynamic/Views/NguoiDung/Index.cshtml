@@ -5,7 +5,7 @@
 	</div>
 	<div class="Them_ND">
 		@*<button class="Them-TK">Thêm tài khoản</button>*@
-		<a asp-controller="NguoiDung" asp-action="ThemNguoiDung"><button class="Them-TK">Thêm tài khoản</button></a>
+		<a asp-action="ThemNguoiDung"><button class="Them-TK">Thêm tài khoản</button></a>
 	</div>
 	<partial name="_Notification" />
 	<div class="Tb-Container">
@@ -30,11 +30,16 @@
 				}
 				@foreach (var i in Model)
 				{
+					string gioiTinh = "Nam";
+					if(i.GioiTinh == false)
+					{
+						 gioiTinh = "Nữ";
+					}
 					j = j +1;
 					<tr>
 					<td>@j</td>
 					<td>@i.TenNguoiDung</td>
-					<td>@i.GioiTinh</td>
+					<td>@gioiTinh</td>
 					<td>@i.SoDienThoai</td>
 					<td>@i.NgaySinh</td>
 					<td>@i.TenTaiKhoan</td>
