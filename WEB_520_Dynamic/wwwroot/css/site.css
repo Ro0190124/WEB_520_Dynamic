@@ -7,10 +7,9 @@
     font-size: 16px;
   }
 }
-
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -138,7 +137,7 @@ body {
 
         .lg_register a:hover {
             text-decoration: underline;
-            color: blue;
+            color: #E48700;
         }
 
 h1 {
@@ -170,7 +169,7 @@ h1 {
     outline: none;
     border-radius: 40px;
 }
-.BienLai_Form input[type=text], input[type=password] {
+.BienLai_Form input {
     width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -198,7 +197,7 @@ h1 {
 
         .lg_QMK a:hover {
             text-decoration: underline;
-            color: blue;
+            color: #E48700;
         }
 
 .lg_form .lg_DN {
@@ -227,11 +226,15 @@ h1 {
 
 
 .lg_form button:hover {
-    background-color: blue;
+    background-color: #E46B00;
+}
+.lg_TK input:focus, .lg_MK input:focus, .dk_HT input:focus, .dk_SDT input:focus {
+    border-color: #E48700;
+    outline: none;
 }
 
 .Them_form .lg_DN button {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     background-color: #E48700;
     color: white;
@@ -294,7 +297,7 @@ h1 {
     align-items: center;
 }
 .ND_body .ND_NgaySinh input {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     outline: none;
@@ -311,15 +314,16 @@ header{
     width:200px;
     position:absolute;
     z-index:1;
-    margin-top:50px;
 }
-
-header ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-direction: column;
-}
+    header .lg_TuanVu a {
+        text-decoration: none;
+    }
+    header ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+    }
 header ul li {
     margin:5px;
 }
@@ -329,13 +333,15 @@ header ul li a {
     align-items:center;
     text-decoration:none;
 }
-
-/*Phần người dùng*/
-.ND_TimKiem{
-    width:600px;
-    height:40px;
-    margin-top:20px;
-}
+    header .HD_Ul {
+        margin-top:50px;
+    }
+    /*Phần người dùng*/
+    .ND_TimKiem {
+        width: 600px;
+        height: 40px;
+        margin-top: 20px;
+    }
 .ND_TimKiem input {
     width: 100%;
     height: 40px;
@@ -449,4 +455,27 @@ header ul li a {
 .BL_h1_Ten {
     display:flex;
     justify-content:center;
+}
+
+.BienLai_Form .BL_ThemBL{
+    margin-top:50px;
+    display:flex;
+    justify-content:end;
+}
+    .BienLai_Form .BL_ThemBL button {
+        width: 400px;
+        padding: 10px;
+        background-color: #E48700;
+        color: white;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 40px;
+    }
+.BL_H1{
+    margin-top:10px;
+}
+
+.BienLai_Form .BL_TimSP {
+    margin-top: 60px;
 }
