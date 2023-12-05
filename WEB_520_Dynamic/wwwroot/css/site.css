@@ -138,7 +138,7 @@ body {
 
         .lg_register a:hover {
             text-decoration: underline;
-            color: blue;
+            color: #E48700;
         }
 
 h1 {
@@ -198,7 +198,7 @@ h1 {
 
         .lg_QMK a:hover {
             text-decoration: underline;
-            color: blue;
+            color: #E48700;
         }
 
 .lg_form .lg_DN {
@@ -227,7 +227,11 @@ h1 {
 
 
 .lg_form button:hover {
-    background-color: blue;
+    background-color: #E46B00;
+}
+.lg_TK input:focus, .lg_MK input:focus, .dk_HT input:focus, .dk_SDT input:focus {
+    border-color: #E48700;
+    outline: none;
 }
 
 .Them_form .lg_DN button {
@@ -450,3 +454,39 @@ header ul li a {
     display:flex;
     justify-content:center;
 }
+/*Home*/
+
+
+header ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header li {
+    margin: 0 10px;
+}
+
+header a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+}
+
+    header a:hover {
+        background-color: #333;
+        color: white;
+    }
+
+    header a:active {
+        transform: scale(0.9);
+    }
+
+    header a.active {
+        background-color: #333;
+        color: white;
+    }
+ 
