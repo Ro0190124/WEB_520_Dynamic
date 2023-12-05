@@ -29,10 +29,15 @@
 				}
 				@foreach (var i in Model)
 				{
+					string trangThai = "Còn làm";
 					string gioiTinh = "Nam";
 					if(i.GioiTinh == false)
 					{
 						 gioiTinh = "Nữ";
+					}
+					if (i.TrangThai == false)
+					{
+						trangThai = "Đã nghỉ";
 					}
 					j = j +1;
 					<tr>
@@ -44,7 +49,7 @@
 					<td>@i.TenTaiKhoan</td>
 					<td>@i.MatKhau</td>
 					<td>@i.NgayTao</td>
-					<td>@i.TrangThai</td>
+					<td>@trangThai</td>
 						<td class="ND_Table_Icon">
 
 

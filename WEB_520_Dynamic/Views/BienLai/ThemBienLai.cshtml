@@ -1,5 +1,5 @@
 ﻿
-@model BIEN_LAI
+@model BIEN_LAI_CHI_TIET
 <div class="container">
     <form method="post">
         <div class="ND_body">
@@ -10,14 +10,14 @@
                 <div class="BL_H1">
                     <div class="BL_Loai magrin_Input">
                         <!--<p>Chọn loại biên lai</p>-->
-                        <select asp-for="LoaiBienLai" class="textbox">
+                        <select asp-for="@Model.BIEN_LAI.LoaiBienLai" class="textbox">
                             <option value="Đơn hàng xuất">Đơn hàng xuất</option>
                             <option value="Đơn hàng nhập">Đơn hàng nhập</option>
                         </select>
                     </div>
                     <div class="BL_NCC magrin_Input">
                         <!--<<p>Tên nhà cung cấp</p>-->
-                        <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp">
+                        <select asp-for="@Model.BIEN_LAI.MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp">
                             <option value="" disabled selected>Chọn nhà cung cấp</option>
                         </select>
                     </div>
@@ -25,12 +25,12 @@
                 <div class="BL_H1">
                     <div class="BL_NCC magrin_Input">
                         <!--<<p>Ngày giao</p>-->
-                        <input asp-for="NgayGiao" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
+                        <input asp-for="@Model.BIEN_LAI.NgayGiao" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
                     </div>
                     <div class="BL_NCC magrin_Input">
                         <!--<<p>Thông tin giao hàng</p>-->
-                        <input asp-for="ThongTinGiaoHang" type="text" placeholder="Thông tin giao hàng">
-                        <span asp-validation-for="ThongTinGiaoHang" class="text-danger"></span>
+                        <input asp-for="@Model.BIEN_LAI.ThongTinGiaoHang" type="text" placeholder="Thông tin giao hàng">
+                        <span asp-validation-for="@Model.BIEN_LAI.ThongTinGiaoHang" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="BL_TimSP BL_H1">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="BL_NCC">
                         <!--<<p>Tên lô</p>-->
-                        <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhập số lô">
+                        <select asp-for="@Model.MaLo" asp-items="ViewBag.Lo" class="textbox" placeholder="Nhập số lô">
                             <option value="" disabled selected>Chọn số lô</option>
                         </select>
                     </div>

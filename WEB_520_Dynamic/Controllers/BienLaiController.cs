@@ -26,6 +26,14 @@ namespace WEB_520_Dynamic.Controllers
                 }
                 ).ToList();
             ViewBag.NhaCungCap = NCC;
+            IEnumerable<SelectListItem> LO = _db.LOs.Select(
+
+                u => new SelectListItem()
+                {
+                    Text = u.TenLo,
+                    Value = u.MaLo.ToString()
+                });
+            ViewBag.Lo = LO;
             return View();
 		}
 

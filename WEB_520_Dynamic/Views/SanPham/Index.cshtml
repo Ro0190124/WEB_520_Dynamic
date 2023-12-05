@@ -22,15 +22,19 @@
 				</tr>
 			</thead>
 			<tbody>
+				@{
+					int j = 0;
+				}
 				@foreach (var i in Model)
 				{
+					j += 1;
 					string trangThai = "Đã Xóa";
 					if(i.TrangThai == true)
 					{
 						trangThai = "Còn bán";
 					}
 					<tr>
-						<td>@i.MaSanPham</td>
+						<td>@j</td>
 						<td>@i.TenSanPham</td>
 						<td>@i.QuyCach</td>
 						<td>@i.DonVi</td>
