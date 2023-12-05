@@ -137,7 +137,7 @@ body {
 
         .lg_register a:hover {
             text-decoration: underline;
-            color: blue;
+            color: #E48700;
         }
 
 h1 {
@@ -197,7 +197,7 @@ h1 {
 
         .lg_QMK a:hover {
             text-decoration: underline;
-            color: blue;
+            color: #E48700;
         }
 
 .lg_form .lg_DN {
@@ -226,7 +226,11 @@ h1 {
 
 
 .lg_form button:hover {
-    background-color: blue;
+    background-color: #E46B00;
+}
+.lg_TK input:focus, .lg_MK input:focus, .dk_HT input:focus, .dk_SDT input:focus {
+    border-color: #E48700;
+    outline: none;
 }
 
 .Them_form .lg_DN button {
