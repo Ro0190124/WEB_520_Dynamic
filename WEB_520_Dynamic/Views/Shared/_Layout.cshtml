@@ -10,6 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-F6XHp5x1OK9W5Dr9w5JgsfpfpF+Fg3b3z2XyXVgcrDfo8koHD8t07H+hw+BuLNFu" crossorigin="anonymous">
+
 </head>
 <body>
     @{
@@ -18,7 +21,7 @@
 
     @if (!hideHeader)
     {
-        <header>
+<!--      <header>
             <div class="lg_TuanVu lo_logo">
                 <a asp-controller="TrangChu" asp-action="Index"><p>TUẤN VŨ</p></a>
             </div>
@@ -33,8 +36,59 @@
                 <li><a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Đăng xuất</a></li>
             </ul
             </div>
-        </header>
+                </header>-->
+        <header>
+            <div class="lg_TuanVu lo_logo">
+                <a asp-controller="TrangChu" asp-action="Index" class="dcr_none"><p>TUẤN VŨ</p></a>
+            </div>
+            <nav>
+                <ul>
 
+                    <li>
+                            <a asp-area="" asp-controller="TrangChu" asp-action="Index">
+                            <i class="fas fa-house-user"></i>
+                            <span class="nav-item">Tranh chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a asp-area="" asp-controller="NguoiDung" asp-action="Index">
+                            <i class="fas fa-user"></i>
+                            <span class="nav-item">Người dùng</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a asp-area="" asp-controller="SanPham" asp-action="Index">
+                            <i class="fas fa-box"></i>
+                                <span class="nav-item">Sản phẩm</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a asp-area="" asp-controller="BienLai" asp-action="Index">
+                            <i class="fas fa-receipt"></i>
+                            <span class="nav-item">Biên lai</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a asp-area="" asp-controller="NhaCungCap" asp-action="Index">
+                            <i class="fas fa-users"></i>
+                                <span class="nav-item">Nhà cung cấp</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="" asp-action="">
+                            <i class="fas fa-chart-line"></i>
+                                <span class="nav-item">Thống kê</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="" asp-action="" class="logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                                <span class="nav-item">Đăng xuất</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
     }
 
