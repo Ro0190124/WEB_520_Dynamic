@@ -30,12 +30,42 @@ namespace WEB_520_Dynamic.Controllers
                 _db.SAN_PHAMs.Add(sanPham);
                 _db.SaveChanges(); 
                 TempData["ThongBao"] = "Thêm sản phẩm thành công";
-				return RedirectToAction("Index", "Lo");
+				return RedirectToAction("Index", "SanPham");
 			}
             else
             {
                 return View(sanPham);
             }
         }
+		public IActionResult SuaSanPham(int? ID)
+		{
+			if (ID == null || ID == 0)
+			{
+				return NotFound();
+			}
+			SAN_PHAM sanPham = _db.SAN_PHAMs.First(x => x.MaSanPham == ID);
+			if (sanPham == null)
+			{
+				return NotFound();
+			}
+			return View(sanPham);
+		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult SuaSanPham(SAN_PHAM sanPham)
+		{
+			if (ModelState.IsValid)
+			{
+				_db.SAN_PHAMs.Update(sanPham);
+				_db.SaveChanges();
+				TempData["ThongBao"] = "Sửa sản phẩm thành công";
+				return RedirectToAction("Index", "SanPham");
+			}
+			else
+			{
+				return View(sanPham);
+			}
+		}
+
 	}
 }

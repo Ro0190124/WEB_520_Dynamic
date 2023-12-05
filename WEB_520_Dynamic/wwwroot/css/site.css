@@ -7,10 +7,9 @@
     font-size: 16px;
   }
 }
-
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -170,7 +169,7 @@ h1 {
     outline: none;
     border-radius: 40px;
 }
-.BienLai_Form input[type=text], input[type=password] {
+.BienLai_Form input {
     width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -235,7 +234,7 @@ h1 {
 }
 
 .Them_form .lg_DN button {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     background-color: #E48700;
     color: white;
@@ -298,7 +297,7 @@ h1 {
     align-items: center;
 }
 .ND_body .ND_NgaySinh input {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     outline: none;
@@ -315,15 +314,16 @@ header{
     width:200px;
     position:absolute;
     z-index:1;
-    margin-top:50px;
 }
-
-header ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-direction: column;
-}
+    header .lg_TuanVu a {
+        text-decoration: none;
+    }
+    header ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+    }
 header ul li {
     margin:5px;
 }
@@ -333,13 +333,15 @@ header ul li a {
     align-items:center;
     text-decoration:none;
 }
-
-/*Phần người dùng*/
-.ND_TimKiem{
-    width:600px;
-    height:40px;
-    margin-top:20px;
-}
+    header .HD_Ul {
+        margin-top:50px;
+    }
+    /*Phần người dùng*/
+    .ND_TimKiem {
+        width: 600px;
+        height: 40px;
+        margin-top: 20px;
+    }
 .ND_TimKiem input {
     width: 100%;
     height: 40px;
@@ -454,39 +456,26 @@ header ul li a {
     display:flex;
     justify-content:center;
 }
-/*Home*/
 
-
-header ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.BienLai_Form .BL_ThemBL{
+    margin-top:50px;
+    display:flex;
+    justify-content:end;
 }
-
-header li {
-    margin: 0 10px;
-}
-
-header a {
-    display: block;
-    padding: 5px 10px;
-    text-decoration: none;
-    color: #333;
-    border-radius: 5px;
-}
-
-    header a:hover {
-        background-color: #333;
+    .BienLai_Form .BL_ThemBL button {
+        width: 400px;
+        padding: 10px;
+        background-color: #E48700;
         color: white;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 40px;
     }
+.BL_H1{
+    margin-top:10px;
+}
 
-    header a:active {
-        transform: scale(0.9);
-    }
-
-    header a.active {
-        background-color: #333;
-        color: white;
-    }
- 
+.BienLai_Form .BL_TimSP {
+    margin-top: 60px;
+}
