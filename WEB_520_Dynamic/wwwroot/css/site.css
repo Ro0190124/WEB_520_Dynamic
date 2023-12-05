@@ -7,10 +7,9 @@
     font-size: 16px;
   }
 }
-
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -170,7 +169,7 @@ h1 {
     outline: none;
     border-radius: 40px;
 }
-.BienLai_Form input[type=text], input[type=password] {
+.BienLai_Form input {
     width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -231,7 +230,7 @@ h1 {
 }
 
 .Them_form .lg_DN button {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     background-color: #E48700;
     color: white;
@@ -294,7 +293,7 @@ h1 {
     align-items: center;
 }
 .ND_body .ND_NgaySinh input {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     outline: none;
@@ -311,7 +310,6 @@ header{
     width:200px;
     position:absolute;
     z-index:1;
-    margin-top:50px;
 }
 
 header ul {
@@ -329,6 +327,7 @@ header ul li a {
     align-items:center;
     text-decoration:none;
 }
+header .
 
 /*Phần người dùng*/
 .ND_TimKiem{
@@ -449,4 +448,27 @@ header ul li a {
 .BL_h1_Ten {
     display:flex;
     justify-content:center;
+}
+
+.BienLai_Form .BL_ThemBL{
+    margin-top:50px;
+    display:flex;
+    justify-content:end;
+}
+    .BienLai_Form .BL_ThemBL button {
+        width: 400px;
+        padding: 10px;
+        background-color: #E48700;
+        color: white;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 40px;
+    }
+.BL_H1{
+    margin-top:10px;
+}
+
+.BienLai_Form .BL_TimSP {
+    margin-top: 60px;
 }

@@ -30,7 +30,7 @@ namespace WEB_520_Dynamic.Controllers
                 _db.SAN_PHAMs.Add(sanPham);
                 _db.SaveChanges(); 
                 TempData["ThongBao"] = "Thêm sản phẩm thành công";
-				return RedirectToAction("Index", "Lo");
+				return RedirectToAction("Index", "SanPham");
 			}
             else
             {
