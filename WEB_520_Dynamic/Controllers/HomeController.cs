@@ -36,20 +36,29 @@ namespace WEB_520_Dynamic.Controllers
         {
             ViewData["HideHeader"] = true;
             Console.WriteLine("Submit");
-          
-            if (ModelState.IsValid)
-            {
-                
-                _db.NGUOI_DUNGs.Add(nguoiDung);
-                _db.SaveChanges();
-                TempData["ThongBao"] = "Đăng kí thành công";
-                return View();
-              
-            }
+			var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).First();
+			if (n != null)
+			{
+				ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản đã tồn tại");
+				return View(nguoiDung);
+			}
             else
             {
-                return View(nguoiDung);      
-            }
+				if (ModelState.IsValid)
+				{
+
+					_db.NGUOI_DUNGs.Add(nguoiDung);
+					_db.SaveChanges();
+					TempData["ThongBao"] = "Đăng kí thành công";
+					return View();
+
+				}
+				else
+				{
+					return View(nguoiDung);
+				}
+			}
+			
 
         }
 

@@ -13,9 +13,8 @@ namespace WEB_520_Dynamic.Controllers
 		}
 		public IActionResult Index()
 		{
-			IEnumerable<LO> lo = _db.LOs.ToList();
-
-			return View(lo);
+			IEnumerable<LO_SAN_PHAM> Lo = _db.SAN_PHAMs.Join(_db.LOs, sp => sp.MaSanPham, lo => lo.MaSanPham, (sp, lo) => new LO_SAN_PHAM { lo = lo, sanPham = sp }).ToList();
+			return View(Lo);
 		}
 		public IActionResult ThemLo()
 		{

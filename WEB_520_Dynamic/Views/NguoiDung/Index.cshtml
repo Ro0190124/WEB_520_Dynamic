@@ -5,8 +5,9 @@
 	</div>
 	<div class="Them_ND">
 		@*<button class="Them-TK">Thêm tài khoản</button>*@
-		<a asp-action="ThemNguoiDung"><button class="Them-TK">Thêm tài khoản</button></a>
+		<a asp-action="ThemNguoiDung" class="Them-TK">Thêm tài khoản</a>
 	</div>
+	<partial name="_Notification" />
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">
 			<thead>
@@ -144,3 +145,4 @@
 		}, 500);
 	}
 </script>-->
+
