@@ -340,10 +340,22 @@ header ul li a {
         margin-top:50px;
     }*/
     /*Phần người dùng*/
+    /*Tìm kiếm*/
+.ND_TimKiem_Ten {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+    .ND_TimKiem_Ten .ND_TK_TenND{
+        display:flex;
+
+    }
+        .ND_TimKiem_Ten .ND_TK_TenND p {
+            margin-right: 10px;
+        }
     .ND_TimKiem {
         width: 600px;
         height: 40px;
-        margin-top: 20px;
     }
 .ND_TimKiem input {
     width: 100%;
@@ -536,6 +548,7 @@ nav .fas {
     top: 20px;
     font-size: 20px;
     text-align: center;
+
 }
 
 .nav-item {
@@ -546,12 +559,15 @@ nav .fas {
 
 nav ul li a:hover {
     background: #eee;
+    color: #E48700;
 }
 
-    a:hover i {
-        color: #34AF6D;
-        transition: 0.5s;
-    }
+nav a:hover i {
+    /*    color: #34AF6D;
+*/ transition: 0.5s;
+    color: #E48700;
+}
+
 
 .logout {
     position: absolute;
