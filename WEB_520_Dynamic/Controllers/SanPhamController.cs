@@ -13,13 +13,38 @@ namespace WEB_520_Dynamic.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<SAN_PHAM> sanPham = _db.SAN_PHAMs.ToList();
+            // get cookies
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+				IEnumerable<SAN_PHAM> sanPham = _db.SAN_PHAMs.ToList();
 
-            return View(sanPham);
+				return View(sanPham);
+
+            }
+           
         }
 		public IActionResult ThemSanPham()
-		{
-			return View();
+        {// get cookies
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+				return View();
+
+            }
+           
 		}
         [HttpPost]
         [ValidateAntiForgeryToken]
