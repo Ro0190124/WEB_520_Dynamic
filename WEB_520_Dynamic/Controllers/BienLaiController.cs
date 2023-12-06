@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WEB_520_Dynamic.DataAccess.Data;
+using WEB_520_Dynamic.Model;
 
 namespace WEB_520_Dynamic.Controllers
 {
@@ -36,6 +37,7 @@ namespace WEB_520_Dynamic.Controllers
             ViewBag.Lo = LO;
             return View();
 		}
+        
 
-	}
+    }
 }

@@ -36,5 +36,55 @@ namespace WEB_520_Dynamic.Controllers
 				return View(nhaCungCap);
 			}
 		}
-	}
+        public IActionResult SuaNhaCungCap(int? ID)
+        {
+            if (ID == null || ID == 0)
+            {
+                return NotFound();
+            }
+            NHA_CUNG_CAP nhaCC = _db.NHA_CUNG_CAPs.First(x => x.MaNhaCungCap == ID);
+            if (nhaCC == null)
+            {
+                return NotFound();
+            }
+            return View(nhaCC);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SuaNhaCungCap(NHA_CUNG_CAP nhaCC)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.NHA_CUNG_CAPs.Update(nhaCC);
+                _db.SaveChanges();
+                TempData["ThongBao"] = "Sửa nhà cung cấp thành công";
+                return RedirectToAction("Index", "SanPham");
+            }
+            else
+            {
+                return View(nhaCC);
+            }
+        }
+        public IActionResult XoaNhaCungCap(int? ID)
+        {
+            if (ID == null || ID == 0)
+            {
+                return NotFound();
+            }
+            NHA_CUNG_CAP nhaCC = _db.NHA_CUNG_CAPs.First(x => x.MaNhaCungCap == ID);
+            if (nhaCC == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                nhaCC.TrangThai = false;
+                _db.NHA_CUNG_CAPs.Update(nhaCC);
+                TempData["ThongBaoXoa"] = "Xóa nhà cung cấp thành công";
+                _db.SaveChanges();
+
+            }
+            return RedirectToAction("Index");
+        }
+    }
 }
