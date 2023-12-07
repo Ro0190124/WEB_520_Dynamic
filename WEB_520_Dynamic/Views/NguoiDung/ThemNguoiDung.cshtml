@@ -11,17 +11,17 @@
                
                 <h1>Thêm Người dùng</h1>
                 <div class="lg_TK magrin_Input">
-                    <p>Nhập tên tài khoản</p>
+                    <p> Tên tài khoản</p>
                     <input asp-for="TenTaiKhoan" type="text" placeholder="Tên tài khoản ">
                     <span asp-validation-for="TenTaiKhoan" class="text-danger"></span>
                 </div>
                 <div class="dk_HT magrin_Input">
-                    <p>Nhập họ và tên</p>
+                    <p> Họ và tên</p>
                     <input asp-for="TenNguoiDung" type="text" placeholder="Họ và tên" />
                     <span asp-validation-for="TenNguoiDung" class="text-danger"></span>
                 </div>
                 <div class="ND_GT magrin_Input">
-                    <p>Giới tính</p>
+                    <p> Giới tính</p>
                     <div class="ND_CheckGT">
                         <div>
                             <input asp-for="GioiTinh" type="radio" value="true" checked="checked" required /> Nam &ensp;
@@ -32,18 +32,18 @@
                     </div>
                 </div>
                 <div class="dk_SDT magrin_Input">
-                    <p>Nhập số điện thoại</p>
+                    <p> Số điện thoại</p>
                     <input asp-for="SoDienThoai" type="text" placeholder="Số điện thoại" />
                     <span asp-validation-for="SoDienThoai" class="text-danger"></span>
                 </div>
                 <div class="ND_NgaySinh magrin_Input">
-                    <p>Ngày Sinh</p>
+                    <p> Ngày Sinh</p>
                     <input asp-for="NgaySinh" required type="date" style="padding-left: 20%;" placeholder="Ngày sinh" />
                     <span asp-validation-for="NgaySinh" class="text-danger"></span>
                 </div>
 
                 <div class="lg_MK magrin_Input">
-                    <p>Nhập mật khẩu</p>
+                    <p> Mật khẩu</p>
                     <input asp-for="MatKhau" type="password" placeholder="Mật khẩu" >
                     <span asp-validation-for="MatKhau" class="text-danger"></span>
                 </div>

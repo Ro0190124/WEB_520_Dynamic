@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<NHA_CUNG_CAP>
 
 <div class="container">
-	<div class="ND_TimKiem">
-		<input type="text" placeholder="Tìm kiếm nhà cung cấp...">
-	</div>
 	<partial name="_Notification" />
 	<div class="Them_ND">
-		<a asp-action="ThemNhaCungCap"><button class="Them-TK">Thêm nhà cung cấp</button></a>
+		<div>
+			<a asp-controller="NhaCungCap" asp-action="ThemNhaCungCap"><button class="Them-TK">Thêm nhà cung cấp</button></a>
+		</div>
+		<div class="ND_TimKiem">
+			<input type="text" placeholder="Tìm kiếm nhà cung cấp..." name="searchString">
+		</div>
 	</div>
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">
