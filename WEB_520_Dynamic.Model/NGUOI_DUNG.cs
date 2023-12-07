@@ -13,6 +13,7 @@ namespace WEB_520_Dynamic.Model
         public int MaNguoiDung { get; set; }
         [MinLength(5, ErrorMessage ="Tên người dùng không dưới 5 kí tự ")]
         [MaxLength(50)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên người dùng chỉ chứa kí tự")]
         public string TenNguoiDung { get; set; }
         public bool? GioiTinh { get; set; } = true;
         [StringLength(10, ErrorMessage ="Số Điện thoại phải có 10 kí tự")]

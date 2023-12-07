@@ -31,8 +31,8 @@
                         <input asp-for="ThongTinGiaoHang" type="text" placeholder="Thông tin giao hàng">
                         <span asp-validation-for="ThongTinGiaoHang" class="text-danger"></span>
                     </div>
-                <div class="lg_DN">
-                    <button type="submit" asp-controller="BienLaiChiTiet" , asp-action="Index" asp-route-id="">Thêm Biên Lai</button>
+                <div class="BL_btn_a">
+                    <a asp-controller="BienLaiChiTiet" asp-action="Index">Thêm sản phẩm</a> 
                 </div>
                 </div>
                 @if (TempData["ThongBao"] != null)
