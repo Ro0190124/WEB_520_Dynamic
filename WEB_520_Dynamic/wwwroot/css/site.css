@@ -599,3 +599,28 @@ nav a:hover i {
 nav ul li {
     list-style: none;
 }
+
+.overlay {
+    position: fixed; /* Lớp phủ toàn màn hình */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen với độ mờ */
+    z-index: 1; /* Đảm bảo nằm dưới popup */
+}
+
+.popup-container {
+    position: fixed; /* Popup */
+    width: 80%; /* Chiều rộng của popup */
+    max-width: 600px; /* Chiều rộng tối đa */
+    height: auto; /* Chiều cao tự động */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa popup */
+    background-color: white; /* Màu nền của popup */
+    padding: 20px; /* Đệm cho nội dung bên trong */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Bóng đổ cho popup */
+    z-index: 2; /* Đảm bảo nằm trên lớp overlay */
+    /* Thêm các kiểu dáng khác theo ý muốn */
+}
