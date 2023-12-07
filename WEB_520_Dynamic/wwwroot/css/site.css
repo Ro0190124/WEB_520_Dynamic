@@ -599,3 +599,95 @@ nav a:hover i {
 nav ul li {
     list-style: none;
 }
+
+/* biên lai chi tiết*/
+.BLCT_BL {
+    /*    background-color: red;*/
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #4285F4;
+    outline: none;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+    .BLCT_BL .BLCT_p{
+        width:100%;
+/*        background-color:darkgreen;
+*/        margin-top:10px;
+        width:40%;
+    }
+
+.BLCT_Lo {
+    display: flex;
+    justify-content:space-around;
+    margin-top: 20px;
+    /*        background-color: aqua;
+*/ width: 100%;
+    height: 200px;
+    align-items: center;
+    border: 1px solid #4285F4;
+    outline: none;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+        .BLCT_Lo .BLCT_Lo_input{
+            width:30%;
+/*            background-color:brown;
+*/
+        }
+        .BLCT_Lo .BLCT_Them_Lo {
+            width: 10%;
+            height: 100%;
+            display: flex;
+/*            background-color: chocolate;
+*/          align-items: center;
+        }
+            .BLCT_Lo .BLCT_Them_Lo button {
+                font-size: 16px;
+                color: white;
+                background-color: #E48700;
+                width: 80%;
+                height: 100px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                outline: none;
+                border-radius: 10px;
+            }
+    .BLCT_Lo select {
+        width: 400px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+.BLCT_Table {
+    background-color:coral;
+    width:100%;
+}
+
+.BLCT_Lo .ND_NgaySinh input {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.BLCT_Lo .BLCT_Ip input {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+

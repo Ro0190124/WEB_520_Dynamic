@@ -16,7 +16,7 @@ namespace WEB_520_Dynamic.Controllers
         }
         public IActionResult TaoBL()
         {
-            return RedirectToAction("Index");
+            return View();
         }
     }
 }
