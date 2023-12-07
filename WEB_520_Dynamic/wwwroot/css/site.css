@@ -600,27 +600,94 @@ nav ul li {
     list-style: none;
 }
 
-.overlay {
-    position: fixed; /* Lớp phủ toàn màn hình */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen với độ mờ */
-    z-index: 1; /* Đảm bảo nằm dưới popup */
+/* biên lai chi tiết*/
+.BLCT_BL {
+    /*    background-color: red;*/
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #4285F4;
+    outline: none;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
-.popup-container {
-    position: fixed; /* Popup */
-    width: 80%; /* Chiều rộng của popup */
-    max-width: 600px; /* Chiều rộng tối đa */
-    height: auto; /* Chiều cao tự động */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Căn giữa popup */
-    background-color: white; /* Màu nền của popup */
-    padding: 20px; /* Đệm cho nội dung bên trong */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Bóng đổ cho popup */
-    z-index: 2; /* Đảm bảo nằm trên lớp overlay */
-    /* Thêm các kiểu dáng khác theo ý muốn */
+    .BLCT_BL .BLCT_p{
+        width:100%;
+/*        background-color:darkgreen;
+*/        margin-top:10px;
+        width:40%;
+    }
+
+.BLCT_Lo {
+    display: flex;
+    justify-content:space-around;
+    margin-top: 20px;
+    /*        background-color: aqua;
+*/ width: 100%;
+    height: 200px;
+    align-items: center;
+    border: 1px solid #4285F4;
+    outline: none;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
+        .BLCT_Lo .BLCT_Lo_input{
+            width:30%;
+/*            background-color:brown;
+*/
+        }
+        .BLCT_Lo .BLCT_Them_Lo {
+            width: 10%;
+            height: 100%;
+            display: flex;
+/*            background-color: chocolate;
+*/          align-items: center;
+        }
+            .BLCT_Lo .BLCT_Them_Lo button {
+                font-size: 16px;
+                color: white;
+                background-color: #E48700;
+                width: 80%;
+                height: 100px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                outline: none;
+                border-radius: 10px;
+            }
+    .BLCT_Lo select {
+        width: 400px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+.BLCT_Table {
+    background-color:coral;
+    width:100%;
+}
+
+.BLCT_Lo .ND_NgaySinh input {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.BLCT_Lo .BLCT_Ip input {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
