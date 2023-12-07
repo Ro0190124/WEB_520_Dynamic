@@ -45,7 +45,7 @@ namespace WEB_520_Dynamic.Controllers
 				_db.BIEN_LAIs.Add(bienLai);
 				_db.SaveChanges();
 				TempData["ThongBao"] = "Thêm biên lai thành công";
-				return RedirectToAction("Index", "BienLaiChiTiet");
+				return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
 			}
             return View();
         }

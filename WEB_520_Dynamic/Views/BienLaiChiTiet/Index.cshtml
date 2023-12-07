@@ -1,15 +1,15 @@
-﻿@model BIEN_LAI_CHI_TIET
-<div class="container">
+﻿@model BIEN_LAI
+<div class="container">n
     <div class="BLCT_form">
         <div class="BLCT_BL">
             <div class="BLCT_p">
-                <p>Loại biên lai:</p> 
-                <p>Ngày giao:</p>
-                <p>Ngày tạo:</p>
+                <p>Loại biên lai: @(Model.LoaiBienLai ? "Đơn hàng xuất" : "Đơn hàng nhập")</p>
+                <p>Ngày giao: @Model.NgayGiao</p>
+                <p>Ngày tạo: @Model.NgayLap</p>
             </div>
             <div class="BLCT_p">
-                <p>Tên nhà cung cấp:</p>
-                <p>Thông tin giao hàng:</p>
+                <p>Tên nhà cung cấp: @ViewBag.TenNhaCungCap</p>
+                <p>Thông tin giao hàng: @Model.ThongTinGiaoHang</p>
             </div>
         </div>
         <div class="BLCT_Lo">
