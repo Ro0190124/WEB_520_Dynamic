@@ -13,10 +13,13 @@ namespace WEB_520_Dynamic.Controllers
             _db = db;
         }
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int id)
 		{
-			
-			return View();
+			var bienLai = _db.BIEN_LAIs.FirstOrDefault(b => b.MaBienLai == id);
+			var tenNhaCungCap = _db.NHA_CUNG_CAPs.FirstOrDefault(n => n.MaNhaCungCap == bienLai.MaNhaCungCap)?.TenNhaCungCap;
+
+			ViewBag.TenNhaCungCap = tenNhaCungCap;
+			return View(bienLai);
         }
         
         public IActionResult ThemBienLaiChiTiet()

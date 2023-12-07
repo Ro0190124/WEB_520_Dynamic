@@ -361,7 +361,6 @@ header ul li a {
 .ND_TimKiem_Ten {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
     align-items: center;
 }
     .ND_TimKiem_Ten {
@@ -372,9 +371,11 @@ header ul li a {
             margin-right: 10px;
             font-size:17px;
         }
-        .ND_TK_TenND i {
-            font-size:30px;
-        }
+.ND_TK_TenND i {
+    color: #E48700;
+    font-size:30px;
+}
+        
     .ND_TimKiem {
         width: 600px;
         height: 40px;
