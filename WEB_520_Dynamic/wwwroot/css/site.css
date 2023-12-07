@@ -213,7 +213,11 @@ h1 {
             text-decoration: underline;
             color: #E48700;
         }
-
+.dk_HT_SDT .dk_HT input {
+    width: 200px;
+}.dk_HT_SDT .dk_SDT input {
+    width: 200px;
+}
 .lg_form .lg_DN {
     display: flex;
     justify-content: center;
