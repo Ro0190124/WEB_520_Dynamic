@@ -15,6 +15,7 @@ namespace WEB_520_Dynamic.Controllers
         }
         public IActionResult Index()
         {
+            //giao diện biên lai
             return View();
         }
 		public IActionResult ThemBienLai()
@@ -27,16 +28,22 @@ namespace WEB_520_Dynamic.Controllers
                 }
                 ).ToList();
             ViewBag.NhaCungCap = NCC;
-            IEnumerable<SelectListItem> LO = _db.LOs.Select(
-
-                u => new SelectListItem()
-                {
-                    Text = u.TenLo,
-                    Value = u.MaLo.ToString()
-                });
-            ViewBag.Lo = LO;
+            
             return View();
 		}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ThemBienLai(BIEN_LAI bienLai)
+        {
+            if (ModelState.IsValid)
+            {
+				_db.BIEN_LAIs.Add(bienLai);
+				_db.SaveChanges();
+				TempData["ThongBao"] = "Thêm người dùng thành công";
+				return RedirectToAction("Index", "BienLaiChiTiet");
+			}
+            return View();
+        }
         
 
     }

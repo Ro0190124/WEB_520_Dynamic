@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WEB_520_Dynamic.DataAccess.Data;
+using WEB_520_Dynamic.Model;
 
 namespace WEB_520_Dynamic.Controllers
 {
@@ -10,11 +12,14 @@ namespace WEB_520_Dynamic.Controllers
         {
             _db = db;
         }
+        [HttpGet]
         public IActionResult Index()
-        {
-            return View();
+		{
+			
+			return View();
         }
-        public IActionResult TaoBL()
+        
+        public IActionResult ThemBienLaiChiTiet()
         {
             return View();
         }

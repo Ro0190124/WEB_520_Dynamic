@@ -15,6 +15,9 @@
 
 </head>
 <body>
+
+
+    
     @{
         bool hideHeader = ViewData["HideHeader"] as bool? ?? false;
     }
@@ -41,6 +44,7 @@
             <div class="lg_TuanVu lo_logo">
                 <a asp-controller="TrangChu" asp-action="Index" class="dcr_none"><p>TUẤN VŨ</p></a>
             </div>
+           
             <nav>
                 <ul>
 
@@ -95,7 +99,21 @@
         <form method="get">
             <div class="ND_TimKiem_Ten">
                 <div class="ND_TK_TenND">
-                    <p></p><i class="fas fa-user-tie"></i>
+
+                        <input type="text" id="userName" value="" readonly="readonly" style="border: 0px; text-align: end" />
+                        <script>
+                            function getCookie(name) {
+                                function escape(s) { return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1'); }
+                                var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+                                return match ? match[1] : null;
+                            }
+                            var us = document.getElementById("userName");
+                            us.value = getCookie("ID");
+                            
+                        </script>
+                       
+							<i class="fas fa-user-tie"></i>
+                        
                 </div>
             </div>
 

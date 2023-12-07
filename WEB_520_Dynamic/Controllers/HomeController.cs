@@ -20,6 +20,7 @@ namespace WEB_520_Dynamic.Controllers
         }
         public IActionResult DangNhap()
         {
+            Response.Cookies.Delete("ID");
             ViewData["HideHeader"] = true;
             return View();
 
@@ -72,18 +73,25 @@ namespace WEB_520_Dynamic.Controllers
         [HttpPost]
         public IActionResult DangNhap(string tenTaiKhoan, string matKhau)
         {
+            
             ViewData["HideHeader"] = true;
+           
             var nguoiDung = _db.NGUOI_DUNGs.FirstOrDefault(x => x.TenTaiKhoan == tenTaiKhoan && x.MatKhau == matKhau && x.TrangThai == true);
-
-            if (nguoiDung == null)
+          
+            if (nguoiDung != null)
             {
-                TempData["ThongBaoDangNhap"] = "Tên tài khoản hoặc mật khẩu không đúng";
-                return View();
+               
+                Response.Cookies.Append("ID", nguoiDung.TenTaiKhoan.ToString());
+
+                //TempData.Add("TenNguoiDung", nguoiDung.TenTaiKhoan);
+				return RedirectToAction("Index", "NguoiDung");
             }
             else
             {
+              
+                TempData["ThongBaoDangNhap"] = "Tên tài khoản hoặc mật khẩu không đúng";
+                return View();
 
-                return RedirectToAction("Index", "NguoiDung");
             }
         }
 
