@@ -35,11 +35,16 @@ namespace WEB_520_Dynamic.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThemBienLai(BIEN_LAI bienLai)
         {
+            var cookie = Request.Cookies["ID"];
+            var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
+            bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
+            Console.WriteLine(bienLai.MaNguoiDung + " " + bienLai.MaNhaCungCap + " " + bienLai.NgayLap + " " + bienLai.LoaiBienLai + " " + bienLai.TrangThai);
+
             if (ModelState.IsValid)
             {
 				_db.BIEN_LAIs.Add(bienLai);
 				_db.SaveChanges();
-				TempData["ThongBao"] = "Thêm người dùng thành công";
+				TempData["ThongBao"] = "Thêm biên lai thành công";
 				return RedirectToAction("Index", "BienLaiChiTiet");
 			}
             return View();

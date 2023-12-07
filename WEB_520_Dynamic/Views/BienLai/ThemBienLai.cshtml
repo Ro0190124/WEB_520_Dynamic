@@ -1,7 +1,7 @@
 ﻿
 @model BIEN_LAI
 <div class="container">
-    <form method="post">
+    <form method="post" asp-action="ThemBienLai">
         <div class="ND_body">
             <div class="lg_form">
                 <h1 >Thêm biên lai</h1>
@@ -9,15 +9,16 @@
                 <div class="lg_TK magrin_Input">
                         <!--<p>Chọn loại biên lai</p>-->
                         <select asp-for="LoaiBienLai" class="textbox">
-                            <option value="Đơn hàng xuất">Đơn hàng xuất</option>
-                            <option value="Đơn hàng nhập">Đơn hàng nhập</option>
+                            <option value="0" >Đơn hàng xuất</option>
+                            <option value="1">Đơn hàng nhập</option>
                         </select>
+
                     </div>
                 <div class="lg_TK magrin_Input">
                     <p>Nhà cung cấp</p>
                         <!--<<p>Tên nhà cung cấp</p>-->
                         <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp">
-                            <option value="" disabled selected>Chọn nhà cung cấp</option>
+                           
                         </select>
                     </div>
                 <div class="ND_NgaySinh magrin_Input">
@@ -31,8 +32,8 @@
                         <input asp-for="ThongTinGiaoHang" type="text" placeholder="Thông tin giao hàng">
                         <span asp-validation-for="ThongTinGiaoHang" class="text-danger"></span>
                     </div>
-                <div class="BL_btn_a">
-                    <a asp-controller="BienLaiChiTiet" asp-action="Index">Thêm sản phẩm</a> 
+                <div class="lg_DN">
+                    <button type="submit">Thêm Biên Lai</button>
                 </div>
                 </div>
                 @if (TempData["ThongBao"] != null)
