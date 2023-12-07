@@ -23,8 +23,8 @@ namespace WEB_520_Dynamic.Model
         public NHA_CUNG_CAP NHA_CUNG_CAP { get; set; }
         [MaxLength(150)]
         [MinLength(10, ErrorMessage ="Thông tin giao hàng không dưới 10 kí tự")]
-        public string ThongTinGiaoHang { get; set; }
-        public byte TrangThai { get; set; }
+        public string? ThongTinGiaoHang { get; set; }
+        public byte TrangThai { get; set; } = 0;
         [MaxLength(100)]
         public string? GhiChu { get; set; }
     }

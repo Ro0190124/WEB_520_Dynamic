@@ -14,7 +14,7 @@ namespace WEB_520_Dynamic.Controllers
         {
             return View();
         }
-        public IActionResult TaoBL()
+        public IActionResult ThemBienLaiChiTiet()
         {
             return RedirectToAction("Index");
         }

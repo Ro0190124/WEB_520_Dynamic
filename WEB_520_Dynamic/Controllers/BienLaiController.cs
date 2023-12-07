@@ -37,6 +37,19 @@ namespace WEB_520_Dynamic.Controllers
             ViewBag.Lo = LO;
             return View();
 		}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ThemBienLai(BIEN_LAI bienLai)
+        {
+            if (ModelState.IsValid)
+            {
+				_db.BIEN_LAIs.Add(bienLai);
+				_db.SaveChanges();
+				TempData["ThongBao"] = "Thêm người dùng thành công";
+				return RedirectToAction("Index", "BienLaiChiTiet");
+			}
+            return View();
+        }
         
 
     }
