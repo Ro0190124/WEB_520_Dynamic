@@ -160,14 +160,14 @@ h1 {
 }
 
 .lg_form input[type=text], input[type=password] {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     outline: none;
     border-radius: 40px;
 }
 .Them_form input[type=text], input[type=password] {
-    width: 100%;
+    width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     outline: none;
@@ -181,6 +181,16 @@ h1 {
     border-radius: 40px;
 }
 .BienLai_Form select {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 40px;
+}
+.lg_form {
+
+}
+.lg_form select {
     width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -357,7 +367,7 @@ header ul li a {
         .ND_TK_TenND p {
             margin-right: 10px;
             font-size:17px;
-        }  
+        }
         .ND_TK_TenND i {
             font-size:30px;
         }
@@ -378,7 +388,6 @@ header ul li a {
     display:flex;
     justify-content:space-between;
 }
-
     .Them_ND button {
         width: 400px;
         height: 40px;

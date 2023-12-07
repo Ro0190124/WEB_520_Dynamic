@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<BIEN_LAI>
 <div class="container">
-	<div class="ND_TimKiem">
-		<input type="text" placeholder="Tìm kiếm biên lai...">
-	</div>
 	<div class="Them_ND">
-		<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai</button></a>
+		<div>
+			<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai</button></a>
+		</div>
+		<div class="ND_TimKiem">
+			<input type="text" placeholder="Tìm kiếm người dùng..." name="searchString">
+		</div>
 	</div>
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">
