@@ -32,7 +32,7 @@
                         <span asp-validation-for="ThongTinGiaoHang" class="text-danger"></span>
                     </div>
                 <div class="lg_DN">
-                    <button type="submit">Thêm Biên Lai</button>
+                    <button type="submit" asp-controller="BienLaiChiTiet" , asp-action="Index">Thêm Biên Lai</button>
                 </div>
                 </div>
                 @if (TempData["ThongBao"] != null)
