@@ -1,15 +1,19 @@
 ﻿@model IEnumerable<NGUOI_DUNG>
 <div class="container">
 	<partial name="_Notification" />
+
 	<div class="Them_ND">
 		<div>
 			<a asp-controller="NguoiDung" asp-action="ThemNguoiDung"><button class="Them-TK">Thêm người dùng</button></a>
 		</div>
-		<div class="ND_TimKiem_Ten">
-			<div class="ND_TimKiem">
-				<input type="text" placeholder="Tìm kiếm người dùng..." name="searchString">
+		<form method="get">
+			<div class="ND_TimKiem_Ten">
+				<div class="ND_TimKiem">
+					<input type="text" placeholder="Tìm kiếm người dùng..." name="searchString">
+				</div>
 			</div>
-		</div>
+		</form>
+	
 	</div>
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">

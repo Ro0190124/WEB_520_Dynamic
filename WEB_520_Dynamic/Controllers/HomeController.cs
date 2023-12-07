@@ -81,8 +81,10 @@ namespace WEB_520_Dynamic.Controllers
             if (nguoiDung != null)
             {
                
-                Response.Cookies.Append("ID", nguoiDung.MaNguoiDung.ToString());
-                return RedirectToAction("Index", "NguoiDung");
+                Response.Cookies.Append("ID", nguoiDung.TenTaiKhoan.ToString());
+
+                //TempData.Add("TenNguoiDung", nguoiDung.TenTaiKhoan);
+				return RedirectToAction("Index", "NguoiDung");
             }
             else
             {
