@@ -12,13 +12,23 @@ namespace WEB_520_Dynamic.Model
     {
         [Key]
         public int MaLo { get; set; }
+
+
         [MaxLength(50)]
         [MinLength(5, ErrorMessage ="Tên lô không dưới 5 kí tự")]
+        [Required(ErrorMessage = "Không được trống")]
         public string TenLo { get; set;}
+
+
         public int MaSanPham { get; set; }
         [ForeignKey("MaSanPham")]
         public SAN_PHAM SAN_PHAM { get; set; }
+
+        [Required(ErrorMessage = "Không được trống")]
+        [Range(0, int.MaxValue, ErrorMessage = "số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
+
+        [Required(ErrorMessage = "Không được trống")]
         public DateTime HanSuDung { get; set; }
     }
 }

@@ -15,8 +15,16 @@ namespace WEB_520_Dynamic.Controllers
         }
         public IActionResult Index()
         {
-            //giao diện biên lai
-            return View();
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+
+            var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG);
+            return View(bienLai);
         }
 		public IActionResult ThemBienLai()
 		{
@@ -38,7 +46,7 @@ namespace WEB_520_Dynamic.Controllers
             var cookie = Request.Cookies["ID"];
             var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
             bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
-            Console.WriteLine(bienLai.MaNguoiDung + " " + bienLai.MaNhaCungCap + " " + bienLai.NgayLap + " " + bienLai.LoaiBienLai + " " + bienLai.TrangThai);
+           
 
             if (ModelState.IsValid)
             {
