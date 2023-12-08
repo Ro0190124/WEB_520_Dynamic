@@ -15,19 +15,31 @@ namespace WEB_520_Dynamic.Controllers
 		}
 		[HttpGet]
 		public IActionResult Index(string searchString)
-		{
-
-			//IEnumerable<NGUOI_DUNG> nguoiDung = _db.NGUOI_DUNGs.Where(x=>x.TrangThai == true).ToList();
-			var nguoiDung = from b in _db.NGUOI_DUNGs select b;
-			if (!string.IsNullOrEmpty(searchString))
+        {
+			// get cookies
+			var cookie = Request.Cookies["ID"];
+			// check cookie
+			Console.WriteLine(cookie);
+			if (cookie == null)
 			{
-				nguoiDung = nguoiDung.Where(x => x.TenTaiKhoan.Contains(searchString) || x.TenNguoiDung.Contains(searchString) || x.SoDienThoai.Contains(searchString));	
+				return RedirectToAction("DangNhap", "Home");
 			}
-			return View(nguoiDung);
+			else
+			{
+                //IEnumerable<NGUOI_DUNG> nguoiDung = _db.NGUOI_DUNGs.Where(x=>x.TrangThai == true).ToList();
+                var nguoiDung = from b in _db.NGUOI_DUNGs where b.TrangThai == true select b;
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    nguoiDung = nguoiDung.Where(x => x.TenTaiKhoan.Contains(searchString) || x.TenNguoiDung.Contains(searchString) || x.SoDienThoai.Contains(searchString) );
+                }
+                return View(nguoiDung);
+
+            }
+			
 		}
       
 	
-    public IActionResult ThemNguoiDung()
+		public IActionResult ThemNguoiDung()
 		{
 			return View();
 		}
@@ -90,6 +102,7 @@ namespace WEB_520_Dynamic.Controllers
         }
 		public IActionResult SuaNguoiDung(int? ID)
 		{
+            
             if (ID == null || ID == 0)
             {
                 return NotFound();

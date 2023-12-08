@@ -15,7 +15,16 @@ namespace WEB_520_Dynamic.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+
+            var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG);
+            return View(bienLai);
         }
 		public IActionResult ThemBienLai()
 		{
@@ -27,16 +36,27 @@ namespace WEB_520_Dynamic.Controllers
                 }
                 ).ToList();
             ViewBag.NhaCungCap = NCC;
-            IEnumerable<SelectListItem> LO = _db.LOs.Select(
-
-                u => new SelectListItem()
-                {
-                    Text = u.TenLo,
-                    Value = u.MaLo.ToString()
-                });
-            ViewBag.Lo = LO;
+            
             return View();
 		}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ThemBienLai(BIEN_LAI bienLai)
+        {
+            var cookie = Request.Cookies["ID"];
+            var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
+            bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
+           
+
+            if (ModelState.IsValid)
+            {
+				_db.BIEN_LAIs.Add(bienLai);
+				_db.SaveChanges();
+				TempData["ThongBao"] = "Thêm biên lai thành công";
+				return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
+			}
+            return View();
+        }
         
 
     }

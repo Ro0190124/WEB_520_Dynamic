@@ -8,14 +8,14 @@
         }
         
     </div>*@
-    @using (Html.BeginForm())
+@*   @using (Html.BeginForm())
     {
         <p>
 
             Nhập thông tin: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
 
         </p>
-    }
+    }*@
     <div class="CT_TT">
         <div class="CT_sp">
             <div class="CT_Icon">
@@ -61,6 +61,29 @@
 
     <div class="CT_Canva">
         <canvas id="myChart_CT" width="10" height="0%"></canvas>
+    </div>
+
+    <div class="table_Home">
+        <div class="table_HSanPham">
+            <table class="table_user responsive-table">
+                <thead>
+                    <tr>                      
+                        <th> Tên sản phẩm</th>
+                        <th> Quy cách</th>
+                        <th> Số lượng</th>
+                        <th> Đơn vị</th>
+                        <th> Đơn giá</th>
+                        <th> Trạng Thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div class="table_HNhaCungCap">
+
+        </div>           
     </div>
 </div>
 

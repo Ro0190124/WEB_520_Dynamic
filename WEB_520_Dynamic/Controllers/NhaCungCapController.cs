@@ -13,12 +13,37 @@ namespace WEB_520_Dynamic.Controllers
 		}
 		public IActionResult Index()
 		{
-			IEnumerable<NHA_CUNG_CAP> obj = _db.NHA_CUNG_CAPs.ToList();
-			return View(obj);
+            // get cookies
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+                IEnumerable<NHA_CUNG_CAP> obj = _db.NHA_CUNG_CAPs.ToList();
+			    return View(obj);
+
+            }
+           
 		}
 		public IActionResult ThemNhaCungCap()
-		{
-			return View();
+        {// get cookies
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+                return View();
+
+            }
+            
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -38,16 +63,29 @@ namespace WEB_520_Dynamic.Controllers
 		}
         public IActionResult SuaNhaCungCap(int? ID)
         {
-            if (ID == null || ID == 0)
+            // get cookies
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
             {
-                return NotFound();
+                return RedirectToAction("DangNhap", "Home");
             }
-            NHA_CUNG_CAP nhaCC = _db.NHA_CUNG_CAPs.First(x => x.MaNhaCungCap == ID);
-            if (nhaCC == null)
+            else
             {
-                return NotFound();
+               
+                if (ID == null || ID == 0)
+                {
+                    return NotFound();
+                }
+                NHA_CUNG_CAP nhaCC = _db.NHA_CUNG_CAPs.First(x => x.MaNhaCungCap == ID);
+                if (nhaCC == null)
+                {
+                    return NotFound();
+                }
+                return View(nhaCC);
             }
-            return View(nhaCC);
+           
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
