@@ -14,10 +14,12 @@ namespace WEB_520_Dynamic.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Index()
+		[HttpGet]
+		public IActionResult Index(int? ID)
 		{
 		
-			IEnumerable<LO_SAN_PHAM> groupSpL = _db.SAN_PHAMs.Join(_db.LOs, sp => sp.MaSanPham, lo => lo.MaSanPham, (sp, lo) => new LO_SAN_PHAM { lo = lo, sanPham = sp }).ToList();
+			Console.WriteLine(ID);
+			IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM);
 			return View(groupSpL);
 		}
 		public IActionResult ThemLo()
@@ -60,7 +62,7 @@ namespace WEB_520_Dynamic.Controllers
 				{ Console.WriteLine(e.ToString()); }
 				_db.SaveChanges();
 				TempData["ThongBao"] = "Thêm lô thành công";
-				return RedirectToAction("Index", "Lo");
+				return RedirectToAction("Index", "BienLaiChiTiet");
 			}
 			return View(lo);
 		}

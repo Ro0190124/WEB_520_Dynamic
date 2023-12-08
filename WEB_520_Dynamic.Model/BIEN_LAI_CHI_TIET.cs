@@ -15,13 +15,13 @@ namespace WEB_520_Dynamic.Model
         public int MaBienLai { get; set; }
 
         [ForeignKey("MaBienLai")]
-		[ValidateNever]
-		public BIEN_LAI BIEN_LAI { get; set; }
+        [ValidateNever]
+        public BIEN_LAI BIEN_LAI { get; set; } = new BIEN_LAI();
         public int MaLo { get; set; }
         [Key]
         [ForeignKey("MaLo")]
         [ValidateNever]
-        public LO LO { get; set; }
+        public LO LO { get; set; } = new LO();
 
         [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }

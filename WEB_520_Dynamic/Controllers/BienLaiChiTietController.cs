@@ -31,8 +31,12 @@ namespace WEB_520_Dynamic.Controllers
 
 			ViewBag.TenNhaCungCap = tenNhaCungCap;
 			return View(bienLai);*/
-			BIEN_LAI bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).FirstOrDefault(b => b.MaBienLai == id);
-            var tenNhaCungCap = _db.NHA_CUNG_CAPs.FirstOrDefault(n => n.MaNhaCungCap == bienLai.MaNhaCungCap)?.TenNhaCungCap;
+			BIEN_LAI? bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).FirstOrDefault(b => b.MaBienLai == id);
+			if (bienLai == null)
+			{
+				bienLai = new BIEN_LAI();
+			}
+			var tenNhaCungCap = _db.NHA_CUNG_CAPs.FirstOrDefault(n => n.MaNhaCungCap == bienLai.MaNhaCungCap)?.TenNhaCungCap;
 
             ViewBag.TenNhaCungCap = tenNhaCungCap;
 
@@ -50,7 +54,7 @@ namespace WEB_520_Dynamic.Controllers
             {
                 var lo = _db.LOs.Where(l => l.MaLo == item).Select(x=> x.MaLo).ToString() ;
                 //var sanPham = _db.SAN_PHAMs.Where(s => s.MaSanPham == lo.MaSanPham).FirstOrDefault();
-                listSanPham.Add(new LO { MaLo = int.Parse(lo)});
+                if (lo != null) listSanPham.Add(new LO { MaLo = int.Parse(lo)});
             }
             _db.SaveChanges();
             
@@ -66,7 +70,7 @@ namespace WEB_520_Dynamic.Controllers
         {
             return View();
         }
-		/*[HttpPost]
+        /*[HttpPost]
 		[ValidateAntiForgeryToken]
         public IActionResult ThemBienLaiChiTiet(BIEN_LAI_CHI_TIET bl)
         {
@@ -85,5 +89,14 @@ namespace WEB_520_Dynamic.Controllers
             return View(bienLai);
         }
 */
-    }
+        //[HttpGet]
+		public IActionResult LoIndex(int? ID)
+		{
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			Console.WriteLine(ID);
+			IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM).ToList();
+			Console.WriteLine(groupSpL.ElementAt(0).SAN_PHAM.TenSanPham);
+			return View(groupSpL);
+		}
+	}
 }

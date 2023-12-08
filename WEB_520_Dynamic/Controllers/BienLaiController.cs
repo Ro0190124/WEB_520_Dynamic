@@ -47,6 +47,7 @@ namespace WEB_520_Dynamic.Controllers
         {
             var cookie = Request.Cookies["ID"];
             var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
+            if (nguoiDung == null) nguoiDung = new NGUOI_DUNG();
             bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
            
 
@@ -68,8 +69,11 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return RedirectToAction("DangNhap", "Home");
 			}
-			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).Where(x => x.MaBienLai == id).FirstOrDefault();
-			return View(bienLai);
+			//var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).Where(x => x.MaBienLai == id).FirstOrDefault();
+			var bienLai = _db.BIEN_LAIs.Where(x => x.MaBienLai == id).FirstOrDefault();
+            //var sanPham = 
+
+            return View(bienLai);
 		}
 
 

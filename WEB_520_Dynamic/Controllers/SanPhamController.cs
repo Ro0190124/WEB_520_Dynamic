@@ -50,7 +50,22 @@ namespace WEB_520_Dynamic.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThemSanPham(SAN_PHAM sanPham)
         {
-            if (ModelState.IsValid)
+			//if (ModelState["DonGIa"].Errors.Count > 0)
+			//{
+			//	ModelState["DonGia"].Errors.Clear();
+			//	ModelState["DonGia"].Errors.Add("Không được trống");
+			//}
+			try
+			{
+				foreach (var e in ModelState["DonGia"].Errors)
+				{
+					if (e.ErrorMessage.Contains("is invalid") || e.ErrorMessage.Contains("is not valid")) { ModelState["DonGia"].Errors.Remove(e); ModelState["DonGia"].Errors.Add("Không hợp lệ"); }
+				}
+			}
+			catch (Exception e) {
+				// ke me t
+			}
+			if (ModelState.IsValid)
             {
                 _db.SAN_PHAMs.Add(sanPham);
                 _db.SaveChanges(); 

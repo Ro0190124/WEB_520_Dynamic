@@ -50,7 +50,7 @@
         <div class="BLCT_Table">
 			<div class="Tb-Container">
 				<table class="table_user responsive-table">
-					<thead>
+					@*<thead>
 						<tr>
 							<th> STT</th>
 							<th> Tên sản phẩm</th>
@@ -63,8 +63,8 @@
 							<th> Chỉnh sửa</th>
 						</tr>
 					</thead>
-					<tbody>
-                        @foreach(var i in Model.LOs)
+					<tbody>*@
+                      @*  @foreach(var i in Model.LOs)
                         {
                              <tr>
 								<td>@Model.LO.SAN_PHAM.TenSanPham</td>
@@ -94,10 +94,12 @@
 									</a>
 								</td>
 							</tr>
-                        }
-                       
+                        }*@
+						@*@Html.Partial("LoIndex", Model.LOs)*@
+					@await Component.InvokeAsync("BLCT_LO", Model.BIEN_LAI.MaBienLai)
 						
-					</tbody>
+@*					</tbody>
+*@					
 				</table>
 			</div>
         </div>
