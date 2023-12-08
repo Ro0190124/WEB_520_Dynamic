@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +17,7 @@ namespace WEB_520_Dynamic.Model
         public BIEN_LAI BIEN_LAI { get; set; }
         public int MaLo { get; set; }
         [ForeignKey("MaLo")]
+        [ValidateNever]
         public LO LO { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
