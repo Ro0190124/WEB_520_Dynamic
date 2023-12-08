@@ -52,6 +52,7 @@ namespace WEB_520_Dynamic.Controllers
                 //var sanPham = _db.SAN_PHAMs.Where(s => s.MaSanPham == lo.MaSanPham).FirstOrDefault();
                 listSanPham.Add(new LO { MaLo = int.Parse(lo)});
             }
+            _db.SaveChanges();
             
             var modelview = new BIEN_LAI_CHI_TIET
             {
@@ -65,37 +66,24 @@ namespace WEB_520_Dynamic.Controllers
         {
             return View();
         }
-		[HttpPost]
+		/*[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult ThemBienLaiChiTiet(BIEN_LAI_CHI_TIET bl)
-		{
-			return View();
-		}
-		public IActionResult ChiTietBienLai(int id)
-		{
-			var cookie = Request.Cookies["ID"];
-			// check cookie
-			Console.WriteLine(cookie);
-			if (cookie == null)
-			{
-				return RedirectToAction("DangNhap", "Home");
-			}
-			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).Where(x => x.MaBienLai == id).FirstOrDefault();
-			return View(bienLai);
-		}
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public IActionResult ThemLo(LO lo)
-		{
-			
-			if (ModelState.IsValid)
-			{
-				_db.LOs.Add(lo);
-				_db.SaveChanges();
-				TempData["ThongBao"] = "Thêm lô thành công";
-				return RedirectToAction("Index", "BienLaiChiTiet");
-			}
-			return View(lo);
-		}
-	}
+        public IActionResult ThemBienLaiChiTiet(BIEN_LAI_CHI_TIET bl)
+        {
+            return View();
+        }
+        public IActionResult ChiTietBienLai(int id)
+        {
+            var cookie = Request.Cookies["ID"];
+            // check cookie
+            Console.WriteLine(cookie);
+            if (cookie == null)
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+            var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).Where(x => x.MaBienLai == id).FirstOrDefault();
+            return View(bienLai);
+        }
+*/
+    }
 }

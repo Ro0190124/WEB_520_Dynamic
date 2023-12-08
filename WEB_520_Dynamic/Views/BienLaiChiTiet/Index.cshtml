@@ -2,7 +2,7 @@
 <div class="container">
     <div class="BLCT_form">
         <div class="BLCT_BL">
-			<input type="hidden" asp-for="MaBienLai" />
+			
             <div class="BLCT_p">
                 <p>Loại biên lai: @(Model.BIEN_LAI.LoaiBienLai ? "Đơn hàng xuất" : "Đơn hàng nhập")</p>
                 <p>Ngày giao: @Model.BIEN_LAI.NgayGiao</p>
@@ -13,7 +13,7 @@
                 <p>Thông tin giao hàng: @Model.BIEN_LAI.ThongTinGiaoHang</p>
             </div>
         </div>
-        <form method="post" asp-action="ThemLo" asp-controller="BienLaiChiTiet" >
+        <form method="post" asp-action="ThemLo" asp-controller="Lo" >
 			<div class="BLCT_Lo">
 				<div class="BLCT_Lo_input">
 					<div class="BLCT_Ip magrin_Input">
@@ -30,7 +30,7 @@
 
 
 					<div class="lg_TK magrin_Input">
-						<select asp-for="LO.MaSanPham" class="textbox" asp-items="ViewBag.SanPham">
+						<select asp-for="LO.SAN_PHAM.MaSanPham" class="textbox" asp-items="ViewBag.SanPham">
 							
 						</select>
 					</div>

@@ -13,14 +13,19 @@ namespace WEB_520_Dynamic.Model
     {
         [Key]
         public int MaBienLai { get; set; }
+
         [ForeignKey("MaBienLai")]
-        public BIEN_LAI BIEN_LAI { get; set; }
+		[ValidateNever]
+		public BIEN_LAI BIEN_LAI { get; set; }
         public int MaLo { get; set; }
+        [Key]
         [ForeignKey("MaLo")]
         [ValidateNever]
         public LO LO { get; set; }
+
         [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
-        public IEnumerable<LO> LOs { get; set; }
+
+        public IEnumerable<LO>? LOs { get; set; }
     }
 }
