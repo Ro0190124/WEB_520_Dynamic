@@ -96,7 +96,7 @@ namespace WEB_520_Dynamic.Controllers
                 _db.NHA_CUNG_CAPs.Update(nhaCC);
                 _db.SaveChanges();
                 TempData["ThongBao"] = "Sửa nhà cung cấp thành công";
-                return RedirectToAction("Index", "SanPham");
+                return RedirectToAction("Index", "NhaCungCap");
             }
             else
             {

@@ -779,6 +779,27 @@ nav ul li {
     /* Đảm bảo rằng nội dung bên trong popup không bị ảnh hưởng bởi các nút float */
     .popup:after {
         content: "";
-        display: table;
+        display: table; 
         clear: both;
     }
+
+    .popup a {
+        margin: 10px;
+        padding: 5px 15px;
+        float: left; /* Đặt nút về phía trái */
+        background-color: #E48700;
+        color: white;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 10px;
+        text-decoration:none;
+    }
+
+        .popup a:last-child {
+            float: right; /* Đặt nút cuối cùng về phía phải */
+        }
+
+        .popup a:hover {
+            background-color: #E46B00;
+        }

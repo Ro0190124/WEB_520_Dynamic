@@ -13,8 +13,6 @@ namespace WEB_520_Dynamic.Model
     {
         [Key]
         public int MaLo { get; set; }
-
-
         [MaxLength(50)]
         [MinLength(5, ErrorMessage ="Tên lô không dưới 5 kí tự")]
         [Required(ErrorMessage = "Không được trống")]
