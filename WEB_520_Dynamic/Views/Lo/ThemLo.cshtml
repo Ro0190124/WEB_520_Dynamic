@@ -1,0 +1,43 @@
+﻿@model LO
+<div class="container">
+	<div class="BLCT_form">
+		
+		<form method="post" asp-action="ThemLo" asp-controller="LO">
+			<div class="BLCT_Lo">
+				<div class="BLCT_Lo_input">
+					<div class="BLCT_Ip magrin_Input">
+						<div class="lg_TK magrin_Input">
+							<input asp-for="TenLo" type="text" placeholder="Tên Lô">
+							<span class="text-danger"></span>
+						</div>
+					</div>
+					<div class="ND_NgaySinh magrin_Input">
+						<input asp-for="HanSuDung" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
+					</div>
+				</div>
+				<div class="BLCT_Lo_input">
+
+
+					<div class="lg_TK magrin_Input">
+						<select asp-for="MaSanPham" class="textbox" asp-items="ViewBag.SanPham">
+						</select>
+					</div>
+					<div class="BLCT_Ip magrin_Input">
+						<input asp-for="SoLuong" type="text" placeholder="Số Lượng">
+						<span class="text-danger"></span>
+					</div>
+				</div>
+				<div class="BLCT_Them_Lo">
+					<button type="submit">Thêm Lô</button>
+				</div>
+
+			</div>
+		</form>
+
+		
+		
+	</div>
+
+
+
+</div>

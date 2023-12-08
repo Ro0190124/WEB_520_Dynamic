@@ -15,7 +15,8 @@ namespace WEB_520_Dynamic.Controllers
         }
         public IActionResult Index()
         {
-            var cookie = Request.Cookies["ID"];
+			
+			var cookie = Request.Cookies["ID"];
             // check cookie
             Console.WriteLine(cookie);
             if (cookie == null)
@@ -36,6 +37,7 @@ namespace WEB_520_Dynamic.Controllers
                 }
                 ).ToList();
             ViewBag.NhaCungCap = NCC;
+           
             
             return View();
 		}
@@ -57,7 +59,19 @@ namespace WEB_520_Dynamic.Controllers
 			}
             return View();
         }
-        
+		public IActionResult ChiTietBienLai(int id)
+		{
+			var cookie = Request.Cookies["ID"];
+			// check cookie
+			Console.WriteLine(cookie);
+			if (cookie == null)
+			{
+				return RedirectToAction("DangNhap", "Home");
+			}
+			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).Where(x => x.MaBienLai == id).FirstOrDefault();
+			return View(bienLai);
+		}
 
-    }
+
+	}
 }
