@@ -20,9 +20,12 @@ namespace WEB_520_Dynamic.Model
 
 
         public int MaSanPham { get; set; }
+
+
         [ForeignKey("MaSanPham")]
 		[ValidateNever]
 		public SAN_PHAM SAN_PHAM { get; set; }
+
 
         [Required(ErrorMessage = "Không được trống")]
         [Range(0, int.MaxValue, ErrorMessage = "số lượng phải lớn hơn 0")]
@@ -30,5 +33,9 @@ namespace WEB_520_Dynamic.Model
 
         [Required(ErrorMessage = "Không được trống")]
         public DateTime HanSuDung { get; set; }
+
+        //[ForeignKey("BIEN_LAI_CHI_TIETMaBienLai")]
+        //[ValidateNever]
+        //public string cc { get; set; }
     }
 }

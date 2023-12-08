@@ -37,7 +37,7 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                     b.Property<bool>("LoaiBienLai")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MaNguoiDung")
+                    b.Property<int>("MaNguoiDung")
                         .HasColumnType("int");
 
                     b.Property<int?>("MaNhaCungCap")
@@ -50,7 +50,6 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ThongTinGiaoHang")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -92,6 +91,9 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaLo"));
 
+                    b.Property<int?>("BIEN_LAI_CHI_TIETMaBienLai")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("HanSuDung")
                         .HasColumnType("datetime2");
 
@@ -107,6 +109,8 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("MaLo");
+
+                    b.HasIndex("BIEN_LAI_CHI_TIETMaBienLai");
 
                     b.HasIndex("MaSanPham");
 
@@ -242,7 +246,9 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                 {
                     b.HasOne("WEB_520_Dynamic.Model.NGUOI_DUNG", "NGUOI_DUNG")
                         .WithMany()
-                        .HasForeignKey("MaNguoiDung");
+                        .HasForeignKey("MaNguoiDung")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WEB_520_Dynamic.Model.NHA_CUNG_CAP", "NHA_CUNG_CAP")
                         .WithMany()
@@ -274,6 +280,10 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
             modelBuilder.Entity("WEB_520_Dynamic.Model.LO", b =>
                 {
+                    b.HasOne("WEB_520_Dynamic.Model.BIEN_LAI_CHI_TIET", null)
+                        .WithMany("LOs")
+                        .HasForeignKey("BIEN_LAI_CHI_TIETMaBienLai");
+
                     b.HasOne("WEB_520_Dynamic.Model.SAN_PHAM", "SAN_PHAM")
                         .WithMany()
                         .HasForeignKey("MaSanPham")
@@ -281,6 +291,11 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("SAN_PHAM");
+                });
+
+            modelBuilder.Entity("WEB_520_Dynamic.Model.BIEN_LAI_CHI_TIET", b =>
+                {
+                    b.Navigation("LOs");
                 });
 #pragma warning restore 612, 618
         }

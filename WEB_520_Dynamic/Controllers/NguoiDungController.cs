@@ -83,6 +83,7 @@ namespace WEB_520_Dynamic.Controllers
 			}
 			else
 			{
+				Console.WriteLine(nguoiDung.MaNguoiDung);
 				if (ModelState.IsValid)
 				{
 
