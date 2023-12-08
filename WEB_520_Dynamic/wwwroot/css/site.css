@@ -435,39 +435,55 @@ header ul li a {
             color:black;
         }
             /*Trang chủ nè*/
-            .container .CT_TT {
-            background-color: black;
-            width: 100%;
-            height: 130px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    .container .CT_TT .CT_sp{
-        background-color:aqua;
-        width:28%;
-        height:120px;
-        display:flex;
-        align-items:center;
-        justify-content:space-around;
+.container .CT_TT {
+    /*            background-color: black;
+*/ width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:20px;
+
+}
+    .container .CT_TT .CT_sp {
+        /*        background-color:aqua;
+*/ width: 28%;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 1px solid #DDDFE5;
+        border-radius: 20px;
     }
 .CT_TT .CT_sp .CT_Icon {
-    background-color:crimson;
-    width: 30%;
-    height: 80px;
+    /*    background-color:crimson;*/
+    width: 15%;
+    background: linear-gradient(180deg, #FFF4E8 0%, #FFCA8F 100%);
+    border-radius: 12px;
+    height: 60px;
+    display: flex;
+    font-size: 35px;
+    justify-content: center;
+    align-items: center;
+    color: #FF8A00;
 }
+    .CT_TT .CT_sp .CT_Icon fas {
+        /*    background-color:crimson;*/
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        border:
+    }
 
-.CT_TT .CT_sp .CT_Chu_So{
-    background-color:burlywood;
-    width:70%;
-    height:80px;
+.CT_TT .CT_sp .CT_Chu_So {
+    /*    background-color:burlywood;*/   
+    width: 65%;
+    height: 60px;
 }
 .CT_sp .CT_Chu_So .CT_So {
-    background-color: deeppink;
-    height: 50%;
+/*    background-color: deeppink;
+*/    height: 50%;
     width: 100%;
-    display: flex;
-    align-items: flex-end;
 }
 
 .CT_Chu_So .CT_So p {
@@ -476,8 +492,8 @@ header ul li a {
 
 }
 .CT_sp .CT_Chu_So .CT_Chu {
-    background-color: dimgray;
-    height: 50%;
+/*    background-color: dimgray;
+*/    height: 50%;
     width: 100%;
     color: #929292;
 }
@@ -696,3 +712,33 @@ nav ul li {
     margin-bottom: 15px;
 }
 
+/*Trang chủ*/
+.table_Home{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+    .table_Home .table_HSanPham {
+        width: 100%;
+        border: 1px solid #DDDFE5;
+        padding: 30px;
+        border-radius: 20px;
+    }
+.table_Home table {
+    width: 100%;
+    margin-top:35px;
+    border-collapse: collapse;
+}
+
+
+
+    .table_Home table th {
+        height: 40px;
+        background-color: whitesmoke;
+    }
+
+    .table_Home table th, td {
+        padding: 10px;
+        text-align: left;
+    }
