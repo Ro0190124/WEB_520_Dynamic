@@ -38,8 +38,8 @@ namespace WEB_520_Dynamic.Controllers
             ViewData["HideHeader"] = true;
             Console.WriteLine("Submit");
             
-            var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).FirstOrDefault();
-            var m = _db.NGUOI_DUNGs.Where(x => x.SoDienThoai == nguoiDung.SoDienThoai).FirstOrDefault();
+            var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan && x.TrangThai == true).FirstOrDefault();
+            var m = _db.NGUOI_DUNGs.Where(x => x.SoDienThoai == nguoiDung.SoDienThoai && x.TrangThai == true).FirstOrDefault();
             if (n != null )
             {
                 ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản đã tồn tại");
@@ -59,14 +59,12 @@ namespace WEB_520_Dynamic.Controllers
                     _db.SaveChanges();
                     TempData["ThongBao"] = "Đăng kí thành công";
                     return RedirectToAction("DangNhap", "Home");
-
                 }
                 else
                 {
                     return View(nguoiDung);
                 }
             }
-
 
         }
 
