@@ -1,4 +1,5 @@
-﻿<div class="container">
+﻿@model IEnumerable<BIEN_LAI_CHI_TIET>
+<div class="container">
    @* <div class="ND_TimKiem">
         @using (Html.BeginForm())
         {
@@ -17,9 +18,20 @@
         </p>
     }*@
     <div class="CT_TT">
+        @{
+            int Nhap = 0;
+            int Xuat = 0;
+            if(Model != null)
+            {
+                 Xuat = Model.Count(i => i.BIEN_LAI.LoaiBienLai == true); // Đếm số lượng phần tử có LoaiBienLai là 1
+                 Nhap = Model.Count(i => i.BIEN_LAI.LoaiBienLai == false); // Đếm số lượng phần tử có LoaiBienLai là
+                Console.WriteLine(Xuat + " aaaaa" + Nhap);
+            }
+
+        }
         <div class="CT_sp">
             <div class="CT_Icon">
-
+                <i class="fas fa-chart-pie"></i>
             </div>
             <div class="CT_Chu_So">
                 <div class="CT_Chu">
@@ -40,6 +52,14 @@
                     <p>Tổng đơn nhập</p>
                 </div>
                 <div class="CT_So">
+                    @if (Nhap == 0)
+                    {
+                        <p>0</p>
+                    }
+                    else
+                    {
+                        <p>@Nhap</p>
+                    }
                 </div>
             </div>
         </div>
@@ -52,6 +72,14 @@
                     <p>Tổng đơn xuất</p>
                 </div>
                 <div class="CT_So">
+                    @if(Xuat == 0)
+                    {
+                        <p>0</p>
+                    }
+                    else
+                    {
+                        <p>@Xuat</p>
+                    }
                 </div>
             </div>
         </div>
