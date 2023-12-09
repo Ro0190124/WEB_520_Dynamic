@@ -33,12 +33,12 @@
 						@foreach (var i in Model)
 						{
 							j = j + 1;
-							<tr>
+							<tr>	 
 								<td>@j</td>
 								<td>@i.LoaiBienLai</td>
 								<td>@i.NgayGiao</td>
-								<td>@i.MaNguoiDung</td>
-								<td>@i.MaNhaCungCap</td>
+								<td>@i.NGUOI_DUNG.TenNguoiDung</td>
+								<td>@i.NHA_CUNG_CAP.TenNhaCungCap</td>
 								<td>@i.ThongTinGiaoHang</td>
 								<td>@i.NgayLap</td>
 								<td>@i.TrangThai</td>

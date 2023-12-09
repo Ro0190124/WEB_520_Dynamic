@@ -48,8 +48,13 @@ namespace WEB_520_Dynamic.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult ThemNguoiDung(NGUOI_DUNG nguoiDung)
 		{
-			
-			var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).FirstOrDefault();
+			var m = _db.NGUOI_DUNGs.Where(x => x.SoDienThoai == nguoiDung.SoDienThoai && x.TrangThai == true).FirstOrDefault();
+			if (m != null)
+			{
+				ModelState.AddModelError("SoDienThoai", " Số điện thoại đã tồn tại");
+				return View(nguoiDung);
+			}
+			var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan && x.TrangThai == true).FirstOrDefault();
 			if (n != null)
 			{
 				ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản đã tồn tại");
@@ -119,12 +124,25 @@ namespace WEB_520_Dynamic.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SuaNguoiDung(NGUOI_DUNG nguoiDung)
         {
+			/*var n = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == nguoiDung.TenTaiKhoan).FirstOrDefault();
+			if (n != null)
+			{
+				ModelState.AddModelError("TenTaiKhoan", "Tên tài khoản đã tồn tại");
+				return View(nguoiDung);
+			}
+			var m = _db.NGUOI_DUNGs.Where(x => x.SoDienThoai == nguoiDung.SoDienThoai).FirstOrDefault();
+			if (m != null)
+			{
+				ModelState.AddModelError("SoDienThoai", " Số điện thoại đã tồn tại");
+				return View(nguoiDung);
+			}*/
 			if (nguoiDung.NgaySinh.HasValue && nguoiDung.NgaySinh.Value.Year > DateTime.Now.Year - 18)
 			{
 				ModelState.AddModelError("NgaySinh", "Ngày sinh không hợp lệ");
 				return View(nguoiDung);
 
 			}
+			
 			if (ModelState.IsValid)
             {
 				_db.NGUOI_DUNGs.Update(nguoiDung);
