@@ -20,6 +20,14 @@ namespace WEB_520_Dynamic.DataAccess.Data
         public DbSet<BIEN_LAI> BIEN_LAIs { get; set; }
         public DbSet<BIEN_LAI_CHI_TIET> BIEN_LAI_CHI_TIETs { get; set; }
         public DbSet<NGUOI_DUNG> NGUOI_DUNGs { get; set; }
-        
-    }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<BIEN_LAI_CHI_TIET>().HasNoKey();
+
+			// Configure other relationships and properties if needed
+
+			base.OnModelCreating(modelBuilder);
+		}
+
+	}
 }

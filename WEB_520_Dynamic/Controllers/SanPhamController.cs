@@ -11,7 +11,7 @@ namespace WEB_520_Dynamic.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
             // get cookies
             var cookie = Request.Cookies["ID"];
@@ -23,8 +23,12 @@ namespace WEB_520_Dynamic.Controllers
             }
             else
             {
-				IEnumerable<SAN_PHAM> sanPham = _db.SAN_PHAMs.ToList();
-
+				//IEnumerable<SAN_PHAM> sanPham = _db.SAN_PHAMs.ToList();
+				var sanPham = _db.SAN_PHAMs.Where(x=> x.TrangThai == true).ToList();
+				if (!string.IsNullOrEmpty(searchString))
+				{
+					sanPham = sanPham.Where(x => x.TenSanPham.Contains(searchString) || x.DonGia.ToString().Contains(searchString) || x.QuyCach.Contains(searchString)).ToList();
+				}
 				return View(sanPham);
 
             }
@@ -112,7 +116,7 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return NotFound();
 			}
-			SAN_PHAM sanPham = _db.SAN_PHAMs.First(x => x.MaSanPham == ID);
+			SAN_PHAM sanPham = _db.SAN_PHAMs.FirstOrDefault(x => x.MaSanPham == ID);
 			if (sanPham == null)
 			{
 				return NotFound();
