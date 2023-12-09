@@ -23,7 +23,7 @@ namespace WEB_520_Dynamic.Controllers
             }
             else
             {
-				IEnumerable<SAN_PHAM> sanPham = _db.SAN_PHAMs.ToList();
+				IEnumerable<SAN_PHAM> sanPham = _db.SAN_PHAMs.Where(x=> x.TrangThai == true).ToList();
 
 				return View(sanPham);
 

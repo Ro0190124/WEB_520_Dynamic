@@ -18,6 +18,10 @@ namespace WEB_520_Dynamic.ViewComponents
 		{
 			Console.WriteLine(ID +" MÃ nhàaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdasdkljfhalsjd");
 			IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM).ToList();
+			if(groupSpL == null)
+			{
+				return View();
+			}
 			Console.WriteLine(groupSpL.ElementAt(0).SAN_PHAM.TenSanPham);
 			
 			return View(groupSpL);

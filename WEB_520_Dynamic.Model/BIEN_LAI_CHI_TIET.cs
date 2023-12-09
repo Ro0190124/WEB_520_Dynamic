@@ -11,14 +11,14 @@ namespace WEB_520_Dynamic.Model
 {
     public class BIEN_LAI_CHI_TIET
     {
-        [Key]
+    
         public int MaBienLai { get; set; }
 
         [ForeignKey("MaBienLai")]
         [ValidateNever]
         public BIEN_LAI BIEN_LAI { get; set; } = new BIEN_LAI();
         public int MaLo { get; set; }
-        [Key]
+       
         [ForeignKey("MaLo")]
         [ValidateNever]
         public LO LO { get; set; } = new LO();
