@@ -103,13 +103,13 @@ namespace WEB_520_Dynamic.Controllers
                 return View(nhaCC);
             }
         }
-        public IActionResult XoaNhaCungCap(int? ID)
+        public IActionResult XoaNhaCungCap(int? id)
         {
-            if (ID == null || ID == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            NHA_CUNG_CAP nhaCC = _db.NHA_CUNG_CAPs.First(x => x.MaNhaCungCap == ID);
+            NHA_CUNG_CAP nhaCC = _db.NHA_CUNG_CAPs.FirstOrDefault(x => x.MaNhaCungCap == id);
             if (nhaCC == null)
             {
                 return NotFound();

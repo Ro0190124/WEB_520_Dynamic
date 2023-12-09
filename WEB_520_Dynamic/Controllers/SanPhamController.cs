@@ -116,7 +116,7 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return NotFound();
 			}
-			SAN_PHAM sanPham = _db.SAN_PHAMs.First(x => x.MaSanPham == ID);
+			SAN_PHAM sanPham = _db.SAN_PHAMs.FirstOrDefault(x => x.MaSanPham == ID);
 			if (sanPham == null)
 			{
 				return NotFound();

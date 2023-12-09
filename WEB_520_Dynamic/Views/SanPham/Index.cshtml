@@ -55,7 +55,7 @@
 								</svg>
 							</a>
 
-							<a class="btn-primary" onclick="event.preventDefault(); confirmDelete('@i.MaSanPham');">
+							<a class="btn-primary delete-btn" data-id="@i.MaSanPham">
 
 
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
@@ -64,10 +64,10 @@
 								</svg>
 							</a>
 						</td>
-						<div id="xoasanpham" class="popup" style="display:none;">
+						<div class="popup" id="deletePopup-@i.MaSanPham" style="display:none;">
 							<p>Bạn có muốn xóa sản phẩm này không?</p>
-							<a onclick="deleteAccount('@i.MaSanPham')" asp-controller="SanPham" asp-action="XoaSanPham" asp-route-id="@i.MaSanPham">Có</a>
-							<button onclick="closePopup()">Không</button>
+							<button onclick="deleteSP('@i.MaSanPham')">Có</button>
+							<button onclick="closePopup(@i.MaSanPham)">Không</button>
 						</div>
 					</tr>
 				}
@@ -78,29 +78,37 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-	window.confirmDelete = function (accountId) {
-		$("#xoasanpham").show();
-		$("#xoasanpham").data('account-id', accountId);
-	};
-
-	window.closePopup = function () {
-		$("#xoasanpham").hide();
-	};
-
-	function deleteAccount() {
-		var accountId = $("#xoasanpham").data('account-id');
-
-		$.ajax({
-			url: "/SanPham/XoaSanPham",
-			type: "POST",
-			data: { id: accountId },
-			success: function (result) {
-				console.log(result);
-				closePopup();
-			},
-			error: function (error) {
-				console.error(error);
-			}
+	document.querySelectorAll('.delete-btn').forEach(button => {
+		button.addEventListener('click', function () {
+			const id = this.getAttribute('data-id');
+			const popup = document.getElementById(`deletePopup-${id}`);
+			popup.style.display = 'block';
 		});
-	};
+	});
+
+	// Đóng popup
+	function closePopup(id) {
+		const popup = document.getElementById(`deletePopup-${id}`);
+		popup.style.display = 'none';
+	}
+
+	// Hàm xóa nhà cung cấp
+	function deleteSP(id) {
+		// Gửi request đến server để xóa nhà cung cấp
+		// Sử dụng fetch hoặc AJAX để gửi request đến action XoaNhaCungCap trong controller của bạn
+		fetch(`/SanPham/XoaSanPham?id=${id}`, {
+			method: 'GET' // hoặc 'POST' tùy thuộc vào cách bạn cấu hình route
+		})
+			.then(response => {
+				if (response.ok) {
+					// Nếu xóa thành công, cập nhật giao diện hoặc thông báo cho người dùng
+					// Ví dụ: có thể refresh trang hoặc cập nhật thông tin bằng JavaScript
+					window.location.reload(); // Refresh trang sau khi xóa
+				}
+			})
+			.catch(error => {
+				console.error('Lỗi khi xóa sản phẩm:', error);
+				// Xử lý lỗi nếu có
+			});
+	}
 </script>

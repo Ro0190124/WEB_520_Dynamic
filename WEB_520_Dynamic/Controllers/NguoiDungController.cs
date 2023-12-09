@@ -160,7 +160,7 @@ namespace WEB_520_Dynamic.Controllers
             {
                 return NotFound();
             }
-            NGUOI_DUNG nguoiDung = _db.NGUOI_DUNGs.First(x => x.MaNguoiDung == ID);
+            NGUOI_DUNG nguoiDung = _db.NGUOI_DUNGs.FirstOrDefault(x => x.MaNguoiDung == ID);
             if (nguoiDung == null)
             {
                 return NotFound();
