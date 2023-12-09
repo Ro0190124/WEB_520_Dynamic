@@ -1,8 +1,6 @@
-﻿@*@model IEnumerable<LO>
+﻿
 <div class="container">
-	<div class="Them_ND">
-		<a asp-controller="SanPham" asp-action="ThemSanPham" class="Them-TK">Thêm sản phẩm</a>
-	</div>
+	
 	<partial name="_Notification" />
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">
@@ -20,7 +18,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach (var i in Model )
+				@foreach (var i in Model)
 				{
 					<tr>
 						<td>@i.SAN_PHAM.MaSanPham</td>
@@ -33,7 +31,7 @@
 						<td>TrangThai</td>
 						<td class="ND_Table_Icon">
 
-							
+
 							<a class="btn-primary" asp-controller="SanPham" asp-action="SuaSanPham" asp-route-id="@i.MaSanPham">
 
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
@@ -55,4 +53,3 @@
 		</table>
 	</div>
 </div>
-*@

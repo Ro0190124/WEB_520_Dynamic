@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,6 @@ namespace WEB_520_Dynamic.Model
         [Required(ErrorMessage = "Không được trống")]
         public string TenSanPham { get; set; }
 
-
-        [Required(ErrorMessage = "Không được trống")]
         [Range(0, double.MaxValue, ErrorMessage = "Đơn giá phải lớn hơn 0")]
         public double DonGia { get; set; }
 

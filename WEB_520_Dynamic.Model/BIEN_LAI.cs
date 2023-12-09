@@ -23,13 +23,13 @@ namespace WEB_520_Dynamic.Model
         public int MaNguoiDung { get; set; }
         [ValidateNever]
         [ForeignKey("MaNguoiDung")]
-        public NGUOI_DUNG NGUOI_DUNG { get; set; }
+        public NGUOI_DUNG? NGUOI_DUNG { get; set; }
 
 
         public int? MaNhaCungCap { get; set; }
         [ValidateNever]
         [ForeignKey("MaNhaCungCap")]
-        public NHA_CUNG_CAP NHA_CUNG_CAP { get; set; }
+        public NHA_CUNG_CAP? NHA_CUNG_CAP { get; set; }
 
 
         [MaxLength(150)]
