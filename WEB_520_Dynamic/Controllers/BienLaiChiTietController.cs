@@ -44,8 +44,9 @@ namespace WEB_520_Dynamic.Controllers
 
             // lấy mã lô theo mã biên lai.
             var loBienLai = _db.BIEN_LAI_CHI_TIETs.Where(x => x.MaBienLai == id).Select(x => x.MaLo).ToList();
-            // trả về list lô 
-            List<LO> listSanPham = new List<LO>();
+			
+			// trả về list lô 
+			List<LO> listSanPham = new List<LO>();
             foreach (var item in loBienLai)
             {
                 var lo = _db.LOs.Where(l => l.MaLo == item).Select(x=> x.MaLo).ToString() ;
