@@ -79,6 +79,8 @@
 
 .sanpham_form button:hover {
     background-color: #E46B00;
+}.Form_NCC button:hover {
+    background-color: #E46B00;
 }
 .sanpham_form {
     width: 500px;
