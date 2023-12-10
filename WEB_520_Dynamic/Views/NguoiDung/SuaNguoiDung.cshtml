@@ -4,48 +4,54 @@
 <div class="container">
     <form method="post" asp-action="SuaNguoiDung">
         <input type="hidden" asp-for="MaNguoiDung" />
-        <div class="ND_body">
+        <div class="Form_NCC">
 
             <div class="Them_form">
 
                 <h1>Sửa Người dùng</h1>
-                <div class="lg_TK magrin_Input">
-                    <p> Tên tài khoản</p>
-                    <input asp-for="TenTaiKhoan" type="text" placeholder="Tên tài khoản ">
-                    <span asp-validation-for="TenTaiKhoan" class="text-danger"></span>
-                </div>
+                <div class="BLCT_Lo_input">
+                    <div class="lg_TK magrin_Input">
+                        <p> Tên tài khoản</p>
+                        <input asp-for="TenTaiKhoan" type="text" placeholder="Tên tài khoản "></br>
+                        <span asp-validation-for="TenTaiKhoan" class="text-danger"></span>
+                    </div>
 
-                <div class="dk_HT magrin_Input">
-                    <p> Họ và tên</p>
-                    <input asp-for="TenNguoiDung" type="text" placeholder="Họ và tên" />
-                    <span asp-validation-for="TenNguoiDung" class="text-danger"></span>
-                </div>
-                <div class="ND_GT magrin_Input">
-                    <p> Giới tính</p>
-                    <div class="ND_CheckGT">
-                        <div>
-                            <input asp-for="GioiTinh" type="radio" value="true" checked="checked" required /> Nam &ensp;
-                        </div>
-                        <div>
-                            <input asp-for="GioiTinh" type="radio" value="false" required /> Nữ
-                        </div>
+                    <div class="dk_HT magrin_Input">
+                        <p> Họ và tên</p>
+                        <input asp-for="TenNguoiDung" type="text" placeholder="Họ và tên" /></br>
+                        <span asp-validation-for="TenNguoiDung" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="dk_SDT magrin_Input">
-                    <p> Số điện thoại</p>
-                    <input asp-for="SoDienThoai" type="text" placeholder="Số điện thoại" />
-                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                <div class="BLCT_Lo_input">
+                    <div class="ND_GT magrin_Input">
+                        <p> Giới tính</p>
+                        <div class="ND_CheckGT">
+                            <div>
+                                <input asp-for="GioiTinh" type="radio" value="true" checked="checked" required /> Nam &ensp;
+                            </div>
+                            <div>
+                                <input asp-for="GioiTinh" type="radio" value="false" required /> Nữ
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dk_SDT magrin_Input">
+                        <p> Số điện thoại</p>
+                        <input asp-for="SoDienThoai" type="text" placeholder="Số điện thoại" /></br>
+                        <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="ND_NgaySinh magrin_Input">
-                    <p> Ngày Sinh</p>
-                    <input asp-for="NgaySinh" type="date" style="padding-left: 20%;" placeholder="Ngày sinh" />
-                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
-                </div>
+                <div class="BLCT_Lo_input">
+                    <div class="ND_NgaySinh magrin_Input">
+                        <p> Ngày Sinh</p>
+                        <input asp-for="NgaySinh" type="date" style="padding-left: 20%;" placeholder="Ngày sinh" /></br>
+                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                    </div>
 
-                <div class="lg_MK magrin_Input">
-                    <p> Mật khẩu</p>
-                    <input asp-for="MatKhau">
-                    <span asp-validation-for="MatKhau" class="text-danger"></span>
+                    <div class="lg_MK magrin_Input">
+                        <p> Mật khẩu</p>
+                        <input asp-for="MatKhau"></br>
+                        <span asp-validation-for="MatKhau" class="text-danger"></span>
+                    </div>
                 </div>
                 <div class="lg_DN lg_DK">
                     <button type="submit">Sửa người dùng</button>

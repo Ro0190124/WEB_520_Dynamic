@@ -1,42 +1,48 @@
 ﻿@model NHA_CUNG_CAP
 <div class="container">
     <form method="post">
-        <div class="ND_body">
+        <div class="Form_NCC">
 
             <div class="Them_form">
 
                 <h1>Thêm nhà cung cấp</h1>
-                <div class="lg_TK magrin_Input">
-                    <p> Tên nhà cung cấp</p>
-                    <input asp-for="TenNhaCungCap" type="text" placeholder="Tên nhà cung cấp ">
-                    <span asp-validation-for="TenNhaCungCap" class="text-danger"></span>
+                <div class="BLCT_Lo_input">
+                    <div class="lg_TK magrin_Input">
+                        <p> Tên nhà cung cấp</p>
+                        <input asp-for="TenNhaCungCap" type="text" placeholder="Tên nhà cung cấp "></br>
+                        <span asp-validation-for="TenNhaCungCap" class="text-danger"></span>
+                    </div>
+
+                    <div class="dk_HT magrin_Input">
+                        <p> Địa chỉ</p>
+                        <input asp-for="DiaChi" type="text" placeholder="Địa chỉ" /></br>
+                        <span asp-validation-for="DiaChi" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="dk_HT magrin_Input">
-                    <p> Địa chỉ</p>
-                    <input asp-for="DiaChi" type="text" placeholder="Địa chỉ" />
-                    <span asp-validation-for="DiaChi" class="text-danger"></span>
+                <div class="BLCT_Lo_input">
+                    <div class="dk_SDT magrin_Input">
+                        <p> Số điện thoại</p>
+                        <input asp-for="SoDienThoai" type="text" placeholder="Số điện thoại" /></br>
+                        <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                    </div>
+                    <div class="ND_NgaySinh magrin_Input">
+                        <p> Mã số thuế</p>
+                        <input asp-for="MaSoThue" type="text" placeholder="Mã số thuế" /></br>
+                        <span asp-validation-for="MaSoThue" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="dk_SDT magrin_Input">
-                    <p> Số điện thoại</p>
-                    <input asp-for="SoDienThoai" type="text" placeholder="Số điện thoại" />
-                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
-                </div>
-                <div class="ND_NgaySinh magrin_Input">
-                    <p> Mã số thuế</p>
-                    <input asp-for="MaSoThue" type="text" placeholder="Mã số thuế" />
-                    <span asp-validation-for="MaSoThue" class="text-danger"></span>
-                </div>
-
-                <div class="lg_MK magrin_Input">
-                    <p> Số tài khoản</p>
-                    <input asp-for="SoTaiKhoan" type="text" placeholder="Số tài khoản">
-                    <span asp-validation-for="SoTaiKhoan" class="text-danger"></span>
-                </div>
-                <div class="lg_MK magrin_Input">
-                    <p> Người đại diện</p>
-                    <input asp-for="NguoiDaiDien" type="text" placeholder="Người đại diện">
-                    <span asp-validation-for="NguoiDaiDien" class="text-danger"></span>
+                <div class="BLCT_Lo_input">
+                    <div class="lg_MK magrin_Input">
+                        <p> Số tài khoản</p>
+                            <input asp-for="SoTaiKhoan" type="text" placeholder="Số tài khoản"></br>
+                        <span asp-validation-for="SoTaiKhoan" class="text-danger"></span>
+                    </div>
+                    <div class="lg_MK magrin_Input">
+                        <p> Người đại diện</p>
+                        <input asp-for="NguoiDaiDien" type="text" placeholder="Người đại diện"></br>
+                        <span asp-validation-for="NguoiDaiDien" class="text-danger"></span>
+                    </div>
                 </div>
                 <div class="lg_DN lg_DK">
                     <button type="submit">Thêm nhà cung cấp</button>
@@ -46,10 +52,6 @@
                     <p> @TempData["ThongBao"]</p>
                 }
             </div>
-
-
-
-        </div>
-
+            </div>
     </form>
 </div>
