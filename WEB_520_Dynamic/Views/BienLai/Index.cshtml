@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<BIEN_LAI>
 <div class="container">
 	<div class="Them_ND">
-		<div>
-			<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai</button></a>
+		<div class="BL_a">
+			<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai nhập</button></a>
+			<a asp-controller="BienLai" asp-action="ThemBLXuat"><button class="Them-TK">Thêm biên lai xuất</button></a>
 		</div>
 		<div class="ND_TimKiem">
 			<input type="text" placeholder="Tìm kiếm người dùng..." name="searchString">

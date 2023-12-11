@@ -93,3 +93,12 @@
     padding: 50px;
     margin-left: 10%;
 }
+
+.Them_ND .BL_a{
+    display:flex;
+    justify-content:space-between;
+    width:35%;
+}
+.Them_ND .BL_a button{
+    width:200px;
+}

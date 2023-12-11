@@ -60,6 +60,10 @@ namespace WEB_520_Dynamic.Controllers
 			}
             return View();
         }
+        public IActionResult ThemBLXuat()
+        {
+            return RedirectToAction("BienLaiCTXuat","BienLaiChiTiet");
+        }
 		public IActionResult ChiTietBienLai(int id)
 		{
 			var cookie = Request.Cookies["ID"];

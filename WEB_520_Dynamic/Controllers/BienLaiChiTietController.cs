@@ -102,5 +102,24 @@ namespace WEB_520_Dynamic.Controllers
 			Console.WriteLine(groupSpL.ElementAt(0).SAN_PHAM.TenSanPham);
 			return View(groupSpL);
 		}
+
+        public IActionResult BienLaiCTXuat()
+        {
+            var LovaSP = _db.LOs.Select(x => new
+            {
+                id = x.MaLo,
+                TenL = x.TenLo,
+                TenSP = x.SAN_PHAM.TenSanPham,
+                HSD = x.HanSuDung.ToString("dd/MM/yyyy")
+			}).ToList();
+			var modifiedList = LovaSP.Select(item => new
+			{
+				id = item.id,
+				TenL = $"{item.TenL} - {item.TenSP} (Hạn sử dụng: {item.HSD})"
+			}).ToList();
+
+			ViewBag.LovaSP = new SelectList(modifiedList, "id", "TenL");
+			return View();
+        }
 	}
 }
