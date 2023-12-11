@@ -45,21 +45,38 @@ namespace WEB_520_Dynamic.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThemBienLai(BIEN_LAI bienLai)
         {
-            var cookie = Request.Cookies["ID"];
-            var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
-            if (nguoiDung == null) nguoiDung = new NGUOI_DUNG();
-            bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
-           
-
-            if (ModelState.IsValid)
-            {
-				_db.BIEN_LAIs.Add(bienLai);
-				_db.SaveChanges();
-				TempData["ThongBao"] = "Thêm biên lai thành công";
-				return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
+			TenNCC();
+			var cookie = Request.Cookies["ID"];
+			var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
+			if (nguoiDung == null) nguoiDung = new NGUOI_DUNG();
+			bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
+			if (bienLai.ThongTinGiaoHang == null)
+			{
+				bienLai.ThongTinGiaoHang = "";
 			}
-            return View();
-        }
+
+			if (ModelState.IsValid)
+			{
+				if (bienLai.LoaiBienLai == true)
+				{
+					Console.WriteLine(bienLai.MaBienLai + "  " + bienLai.MaNhaCungCap + "  " + bienLai.MaNguoiDung + "  " + bienLai.NgayGiao + "  " + bienLai.NgayLap);
+					_db.BIEN_LAIs.Add(bienLai);
+					_db.SaveChanges();
+					TempData["ThongBao"] = "Thêm biên lai thành công";
+					return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
+				}
+				else
+				{
+					Console.WriteLine(bienLai.MaBienLai + "  " + bienLai.MaNhaCungCap + "  " + bienLai.MaNguoiDung + "  " + bienLai.NgayGiao + "  " + bienLai.NgayLap);
+					_db.BIEN_LAIs.Add(bienLai);
+					_db.SaveChanges();
+					TempData["ThongBao"] = "Thêm biên lai thành công";
+					return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
+				}
+
+			}
+			return View();
+		}
         public IActionResult ThemBLXuat()
         {
             return RedirectToAction("BienLaiCTXuat","BienLaiChiTiet");
