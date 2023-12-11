@@ -1,45 +1,43 @@
-﻿
-@model BIEN_LAI
+﻿@model BIEN_LAI
 <div class="container">
     <form method="post" asp-action="ThemBienLai">
         <div class="ND_body">
             <div class="lg_form">
-                <h1 >Thêm biên lai nhập</h1>
+                <h1>Thêm biên lai</h1>
                 <p>Loại biên lai</p>
                 <div class="lg_TK magrin_Input">
-                        <!--<p>Chọn loại biên lai</p>-->
-                        <select asp-for="LoaiBienLai" class="textbox">
-                            <option value="true" >Đơn hàng xuất</option>
-                            <option value="false">Đơn hàng nhập</option>
-                        </select>
+                    <!--<p>Chọn loại biên lai</p>-->
+                    <select asp-for="LoaiBienLai" class="textbox">
+                        <option value="true">Đơn hàng xuất</option>
+                        <option value="false">Đơn hàng nhập</option>
+                    </select>
 
-                    </div>
+                </div>
                 <div class="lg_TK magrin_Input">
                     <p>Nhà cung cấp</p>
-                        <!--<<p>Tên nhà cung cấp</p>-->
-                        <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp">
-                           
-                        </select>
-                    </div>
+                    <!--<<p>Tên nhà cung cấp</p>-->
+                    <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp">
+                    </select>
+                </div>
                 <div class="ND_NgaySinh magrin_Input">
                     <p>Ngày giao</p>
-                        <!--<<p>Ngày giao</p>-->
-                        <input asp-for="NgayGiao" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
-                    </div>
+                    <!--<<p>Ngày giao</p>-->
+                    <input asp-for="NgayGiao" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
+                </div>
                 <div class="lg_TK magrin_Input">
                     <p>Thông tin giao hàng</p>
-                        <!--<<p>Thông tin giao hàng</p>-->
-                        <input asp-for="ThongTinGiaoHang" type="text" placeholder="Thông tin giao hàng">
-                        <span asp-validation-for="ThongTinGiaoHang" class="text-danger"></span>
-                    </div>
+                    <!--<<p>Thông tin giao hàng</p>-->
+                    <input asp-for="ThongTinGiaoHang" type="text" placeholder="Thông tin giao hàng">
+                    <span asp-validation-for="ThongTinGiaoHang" class="text-danger"></span>
+                </div>
                 <div class="lg_DN">
                     <button type="submit">Thêm Biên Lai</button>
                 </div>
-                </div>
-                @if (TempData["ThongBao"] != null)
-                {
-                    <p> @TempData["ThongBao"]</p>
-                }
             </div>
+            @if (TempData["ThongBao"] != null)
+            {
+                <p> @TempData["ThongBao"]</p>
+            }
+        </div>
     </form>
 </div>
