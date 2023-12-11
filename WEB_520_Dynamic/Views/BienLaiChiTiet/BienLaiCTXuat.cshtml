@@ -3,7 +3,7 @@
 	<div class="BLCT_form">
 		<div class="BLCT_BL">
 
-@*			<div class="BLCT_p">
+			<div class="BLCT_p">
 				<p>Loại biên lai: @(Model.BIEN_LAI.LoaiBienLai ? "Đơn hàng xuất" : "Đơn hàng nhập")</p>
 				<p>Ngày giao: @Model.BIEN_LAI.NgayGiao</p>
 				<p>Ngày tạo: @Model.BIEN_LAI.NgayLap</p>
@@ -11,62 +11,62 @@
 			<div class="BLCT_p">
 				<p>Tên nhà cung cấp: @ViewBag.TenNhaCungCap</p>
 				<p>Thông tin giao hàng: @Model.BIEN_LAI.ThongTinGiaoHang</p>
-			</div>*@
+			</div>
 		</div>
 		<div class="Form_ChonLo">
 			<select asp-for="MaLo" asp-items="@ViewBag.LovaSP" class="form-control">
-				</select>
+			</select>
 		</div>
 		<div class="BLCT_Table">
 			<div class="Tb-Container">
 				@*<table class="table_user responsive-table">
-					<thead>
-					<tr>
-					<th> STT</th>
-					<th> Tên sản phẩm</th>
-					<th> Quy cách</th>
-					<th> Số lượng</th>
-					<th> Đơn vị</th>
-					<th> Đơn giá</th>
-					<th> Tổng tiền</th>
-					<th> Lô</th>
-					<th> Chỉnh sửa</th>
-					</tr>
-					</thead>
-					<tbody>
-					  @foreach(var i in Model.LOs)
-					{
-					<tr>
-					<td>@Model.LO.SAN_PHAM.TenSanPham</td>
-					<td>@Model.LO.SAN_PHAM.QuyCach</td>
-					<td>@Model.LO.SoLuong</td>
-					<td>@Model.LO.SAN_PHAM.DonVi</td>
-					<td>@Model.LO.SAN_PHAM.DonGia</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td class="ND_Table_Icon">
+				<thead>
+				<tr>
+				<th> STT</th>
+				<th> Tên sản phẩm</th>
+				<th> Quy cách</th>
+				<th> Số lượng</th>
+				<th> Đơn vị</th>
+				<th> Đơn giá</th>
+				<th> Tổng tiền</th>
+				<th> Lô</th>
+				<th> Chỉnh sửa</th>
+				</tr>
+				</thead>
+				<tbody>
+				@foreach(var i in Model.LOs)
+				{
+				<tr>
+				<td>@Model.LO.SAN_PHAM.TenSanPham</td>
+				<td>@Model.LO.SAN_PHAM.QuyCach</td>
+				<td>@Model.LO.SoLuong</td>
+				<td>@Model.LO.SAN_PHAM.DonVi</td>
+				<td>@Model.LO.SAN_PHAM.DonGia</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="ND_Table_Icon">
 
 
-					<a class="btn-primary" asp-controller="SanPham" asp-action="SuaSanPham" asp-route-id="">
+				<a class="btn-primary" asp-controller="SanPham" asp-action="SuaSanPham" asp-route-id="">
 
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-					<path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-					</svg>
-					</a>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+				<path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+				</svg>
+				</a>
 
-					<a class="btn-primary" asp-controller="NguoiDung" asp-action="XoaNguoiDung" asp-route-id="">
+				<a class="btn-primary" asp-controller="NguoiDung" asp-action="XoaNguoiDung" asp-route-id="">
 
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-					<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-					<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-					</svg>
-					</a>
-					</td>
-					</tr>
-					}
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+				<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+				<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+				</svg>
+				</a>
+				</td>
+				</tr>
+				}
 
-					</tbody>
+				</tbody>
 
 				</table>*@
 			</div>
