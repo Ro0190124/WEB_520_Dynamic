@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<BIEN_LAI>
 <div class="container">
 	<div class="Them_ND">
-		<div class="BL_a">
-			<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai nhập</button></a>
-			<a asp-controller="BienLai" asp-action="ThemBLXuat"><button class="Them-TK">Thêm biên lai xuất</button></a>
+		<div>
+			<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai</button></a>
 		</div>
 		<div class="ND_TimKiem">
 			<input type="text" placeholder="Tìm kiếm người dùng..." name="searchString">
@@ -29,12 +28,12 @@
 					int j = 0;
 				}
 				@{
-					if(Model != null)
+					if (Model != null)
 					{
 						@foreach (var i in Model)
 						{
 							j = j + 1;
-							<tr>	 
+							<tr>
 								<td>@j</td>
 								<td>@i.LoaiBienLai</td>
 								<td>@i.NgayGiao</td>
@@ -52,7 +51,7 @@
 						}
 					}
 				}
-				
+
 			</tbody>
 		</table>
 	</div>

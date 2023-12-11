@@ -6,45 +6,46 @@ using WEB_520_Dynamic.Model;
 
 namespace WEB_520_Dynamic.Controllers
 {
-    public class BienLaiController : Controller
-    {
-        private readonly ApplicationDbContext _db;
-        public BienLaiController(ApplicationDbContext db)
-        {
-            _db = db;
-        }
-        public IActionResult Index()
-        {
-			
+	public class BienLaiController : Controller
+	{
+		private readonly ApplicationDbContext _db;
+		public BienLaiController(ApplicationDbContext db)
+		{
+			_db = db;
+		}
+		public IActionResult Index()
+		{
 			var cookie = Request.Cookies["ID"];
-            // check cookie
-            Console.WriteLine(cookie);
-            if (cookie == null)
-            {
-                return RedirectToAction("DangNhap", "Home");
-            }
+			// check cookie
+			Console.WriteLine(cookie);
+			if (cookie == null)
+			{
+				return RedirectToAction("DangNhap", "Home");
+			}
 
-            var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG);
-            return View(bienLai);
-        }
+			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG);
+			return View(bienLai);
+		}
+		public void TenNCC()
+		{
+			IEnumerable<SelectListItem> NCC = _db.NHA_CUNG_CAPs.Select(
+				u => new SelectListItem()
+				{
+					Text = u.TenNhaCungCap,
+					Value = u.MaNhaCungCap.ToString()
+				}
+				).ToList();
+			ViewBag.NhaCungCap = NCC;
+		}
 		public IActionResult ThemBienLai()
 		{
-            IEnumerable<SelectListItem> NCC = _db.NHA_CUNG_CAPs.Select(
-                u => new SelectListItem()
-                {
-                    Text = u.TenNhaCungCap,
-                    Value = u.MaNhaCungCap.ToString()
-                }
-                ).ToList();
-            ViewBag.NhaCungCap = NCC;
-           
-            
-            return View();
+			TenNCC();
+			return View();
 		}
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult ThemBienLai(BIEN_LAI bienLai)
-        {
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult ThemBienLai(BIEN_LAI bienLai)
+		{
 			TenNCC();
 			var cookie = Request.Cookies["ID"];
 			var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
@@ -77,10 +78,6 @@ namespace WEB_520_Dynamic.Controllers
 			}
 			return View();
 		}
-        public IActionResult ThemBLXuat()
-        {
-            return RedirectToAction("BienLaiCTXuat","BienLaiChiTiet");
-        }
 		public IActionResult ChiTietBienLai(int id)
 		{
 			var cookie = Request.Cookies["ID"];
@@ -92,9 +89,9 @@ namespace WEB_520_Dynamic.Controllers
 			}
 			//var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).Where(x => x.MaBienLai == id).FirstOrDefault();
 			var bienLai = _db.BIEN_LAIs.Where(x => x.MaBienLai == id).FirstOrDefault();
-            //var sanPham = 
+			//var sanPham = 
 
-            return View(bienLai);
+			return View(bienLai);
 		}
 
 
