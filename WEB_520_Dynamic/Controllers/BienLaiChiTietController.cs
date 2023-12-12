@@ -44,8 +44,6 @@ namespace WEB_520_Dynamic.Controllers
             // lấy lô có mã biên lai = id
             //var Lo = _db.LOs.Where(l => l.MaBienLai == id).ToList();
             //IEnumerable<LO>? lo = _db.LOs.Include(s => s.SAN_PHAM);
-
-
             // lấy mã lô theo mã biên lai.
             var loBienLai = _db.BIEN_LAI_CHI_TIETs.Where(x => x.MaBienLai == id).Select(x => x.MaLo).ToList();
 			
@@ -67,7 +65,9 @@ namespace WEB_520_Dynamic.Controllers
                 BIEN_LAI = bienLai,
                 LOs = listSanPham
             };
-            return View(modelview);
+			//return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLai.MaBienLai })
+
+			return View(modelview);
         }
         
         public IActionResult ThemBienLaiChiTiet()

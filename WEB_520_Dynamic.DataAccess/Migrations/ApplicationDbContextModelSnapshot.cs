@@ -67,6 +67,12 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
             modelBuilder.Entity("WEB_520_Dynamic.Model.BIEN_LAI_CHI_TIET", b =>
                 {
+                    b.Property<int>("MaBienLaiChiTiet")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaBienLaiChiTiet"));
+
                     b.Property<int>("MaBienLai")
                         .HasColumnType("int");
 
@@ -75,6 +81,8 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.HasKey("MaBienLaiChiTiet");
 
                     b.HasIndex("MaBienLai");
 
@@ -91,6 +99,9 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaLo"));
 
+                    b.Property<int?>("BIEN_LAI_CHI_TIETMaBienLaiChiTiet")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("HanSuDung")
                         .HasColumnType("datetime2");
 
@@ -106,6 +117,8 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("MaLo");
+
+                    b.HasIndex("BIEN_LAI_CHI_TIETMaBienLaiChiTiet");
 
                     b.HasIndex("MaSanPham");
 
@@ -275,6 +288,10 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
 
             modelBuilder.Entity("WEB_520_Dynamic.Model.LO", b =>
                 {
+                    b.HasOne("WEB_520_Dynamic.Model.BIEN_LAI_CHI_TIET", null)
+                        .WithMany("LOs")
+                        .HasForeignKey("BIEN_LAI_CHI_TIETMaBienLaiChiTiet");
+
                     b.HasOne("WEB_520_Dynamic.Model.SAN_PHAM", "SAN_PHAM")
                         .WithMany()
                         .HasForeignKey("MaSanPham")
@@ -282,6 +299,11 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("SAN_PHAM");
+                });
+
+            modelBuilder.Entity("WEB_520_Dynamic.Model.BIEN_LAI_CHI_TIET", b =>
+                {
+                    b.Navigation("LOs");
                 });
 #pragma warning restore 612, 618
         }
