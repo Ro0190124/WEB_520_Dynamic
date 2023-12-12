@@ -99,6 +99,27 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BIEN_LAI_CHI_TIETs",
+                columns: table => new
+                {
+                    MaBienLaiChiTiet = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MaBienLai = table.Column<int>(type: "int", nullable: false),
+                    MaLo = table.Column<int>(type: "int", nullable: false),
+                    SoLuong = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BIEN_LAI_CHI_TIETs", x => x.MaBienLaiChiTiet);
+                    table.ForeignKey(
+                        name: "FK_BIEN_LAI_CHI_TIETs_BIEN_LAIs_MaBienLai",
+                        column: x => x.MaBienLai,
+                        principalTable: "BIEN_LAIs",
+                        principalColumn: "MaBienLai",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LOs",
                 columns: table => new
                 {
@@ -107,40 +128,22 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                     TenLo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     MaSanPham = table.Column<int>(type: "int", nullable: false),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
-                    HanSuDung = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    HanSuDung = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BIEN_LAI_CHI_TIETMaBienLaiChiTiet = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LOs", x => x.MaLo);
                     table.ForeignKey(
+                        name: "FK_LOs_BIEN_LAI_CHI_TIETs_BIEN_LAI_CHI_TIETMaBienLaiChiTiet",
+                        column: x => x.BIEN_LAI_CHI_TIETMaBienLaiChiTiet,
+                        principalTable: "BIEN_LAI_CHI_TIETs",
+                        principalColumn: "MaBienLaiChiTiet");
+                    table.ForeignKey(
                         name: "FK_LOs_SAN_PHAMs_MaSanPham",
                         column: x => x.MaSanPham,
                         principalTable: "SAN_PHAMs",
                         principalColumn: "MaSanPham",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BIEN_LAI_CHI_TIETs",
-                columns: table => new
-                {
-                    MaBienLai = table.Column<int>(type: "int", nullable: false),
-                    MaLo = table.Column<int>(type: "int", nullable: false),
-                    SoLuong = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.ForeignKey(
-                        name: "FK_BIEN_LAI_CHI_TIETs_BIEN_LAIs_MaBienLai",
-                        column: x => x.MaBienLai,
-                        principalTable: "BIEN_LAIs",
-                        principalColumn: "MaBienLai",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BIEN_LAI_CHI_TIETs_LOs_MaLo",
-                        column: x => x.MaLo,
-                        principalTable: "LOs",
-                        principalColumn: "MaLo",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -165,28 +168,49 @@ namespace WEB_520_Dynamic.DataAccess.Migrations
                 column: "MaNhaCungCap");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LOs_BIEN_LAI_CHI_TIETMaBienLaiChiTiet",
+                table: "LOs",
+                column: "BIEN_LAI_CHI_TIETMaBienLaiChiTiet");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LOs_MaSanPham",
                 table: "LOs",
                 column: "MaSanPham");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_BIEN_LAI_CHI_TIETs_LOs_MaLo",
+                table: "BIEN_LAI_CHI_TIETs",
+                column: "MaLo",
+                principalTable: "LOs",
+                principalColumn: "MaLo",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "BIEN_LAI_CHI_TIETs");
+            migrationBuilder.DropForeignKey(
+                name: "FK_BIEN_LAI_CHI_TIETs_BIEN_LAIs_MaBienLai",
+                table: "BIEN_LAI_CHI_TIETs");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_BIEN_LAI_CHI_TIETs_LOs_MaLo",
+                table: "BIEN_LAI_CHI_TIETs");
 
             migrationBuilder.DropTable(
                 name: "BIEN_LAIs");
-
-            migrationBuilder.DropTable(
-                name: "LOs");
 
             migrationBuilder.DropTable(
                 name: "NGUOI_DUNGs");
 
             migrationBuilder.DropTable(
                 name: "NHA_CUNG_CAPs");
+
+            migrationBuilder.DropTable(
+                name: "LOs");
+
+            migrationBuilder.DropTable(
+                name: "BIEN_LAI_CHI_TIETs");
 
             migrationBuilder.DropTable(
                 name: "SAN_PHAMs");

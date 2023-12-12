@@ -43,7 +43,7 @@
 								<td>@i.NgayLap</td>
 								<td>@i.TrangThai</td>
 								<td class="ND_Table_Icon">
-									<a class="btn-primary" asp-controller="BienLaiChiTiet" asp-action="Index" asp-route-id="@i.MaBienLai">
+									<a class="btn-primary" asp-controller="BienLaiChiTiet" asp-action="Index" asp-route-id="@i.MaBienLai" onclick="ThemBienLaiChiTiet(@i.MaBienLai)">
 										<i class="fas fa-plus"></i>
 									</a>
 								</td>
@@ -56,3 +56,9 @@
 		</table>
 	</div>
 </div>
+<script>
+	function ThemBienLaiChiTiet(id) {
+		console.log(id + "Something something");
+		return id;
+	}
+</script>

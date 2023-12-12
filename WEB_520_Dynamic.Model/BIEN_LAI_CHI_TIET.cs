@@ -11,17 +11,19 @@ namespace WEB_520_Dynamic.Model
 {
     public class BIEN_LAI_CHI_TIET
     {
-    
-        public int MaBienLai { get; set; }
 
-        [ForeignKey("MaBienLai")]
-        [ValidateNever]
-        public BIEN_LAI BIEN_LAI { get; set; } = new BIEN_LAI();
+		[Key]
+		public int MaBienLaiChiTiet { get; set; }
+		public int MaBienLai { get; set; }
+		[ValidateNever]
+		[ForeignKey("MaBienLai")]
+        
+        public BIEN_LAI BIEN_LAI { get; set; } 
         public int MaLo { get; set; }
-       
-        [ForeignKey("MaLo")]
-        [ValidateNever]
-        public LO LO { get; set; } = new LO();
+		[ValidateNever]
+		[ForeignKey("MaLo")]
+        
+        public LO LO { get; set; } 
 
         [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }

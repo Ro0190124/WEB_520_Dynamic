@@ -36,20 +36,22 @@ namespace WEB_520_Dynamic.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult ThemLo(LO lo)
+		public IActionResult ThemLo(LO lo, int id)
 		{
 			
 			Console.WriteLine(lo.MaLo);
 			Console.WriteLine(lo.MaLo.ToString());
 			Console.WriteLine(lo.SoLuong);
 			Console.WriteLine(lo.SAN_PHAM.MaSanPham);
+			Console.WriteLine("Mã biên lai : " + id);
 			lo.MaSanPham = lo.SAN_PHAM.MaSanPham;
 			lo.SAN_PHAM = _db.SAN_PHAMs.Where(x => x.MaSanPham == lo.SAN_PHAM.MaSanPham).First();
 			
 			if (ModelState.IsValid)
 			{
 				_db.LOs.Add(lo);
-				IEnumerable<EntityEntry> es = _db.ChangeTracker.Entries().Where(e => e.State == EntityState.Added);
+				_db.SaveChanges();
+				/*IEnumerable<EntityEntry> es = _db.ChangeTracker.Entries().Where(e => e.State == EntityState.Added);
 				IEnumerable<EntityEntry> es2 = _db.ChangeTracker.Entries().Where(e => e.State == EntityState.Modified);
 				IEnumerable<EntityEntry> es3 = _db.ChangeTracker.Entries().Where(e => e.State == EntityState.Deleted);
 				foreach(EntityEntry e in es)
@@ -59,10 +61,20 @@ namespace WEB_520_Dynamic.Controllers
 				foreach(EntityEntry e in es2)
 				{ Console.WriteLine(e.ToString()); }
 				foreach(EntityEntry e in es3)
-				{ Console.WriteLine(e.ToString()); }
+				{ Console.WriteLine(e.ToString()); }*/
+
+				//thêm biên lai chi tiết với mã biên lai = 
+				BIEN_LAI_CHI_TIET bienLaiCT = new BIEN_LAI_CHI_TIET();
+				//bienLaiCT.BIEN_LAI = _db.BIEN_LAIs.FirstOrDefault(x => x.MaBienLai == id);
+				bienLaiCT.MaBienLai = id;
+				bienLaiCT.MaLo = lo.MaLo;
+				bienLaiCT.SoLuong = lo.SoLuong;
+				Console.WriteLine(bienLaiCT.MaBienLai + " " + bienLaiCT.MaLo);
+				_db.BIEN_LAI_CHI_TIETs.Add(bienLaiCT);
 				_db.SaveChanges();
 				TempData["ThongBao"] = "Thêm lô thành công";
-				return RedirectToAction("Index", "BienLaiChiTiet");
+				return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai });
+				//return RedirectToAction("Index", "BienLaiChiTiet");
 			}
 			return View(lo);
 		}
