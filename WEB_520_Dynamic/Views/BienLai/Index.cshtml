@@ -49,7 +49,7 @@
 								<td>@i.ThongTinGiaoHang</td>
 								<td>@i.NgayLap</td>
 								<td>@i.TrangThai</td>
-								@*@if(i.LoaiBienLai == true)
+								@if(i.LoaiBienLai == true)
 								{
 									<td class="ND_Table_Icon">
 										<a class="btn-primary" asp-controller="BienLaiChiTiet" asp-action="BienLaiCTXuat" asp-route-id="@i.MaBienLai">
@@ -59,13 +59,13 @@
 								}
 								else
 								{
-
-								}*@
 								<td class="ND_Table_Icon">
 									<a class="btn-primary" asp-controller="BienLaiChiTiet" asp-action="Index" asp-route-id="@i.MaBienLai" onclick="ThemBienLaiChiTiet(@i.MaBienLai)">
 										<i class="fas fa-plus"></i>
 									</a>
 								</td>
+								}
+
 							</tr>
 						}  
 					}
