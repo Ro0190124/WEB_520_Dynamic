@@ -2,6 +2,7 @@
 <div class="container">
 	<div class="BLCT_form">
 		<div class="BLCT_BL">
+			
 
 			<div class="BLCT_p">
 				<p>Loại biên lai: @(Model.BIEN_LAI.LoaiBienLai ? "Đơn hàng xuất" : "Đơn hàng nhập")</p>
@@ -13,24 +14,26 @@
 				<p>Thông tin giao hàng: @Model.BIEN_LAI.ThongTinGiaoHang</p>
 			</div>
 		</div>
-		<div class="Form_ChonLo">
-			<select asp-for="MaLo" asp-items="@ViewBag.LovaSP" class="form-control"> 6
-			</select>
-			<div class="BLCT_SL">
-				<p>Số lượng</p>
-				<div>
-					<input asp-for="SoLuong" type="text" placeholder="Số lượng" /></br>
-					<span asp-validation-for="SoLuong" class="text-danger"></span>
+
+		<form method="post" asp-action="ThemLoXuat" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai">
+			<div class="Form_ChonLo">
+				<select asp-for="MaLo" asp-items="@ViewBag.LovaSP" class="form-control">
+				</select>
+				<div class="BLCT_SL">
+					<p>Số lượng</p>
+					<div>
+						<input asp-for="SoLuong" type="text" placeholder="Số lượng" /></br>
+						<span asp-validation-for="SoLuong" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="ThemLovaoBL">
+					<button type="submit">Thêm lo</button>
 				</div>
 			</div>
-			<div class="ThemLovaoBL">
-				<button>Thêm lo</button>
-			</div>
-		</div>
-
+		</form>
 		<div class="BLCT_Table">
 			<div class="Tb-Container">
-
+				@await Component.InvokeAsync("BLCT_LOXUAT", Model.BIEN_LAI.MaBienLai)
 			</div>
 		</div>
 	</div>

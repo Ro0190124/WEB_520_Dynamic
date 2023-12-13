@@ -145,10 +145,10 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				var lo = _db.LOs.Where(l => l.MaLo == item).Select(x => x.MaLo).ToString();
 				//var sanPham = _db.SAN_PHAMs.Where(s => s.MaSanPham == lo.MaSanPham).FirstOrDefault();
-				if (lo != null)
+				/*if (lo != null)
 				{
 					listSanPham.Add(new LO { MaLo = int.Parse(lo) });
-				}
+				}*/
 			}
 			_db.SaveChanges();
 

@@ -84,7 +84,7 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return NotFound();
 			}
-			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID);
+			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID && x.BIEN_LAI.LoaiBienLai == false);
 			LO lo = _db.LOs.FirstOrDefault(x => x.MaLo == ID);
 			if (lo == null)
 			{
@@ -98,6 +98,53 @@ namespace WEB_520_Dynamic.Controllers
 			}
 			
 			return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai});
+		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult ThemLoXuat(BIEN_LAI_CHI_TIET bienLai, int id)
+		{
+
+	
+			Console.WriteLine("Mã biên lai : " + id);
+			Console.WriteLine("Mã lô: " + bienLai.MaLo);
+			Console.WriteLine("Số lượng: " + bienLai.SoLuong);
+			if (ModelState.IsValid)
+			{
+				//thêm biên lai chi tiết với mã biên lai = 
+				/*BIEN_LAI_CHI_TIET bienLaiCT = new BIEN_LAI_CHI_TIET();
+				bienLaiCT.MaBienLai = id;*/
+				bienLai.MaBienLai = id;
+				Console.WriteLine(bienLai.MaBienLai + " " + bienLai.MaLo + " " + bienLai.SoLuong);
+				_db.BIEN_LAI_CHI_TIETs.Add(bienLai);
+				_db.SaveChanges();
+				TempData["ThongBao"] = "Thêm lô thành công";
+				return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
+			}
+			return View(bienLai);
+		}
+		public IActionResult XoaLoXuat(int? ID)
+		{
+			if (ID == null || ID == 0)
+			{
+				return NotFound();
+			}
+			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID && x.BIEN_LAI.LoaiBienLai == true);
+			Console.WriteLine("Mã biên lai : " + bienLaiCT.MaBienLai);
+			Console.WriteLine("Mã lô: " + bienLaiCT.MaLo);
+			//Console.WriteLine("Loại Biên lai: " + bienLaiCT.BIEN_LAI.LoaiBienLai);
+			LO lo = _db.LOs.FirstOrDefault(x => x.MaLo == ID);
+			if (lo == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				_db.BIEN_LAI_CHI_TIETs.Remove(bienLaiCT);
+				_db.SaveChanges();
+				TempData["ThongBaoXoa"] = "Xóa Sàn Phẩm thành công";
+			}
+
+			return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai });
 		}
 	}
 }
