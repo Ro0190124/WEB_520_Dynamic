@@ -175,5 +175,21 @@ namespace WEB_520_Dynamic.Controllers
 			ViewBag.LovaSP = new SelectList(modifiedList, "id", "TenL");
 			return View(modelview);
 		}
+		public IActionResult XacNhanDanhSach(int ID)
+		{
+			BIEN_LAI bienLai = _db.BIEN_LAIs.FirstOrDefault(b => b.MaBienLai == ID);
+			bienLai.TrangThai = 1;
+			_db.BIEN_LAIs.Update(bienLai);
+			_db.SaveChanges();
+			return RedirectToAction("Index", "BienLai");
+		}
+		public IActionResult HoanThanh(int ID)
+		{
+			BIEN_LAI bienLai = _db.BIEN_LAIs.FirstOrDefault(b => b.MaBienLai == ID);
+			bienLai.TrangThai = 2;
+			_db.BIEN_LAIs.Update(bienLai);
+			_db.SaveChanges();
+			return RedirectToAction("Index", "BienLai");
+		}
 	}
 }

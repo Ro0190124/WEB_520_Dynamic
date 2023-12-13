@@ -32,6 +32,19 @@
 					{
 						@foreach (var i in Model)
 						{
+							string trangThai = "";
+							if(i.TrangThai == 0)
+							{
+								trangThai = "Đang tạo";
+							}
+							if(i.TrangThai == 1)
+							{
+								trangThai = "Đang giao";
+							}
+							if (i.TrangThai == 2)
+							{
+								trangThai = "Thành công";
+							}
 							j = j + 1;
 							<tr>
 								<td>@j</td>
@@ -48,7 +61,7 @@
 								<td>@i.NHA_CUNG_CAP.TenNhaCungCap</td>
 								<td>@i.ThongTinGiaoHang</td>
 								<td>@i.NgayLap</td>
-								<td>@i.TrangThai</td>
+								<td>@trangThai</td>
 								@if(i.LoaiBienLai == true)
 								{
 									<td class="ND_Table_Icon">

@@ -101,17 +101,42 @@
 @*					</tbody>
 *@					
 				</table>
+				
 				<div class="flex-end">
-					<div class="lg_DN">
-						<button type="submit">Thêm người dùng</button>
-					</div>
+					
+					@if (Model.BIEN_LAI.TrangThai == 0)
+					{
+						<div class="lg_DN">
+							<a asp-controller="BienLaiChiTiet" asp-action="XacNhanDanhSach" asp-route-id="@Model.BIEN_LAI.MaBienLai" hidden="hidden" id="xacnhan">
+								<button>
+									Xác nhận danh sách
+								</button>
+
+							</a>
+
+						</div>
+					}
+					@if (Model.BIEN_LAI.TrangThai == 1)
+					{
+						<div class="lg_DN">
+							<a asp-controller="BienLaiChiTiet" asp-action="HoanThanh" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="hoanthanh">
+								<button>
+									Hoàn Thành
+								</button>
+
+							</a>
+
+						</div>
+
+					}
+					else
+					{
+						
+					}
 				</div>
 
 			</div>
 
         </div>
     </div>
-
-
-
 </div>
