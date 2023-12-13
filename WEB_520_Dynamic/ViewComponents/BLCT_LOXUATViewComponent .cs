@@ -19,7 +19,7 @@ namespace WEB_520_Dynamic.ViewComponents
 		{
 			Console.WriteLine(ID +" MÃ nhàaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdasdkljfhalsjd");
 			//IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM).ToList();
-			IEnumerable<LO> groupSpL = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID ).Select(x => x.lo).Include(x => x.SAN_PHAM).ToList();
+
 			//LO lo_BLCT = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID).Select(x => x.lo).ToList().FirstOrDefault();*/
 			//List<LO> lo_BLCT = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID).Select(x => x.lo).Include(x => x.SAN_PHAM).ToList();
 			/*foreach ( var item in lo_BLCT)
@@ -29,13 +29,16 @@ namespace WEB_520_Dynamic.ViewComponents
 					Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 				}
 			}*/
-			if (groupSpL == null)
+			//IEnumerable<LO> groupSpL = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID).Select(x => x.lo).Include(x => x.SAN_PHAM).ToList();
+			IEnumerable<BIEN_LAI_CHI_TIET> danhSach = _db.BIEN_LAI_CHI_TIETs.Where(x => x.MaBienLai == ID).ToList();
+			if (danhSach == null)
 			{
 				return View();
 			}
 			//Console.WriteLine(groupSpL.ElementAt(0).SAN_PHAM.TenSanPham);
-			
-			return View(groupSpL);
+
+			//return View(groupSpL);
+			return View(danhSach);
 		}
 	}
 }

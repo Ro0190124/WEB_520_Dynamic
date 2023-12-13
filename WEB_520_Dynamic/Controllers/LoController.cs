@@ -144,7 +144,7 @@ namespace WEB_520_Dynamic.Controllers
 				TempData["ThongBaoXoa"] = "Xóa Sàn Phẩm thành công";
 			}
 
-			return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai });
+			return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai });
 		}
 	}
 }
