@@ -78,5 +78,26 @@ namespace WEB_520_Dynamic.Controllers
 			}
 			return View(lo);
 		}
+		public IActionResult XoaLo(int? ID)
+		{
+			if (ID == null || ID == 0)
+			{
+				return NotFound();
+			}
+			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID);
+			LO lo = _db.LOs.FirstOrDefault(x => x.MaLo == ID);
+			if (lo == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				_db.LOs.Remove(lo);
+				_db.SaveChanges();
+				TempData["ThongBaoXoa"] = "Xóa Sàn Phẩm thành công";
+			}
+			
+			return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai});
+		}
 	}
 }
