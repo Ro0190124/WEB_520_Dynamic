@@ -29,7 +29,7 @@ namespace WEB_520_Dynamic.ViewComponents
 					Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 				}
 			}*/
-			//IEnumerable<LO> groupSpL = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID).Select(x => x.lo).Include(x => x.SAN_PHAM).ToList();
+			IEnumerable<LO> groupSpL = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID).Select(x => x.lo).Include(x => x.SAN_PHAM).ToList();
 			IEnumerable<BIEN_LAI_CHI_TIET> danhSach = _db.BIEN_LAI_CHI_TIETs.Where(x => x.MaBienLai == ID).ToList();
 			if (danhSach == null)
 			{

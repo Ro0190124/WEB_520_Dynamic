@@ -191,5 +191,14 @@ namespace WEB_520_Dynamic.Controllers
 			_db.SaveChanges();
 			return RedirectToAction("Index", "BienLai");
 		}
+
+		public IActionResult TrangChu(int year)
+		{
+			var NhapSL = _db.BIEN_LAI_CHI_TIETs.Where(b => b.BIEN_LAI.LoaiBienLai == true && b.BIEN_LAI.NgayLap.Year == year)
+				.GroupBy(b => b.BIEN_LAI.NgayLap.Month);
+			return View(NhapSL);
+		}
+
+
 	}
 }
