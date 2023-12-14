@@ -5,7 +5,7 @@
 			<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai</button></a>
 		</div>
 		<div class="ND_TimKiem">
-			<input type="text" placeholder="Tìm kiếm người dùng..." name="searchString">
+			<input type="text" placeholder="Tìm kiếm biên lai..." name="searchString">
 		</div>
 	</div>
 	<div class="Tb-Container">
@@ -32,23 +32,55 @@
 					{
 						@foreach (var i in Model)
 						{
+							string trangThai = "";
+							if(i.TrangThai == 0)
+							{
+								trangThai = "Đang tạo";
+							}
+							if(i.TrangThai == 1)
+							{
+								trangThai = "Đang giao";
+							}
+							if (i.TrangThai == 2)
+							{
+								trangThai = "Thành công";
+							}
 							j = j + 1;
 							<tr>
 								<td>@j</td>
-								<td>@i.LoaiBienLai</td>
+								@if(i.LoaiBienLai == true)
+								{
+									<td>Đơn hàng xuất</td>
+								}
+								else
+								{
+									<td>Đơn hàng nhập</td>
+								}
 								<td>@i.NgayGiao</td>
 								<td>@i.NGUOI_DUNG.TenNguoiDung</td>
 								<td>@i.NHA_CUNG_CAP.TenNhaCungCap</td>
 								<td>@i.ThongTinGiaoHang</td>
 								<td>@i.NgayLap</td>
-								<td>@i.TrangThai</td>
+								<td>@trangThai</td>
+								@if(i.LoaiBienLai == true)
+								{
+									<td class="ND_Table_Icon">
+										<a class="btn-primary" asp-controller="BienLaiChiTiet" asp-action="BienLaiCTXuat" asp-route-id="@i.MaBienLai">
+											<i class="fas fa-plus"></i>
+										</a>
+									</td>
+								}
+								else
+								{
 								<td class="ND_Table_Icon">
-									<a class="btn-primary" asp-controller="BienLaiChiTiet" asp-action="Index" asp-route-id="@i.MaBienLai">
+									<a class="btn-primary" asp-controller="BienLaiChiTiet" asp-action="Index" asp-route-id="@i.MaBienLai" onclick="ThemBienLaiChiTiet(@i.MaBienLai)">
 										<i class="fas fa-plus"></i>
 									</a>
 								</td>
+								}
+
 							</tr>
-						}
+						}  
 					}
 				}
 

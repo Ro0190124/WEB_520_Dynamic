@@ -44,8 +44,6 @@ namespace WEB_520_Dynamic.Controllers
             // lấy lô có mã biên lai = id
             //var Lo = _db.LOs.Where(l => l.MaBienLai == id).ToList();
             //IEnumerable<LO>? lo = _db.LOs.Include(s => s.SAN_PHAM);
-
-
             // lấy mã lô theo mã biên lai.
             var loBienLai = _db.BIEN_LAI_CHI_TIETs.Where(x => x.MaBienLai == id).Select(x => x.MaLo).ToList();
 			
@@ -67,7 +65,9 @@ namespace WEB_520_Dynamic.Controllers
                 BIEN_LAI = bienLai,
                 LOs = listSanPham
             };
-            return View(modelview);
+			//return RedirectToAction("Index", "BienLaiChiTiet", new { id = bienLai.MaBienLai })
+
+			return View(modelview);
         }
         
         public IActionResult ThemBienLaiChiTiet()
@@ -145,10 +145,10 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				var lo = _db.LOs.Where(l => l.MaLo == item).Select(x => x.MaLo).ToString();
 				//var sanPham = _db.SAN_PHAMs.Where(s => s.MaSanPham == lo.MaSanPham).FirstOrDefault();
-				if (lo != null)
+				/*if (lo != null)
 				{
 					listSanPham.Add(new LO { MaLo = int.Parse(lo) });
-				}
+				}*/
 			}
 			_db.SaveChanges();
 
@@ -174,6 +174,22 @@ namespace WEB_520_Dynamic.Controllers
 
 			ViewBag.LovaSP = new SelectList(modifiedList, "id", "TenL");
 			return View(modelview);
+		}
+		public IActionResult XacNhanDanhSach(int ID)
+		{
+			BIEN_LAI bienLai = _db.BIEN_LAIs.FirstOrDefault(b => b.MaBienLai == ID);
+			bienLai.TrangThai = 1;
+			_db.BIEN_LAIs.Update(bienLai);
+			_db.SaveChanges();
+			return RedirectToAction("Index", "BienLai");
+		}
+		public IActionResult HoanThanh(int ID)
+		{
+			BIEN_LAI bienLai = _db.BIEN_LAIs.FirstOrDefault(b => b.MaBienLai == ID);
+			bienLai.TrangThai = 2;
+			_db.BIEN_LAIs.Update(bienLai);
+			_db.SaveChanges();
+			return RedirectToAction("Index", "BienLai");
 		}
 	}
 }

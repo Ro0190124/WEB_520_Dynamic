@@ -40,11 +40,11 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
-    .Form_NCC .Them_form .BLCT_Lo_input {
-        display:flex;
-        justify-content:space-around;
-    }
-    p {
+.Form_NCC .Them_form .BLCT_Lo_input {
+    display:flex;
+    justify-content:space-around;
+}
+p {
     margin-bottom:0;
     margin-bottom:5px;
 }
@@ -101,6 +101,77 @@
 }
 .Them_ND .BL_a button{
     width:200px;
+}
+.BLCT_form .Form_ChonLo {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+    align-items: center;
+    border: 1px solid #4285F4;
+    outline: none;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+    .BLCT_form .Form_ChonLo select {
+        height: 40px;
+        width: 37%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+.BLCT_form .Form_ChonLo .BLCT_SL {
+    height:50px;
+    width:400px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.BLCT_form .Form_ChonLo .BLCT_SL p{
+    margin:0;
+}
+
+.BLCT_form .Form_ChonLo .BLCT_SL input {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+.BLCT_form .Form_ChonLo .ThemLovaoBL button{
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+.BLCT_form .flex-end {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.BLCT_form .lg_DN button {
+    margin-top:30px;
+    width: 400px;
+    padding: 10px;
+    background-color: #E48700;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 40px;
+}
+
+
+
+.BLCT_form .lg_DN button:hover {
+    background-color: #E46B00;
+}
+
+
+ 
 }
 .container .Them_ND a:hover {
     background-color: #E46B00;

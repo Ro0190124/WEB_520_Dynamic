@@ -13,7 +13,7 @@
                 <p>Thông tin giao hàng: @Model.BIEN_LAI.ThongTinGiaoHang</p>
             </div>
         </div>
-        <form method="post" asp-action="ThemLo" asp-controller="Lo" >
+        <form method="post" asp-action="ThemLo" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai">
 			<div class="BLCT_Lo">
 				<div class="BLCT_Lo_input">
 					<div class="BLCT_Ip magrin_Input">
@@ -40,8 +40,8 @@
 					</div>
 				</div>
 				<div class="BLCT_Them_Lo">
-					<button type="submit">Thêm Lô</button>
-					@*<a asp-action="ThemLo" asp-controller="Lo">Thêm lô</a>*@
+					<button type="submit" >Thêm Lô</button>
+					@*<a asp-action="ThemLo" asp-controller="BienLaiChiTiet">Thêm lô</a>*@
 				</div>
 
 			</div>
@@ -101,10 +101,42 @@
 @*					</tbody>
 *@					
 				</table>
+				
+				<div class="flex-end">
+					
+					@if (Model.BIEN_LAI.TrangThai == 0)
+					{
+						<div class="lg_DN">
+							<a asp-controller="BienLaiChiTiet" asp-action="XacNhanDanhSach" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="xacnhan">
+								<button>
+									Xác nhận danh sách
+								</button>
+
+							</a>
+
+						</div>
+					}
+					@if (Model.BIEN_LAI.TrangThai == 1)
+					{
+						<div class="lg_DN">
+							<a asp-controller="BienLaiChiTiet" asp-action="HoanThanh" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="hoanthanh">
+								<button>
+									Hoàn Thành
+								</button>
+
+							</a>
+
+						</div>
+
+					}
+					else
+					{
+						
+					}
+				</div>
+
 			</div>
+
         </div>
     </div>
-
-
-
 </div>
