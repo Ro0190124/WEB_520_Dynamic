@@ -20,6 +20,7 @@ namespace WEB_520_Dynamic.Controllers
 		
 			Console.WriteLine(ID);
 			IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM);
+			
 			return View(groupSpL);
 		}
 		public IActionResult ThemLo()
@@ -104,18 +105,22 @@ namespace WEB_520_Dynamic.Controllers
 		public IActionResult ThemLoXuat(BIEN_LAI_CHI_TIET bienLai, int id)
 		{
 
-	
 			Console.WriteLine("Mã biên lai : " + id);
 			Console.WriteLine("Mã lô: " + bienLai.MaLo);
 			Console.WriteLine("Số lượng: " + bienLai.SoLuong);
 			if (ModelState.IsValid)
 			{
+				
 				//thêm biên lai chi tiết với mã biên lai = 
 				/*BIEN_LAI_CHI_TIET bienLaiCT = new BIEN_LAI_CHI_TIET();
 				bienLaiCT.MaBienLai = id;*/
 				bienLai.MaBienLai = id;
 				Console.WriteLine(bienLai.MaBienLai + " " + bienLai.MaLo + " " + bienLai.SoLuong);
 				_db.BIEN_LAI_CHI_TIETs.Add(bienLai);
+				_db.SaveChanges();
+				LO lo = _db.LOs.Where(x=> x.MaLo ==  bienLai.MaLo).FirstOrDefault();
+				lo.SoLuong -= bienLai.SoLuong;
+				_db.LOs.Update(lo);
 				_db.SaveChanges();
 				TempData["ThongBao"] = "Thêm lô thành công";
 				return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
@@ -139,12 +144,20 @@ namespace WEB_520_Dynamic.Controllers
 			}
 			else
 			{
+				LO lobandau = _db.LOs.Where(x=> x.MaLo == ID).FirstOrDefault();
+				lobandau.SoLuong += bienLaiCT.SoLuong;
+				_db.LOs.Update(lobandau);
+				_db.SaveChanges();
 				_db.BIEN_LAI_CHI_TIETs.Remove(bienLaiCT);
 				_db.SaveChanges();
+
 				TempData["ThongBaoXoa"] = "Xóa Sàn Phẩm thành công";
 			}
 
 			return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai });
 		}
+		
+
+
 	}
 }
