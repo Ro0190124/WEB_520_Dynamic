@@ -2,7 +2,7 @@
 <div class="container">
     <form method="post" asp-action="ThemBienLai">
         <div class="ND_body">
-            <div class="lg_form">
+            <div class="Thembl_form">
                 <h1>Thêm biên lai</h1>
                 <p>Loại biên lai</p>
                 <div class="lg_TK magrin_Input">
@@ -29,6 +29,11 @@
                     <!--<<p>Thông tin giao hàng</p>-->
                     <input asp-for="ThongTinGiaoHang" type="text" placeholder="Thông tin giao hàng">
                     <span asp-validation-for="ThongTinGiaoHang" class="text-danger"></span>
+                </div>
+                <div class="lg_TK magrin_Input">
+                    <p>Ghi chú</p>
+                    <input asp-for="GhiChu" type="text" placeholder="Ghi chú" />
+                    <span asp-validation-for="GhiChu" class="text-danger"></span>
                 </div>
                 <div class="lg_DN">
                     <button type="submit">Thêm Biên Lai</button>
