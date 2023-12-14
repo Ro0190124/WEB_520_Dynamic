@@ -8,39 +8,51 @@
                 <h1>Thêm nhà cung cấp</h1>
                 <div class="BLCT_Lo_input">
                     <div class="lg_TK magrin_Input">
-                        <p> Tên nhà cung cấp</p>
-                        <input asp-for="TenNhaCungCap" type="text" placeholder="Tên nhà cung cấp "></br>
+                        <div class="input-box">
+                            <input required asp-for="TenNhaCungCap" type="text">
+                            <label>Tên nhà cung cấp</label>
+                        </div>
                         <span asp-validation-for="TenNhaCungCap" class="text-danger"></span>
                     </div>
 
                     <div class="dk_HT magrin_Input">
-                        <p> Địa chỉ</p>
-                        <input asp-for="DiaChi" type="text" placeholder="Địa chỉ" /></br>
+                        <div class="input-box">
+                            <input required asp-for="DiaChi" type="text">
+                            <label>Địa chỉ</label>
+                        </div>
                         <span asp-validation-for="DiaChi" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="BLCT_Lo_input">
                     <div class="dk_SDT magrin_Input">
-                        <p> Số điện thoại</p>
-                        <input asp-for="SoDienThoai" type="text" placeholder="Số điện thoại" /></br>
+                        <div class="input-box">
+                            <input required asp-for="SoDienThoai" type=" text">
+                            <label>Số điện thoại</label>
+                        </div>
                         <span asp-validation-for="SoDienThoai" class="text-danger"></span>
                     </div>
                     <div class="ND_NgaySinh magrin_Input">
-                        <p> Mã số thuế</p>
-                        <input asp-for="MaSoThue" type="text" placeholder="Mã số thuế" /></br>
+                        <div class="input-box">
+                            <input required asp-for="MaSoThue" type="text">
+                            <label>Mã số thuế</label>
+                        </div>
                         <span asp-validation-for="MaSoThue" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="BLCT_Lo_input">
                     <div class="lg_MK magrin_Input">
-                        <p> Số tài khoản</p>
-                            <input asp-for="SoTaiKhoan" type="text" placeholder="Số tài khoản"></br>
+                        <div class="input-box">
+                            <input required asp-for="SoTaiKhoan" type="text">
+                            <label>Số tài khoản</label>
+                        </div>
                         <span asp-validation-for="SoTaiKhoan" class="text-danger"></span>
                     </div>
                     <div class="lg_MK magrin_Input">
-                        <p> Người đại diện</p>
-                        <input asp-for="NguoiDaiDien" type="text" placeholder="Người đại diện"></br>
+                        <div class="input-box">
+                            <input required asp-for="NguoiDaiDien" type="text">
+                            <label>Người đại diện</label>
+                        </div>
                         <span asp-validation-for="NguoiDaiDien" class="text-danger"></span>
                     </div>
                 </div>

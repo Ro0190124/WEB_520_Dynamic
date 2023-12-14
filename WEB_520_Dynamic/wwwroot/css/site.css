@@ -149,6 +149,49 @@ h1 {
     margin-bottom: 20px;
 }
 
+.input-box {
+    position: relative;
+    margin: 10px 0;
+}
+
+    .input-box input {
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: 2px solid #2c4766;
+        outline: none;
+        border-radius: 40px;
+        font-size: 1em;
+        color: black;
+        padding: 0 20px;
+        transition: .5s ease;
+    }
+
+        .input-box input:focus,
+        .input-box input:valid {
+            border-color: #E48700;
+        }
+
+    .input-box label {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        color: black;
+        pointer-events: none;
+        transition: .5s ease;
+    }
+
+    .input-box input:focus ~ label,
+    .input-box input:valid ~ label {
+        top: 1px;
+        font-size: .8em;
+        background: white;
+        padding: 0 6px;
+        color: #E48700;
+    }
+
 .lg_TK, .lg_MK {
     margin-bottom: 10px;
 }
@@ -276,8 +319,9 @@ h1 {
 .Them_form button:hover {
     background-color: #E46B00;
 }
-
-
+.container .lg_DN  button:hover {
+    background-color: #E46B00;
+}
 /*phần đăng ký*/
 
 .dk_HT_SDT{
