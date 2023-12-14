@@ -58,7 +58,15 @@
 								}
 								<td>@i.NgayGiao</td>
 								<td>@i.NGUOI_DUNG.TenNguoiDung</td>
-								<td>@i.NHA_CUNG_CAP.TenNhaCungCap</td>
+								@if(i.MaNhaCungCap != null)
+								{
+									<td>@i.NHA_CUNG_CAP.TenNhaCungCap</td>
+								}
+								else
+								{
+									<td></td>
+								}
+								
 								<td>@i.ThongTinGiaoHang</td>
 								<td>@i.NgayLap</td>
 								<td>@trangThai</td>
