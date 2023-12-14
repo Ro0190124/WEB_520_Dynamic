@@ -20,26 +20,34 @@
             </div>
             <h1>Đăng kí</h1>
             <div class="lg_TK">
-                <p> Tên tài khoản </p>
-                <input asp-for="TenTaiKhoan" type="text" placeholder="Tên tài khoản ">
+                    <div class="input-box">
+                        <input required asp-for="TenTaiKhoan" type="text">
+                        <label>Tên tài khoản</label>
+                    </div>
                 <span asp-validation-for="TenTaiKhoan" class="text-danger"></span>
             </div>
             <div class="dk_HT_SDT">
                 <div class="dk_HT">
-                    <p> Họ và tên</p>
-                    <input asp-for="TenNguoiDung" type="text" placeholder="Họ và tên" />
+                        <div class="input-box">
+                            <input required asp-for="TenNguoiDung" type="text">
+                            <label>Họ và tên</label>
+                        </div>
                     <span asp-validation-for="TenNguoiDung" class="text-danger"></span>
                 </div>
                 <div class="dk_SDT">
-                    <p> Số điện thoại</p>
-                    <input asp-for="SoDienThoai" type="text" placeholder="Số điện thoại" />
+                    <div class="input-box">
+                            <input required asp-for="SoDienThoai" type="text">
+                            <label>Số điện thoại</label>
+                        </div>
                     <span asp-validation-for="SoDienThoai" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="lg_MK">
-                <p> Mật khẩu</p>
-                    <input asp-for="MatKhau" type="password" placeholder="Mật khẩu">
+                    <div class="input-box">
+                        <input required asp-for="MatKhau" type="password">
+                        <label>Mật khẩu</label>
+                    </div>
                     <span asp-validation-for="MatKhau" class="text-danger"></span>
             </div>
             <div class="lg_DN lg_DK">

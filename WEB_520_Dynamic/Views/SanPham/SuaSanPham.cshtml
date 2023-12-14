@@ -9,19 +9,25 @@
                 <h1>Sửa Sản Phẩm</h1>
                 <input type="hidden" asp-for="MaSanPham" />
                 <div class="lg_TK magrin_Input">
-                    <p> Tên sản phẩm</p>
-                    <input asp-for="TenSanPham" type="text" placeholder="Tên sản phẩm ">
+                    <div class="input-box">
+                        <input required asp-for="TenSanPham" type="text">
+                        <label>Tên sản phẩm</label>
+                    </div> 
                     <span asp-validation-for="TenSanPham" class="text-danger"></span>
                 </div>
 
                 <div class="dk_HT magrin_Input">
-                    <p> Quy cách</p>
-                    <input asp-for="QuyCach" type="text" placeholder="Quy cách" />
+                    <div class="input-box">
+                        <input required asp-for="QuyCach" type="text">
+                        <label>Quy cách</label>
+                    </div> 
                     <span asp-validation-for="QuyCach" class="text-danger"></span>
                 </div>
                 <div class="dk_SDT magrin_Input">
-                    <p> Đơn giá</p>
-                    <input asp-for="DonGia" type="text" placeholder="Đơn giá" />
+                    <div class="input-box">
+                        <input required asp-for="DonGia" type="text">
+                        <label>Đơn giá</label>
+                    </div>
                     <span asp-validation-for="DonGia" class="text-danger"></span>
                 </div>
 
