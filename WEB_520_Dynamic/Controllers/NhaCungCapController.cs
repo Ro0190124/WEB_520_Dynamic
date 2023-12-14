@@ -23,7 +23,7 @@ namespace WEB_520_Dynamic.Controllers
             }
             else
             {
-                IEnumerable<NHA_CUNG_CAP> obj = _db.NHA_CUNG_CAPs.ToList();
+                IEnumerable<NHA_CUNG_CAP> obj = _db.NHA_CUNG_CAPs.Where(x=> x.TrangThai == true).ToList();
 			    return View(obj);
 
             }
