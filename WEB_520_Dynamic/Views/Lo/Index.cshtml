@@ -15,9 +15,14 @@
 					<th> Hạn sử dụng</th>
 				
 				</tr>
+				
 			</thead>
 			<tbody>
-				@{int j = 0;}
+
+				@{
+					int j = 0;
+					double soluong = 0;	
+				}
 				@foreach (var i in Model )
 				{
 					j +=1;
@@ -32,8 +37,12 @@
 						<td>@i.HanSuDung</td>
 						
 					</tr>
+
 				}
+			
 			</tbody>
+			
 		</table>
+		<input asp-action="HienThiSoLuong" />
 	</div>
 </div>
