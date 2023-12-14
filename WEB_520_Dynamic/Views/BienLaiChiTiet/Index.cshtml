@@ -11,6 +11,7 @@
             <div class="BLCT_p">
                 <p>Tên nhà cung cấp: @ViewBag.TenNhaCungCap</p>
                 <p>Thông tin giao hàng: @Model.BIEN_LAI.ThongTinGiaoHang</p>
+				<p>Ghi chú: @Model.BIEN_LAI.GhiChu</p>
             </div>
         </div>
         <form method="post" asp-action="ThemLo" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai">
