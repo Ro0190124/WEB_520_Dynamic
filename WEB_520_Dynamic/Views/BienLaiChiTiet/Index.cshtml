@@ -2,7 +2,6 @@
 <div class="container">
     <div class="BLCT_form">
         <div class="BLCT_BL">
-			
             <div class="BLCT_p">
                 <p>Loại biên lai: @(Model.BIEN_LAI.LoaiBienLai ? "Đơn hàng xuất" : "Đơn hàng nhập")</p>
                 <p>Ngày giao: @Model.BIEN_LAI.NgayGiao</p>
@@ -14,39 +13,47 @@
 				<p>Ghi chú: @Model.BIEN_LAI.GhiChu</p>
             </div>
         </div>
-        <form method="post" asp-action="ThemLo" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai">
-			<div class="BLCT_Lo">
-				<div class="BLCT_Lo_input">
-					<div class="BLCT_Ip magrin_Input">
-						<div class="lg_TK magrin_Input">
-							<input asp-for="LO.TenLo" type="text" placeholder="Tên Lô">
-							<span class="text-danger"></span>
+		@if (Model.BIEN_LAI.TrangThai ==0)
+		{
+			<form method="post" asp-action="ThemLo" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="mid">
+				<div class="BLCT_Lo">
+					<div class="BLCT_Lo_input">
+						<div class="BLCT_Ip magrin_Input">
+							<div class="lg_TK magrin_Input">
+								<input asp-for="LO.TenLo" type="text" placeholder="Tên Lô">
+								<span asp-validation-for="LO.TenLo" class="text-danger"></span>
+
+							</div>
+						</div>
+						<div class="ND_NgaySinh magrin_Input">
+							<input asp-for="LO.HanSuDung" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
 						</div>
 					</div>
-					<div class="ND_NgaySinh magrin_Input">
-						<input asp-for="LO.HanSuDung" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
-					</div>
-				</div>
-				<div class="BLCT_Lo_input">
+					<div class="BLCT_Lo_input">
 
 
-					<div class="lg_TK magrin_Input">
-						<select asp-for="LO.SAN_PHAM.MaSanPham" class="textbox" asp-items="ViewBag.SanPham">
-							
-						</select>
+						<div class="lg_TK magrin_Input">
+							<select asp-for="LO.SAN_PHAM.MaSanPham" class="textbox" asp-items="ViewBag.SanPham">
+							</select>
+						</div>
+						<div class="BLCT_Ip magrin_Input">
+							<input asp-for="LO.SoLuong" type="text" placeholder="Số Lượng">
+							<span asp-validation-for="LO.SoLuong" class="text-danger"></span>
+						</div>
 					</div>
-					<div class="BLCT_Ip magrin_Input">
-						<input asp-for="LO.SoLuong" type="text" placeholder="Số Lượng">
-						<span class="text-danger"></span>
+					<div class="BLCT_Them_Lo">
+						<button type="submit">Thêm Lô</button>
+						@*<a asp-action="ThemLo" asp-controller="BienLaiChiTiet">Thêm lô</a>*@
 					</div>
-				</div>
-				<div class="BLCT_Them_Lo">
-					<button type="submit" >Thêm Lô</button>
-					@*<a asp-action="ThemLo" asp-controller="BienLaiChiTiet">Thêm lô</a>*@
-				</div>
 
-			</div>
-        </form>
+				</div>
+			</form>
+		}
+		else
+		{
+			
+		}
+
        
         <div class="BLCT_Table">
 			<div class="Tb-Container">
@@ -136,3 +143,43 @@
         </div>
     </div>
 </div>
+
+
+<script>
+	const form = document.getElementById("mid");
+	function sendData() {
+		const XHR = new XMLHttpRequest();
+
+		// Bind the FormData object and the form element
+		const FD = new FormData(form);
+
+		// Define what happens on successful data submission
+		XHR.addEventListener("load", (event) => {
+			var obj = JSON.parse(event.target.responseText);
+			console.log(obj);
+			console.log(obj.type);
+			if (obj.type === "error"){
+				alert(obj.res);
+			}
+			else if (obj.type === "link"){
+				window.location.href = obj.res;
+			}
+		});
+
+		// Define what happens in case of error
+		XHR.addEventListener("error", (event) => {
+			alert("Oops! Something went wrong.");
+		});
+
+		// Set up our request
+		XHR.open("POST", "https://" + window.location.host + "/Lo/ThemLo/" + @Model.BIEN_LAI.MaBienLai );
+		
+		// The data sent is what the user provided in the form
+		XHR.send(FD);
+	}
+	form.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		sendData();
+	});
+</script>

@@ -3,7 +3,6 @@
 	<div class="BLCT_form">
 		<div class="BLCT_BL">
 			
-
 			<div class="BLCT_p">
 				<p>Loại biên lai: @(Model.BIEN_LAI.LoaiBienLai ? "Đơn hàng xuất" : "Đơn hàng nhập")</p>
 				<p>Ngày giao: @Model.BIEN_LAI.NgayGiao</p>
@@ -15,30 +14,115 @@
 				<p>Ghi chú: @Model.BIEN_LAI.GhiChu</p>
 			</div>
 		</div>
-
-		<form method="post" asp-action="ThemLoXuat" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai">
-			<div class="Form_ChonLo">
-				<select asp-for="MaLo" asp-items="@ViewBag.LovaSP" class="form-control">
-				</select>
-				<div class="BLCT_SL">
-					<p>Số lượng</p>
-					<div>
-						<input asp-for="SoLuong" type="text" placeholder="Số lượng" /></br>
-						<span asp-validation-for="SoLuong" class="text-danger"></span>
+		@if(Model.BIEN_LAI.TrangThai == 0)
+		{
+			<form method="post" asp-action="ThemLoXuat" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="mid1">
+				<div class="Form_ChonLo">
+					<select asp-for="MaLo" asp-items="@ViewBag.LovaSP" class="form-control">
+					</select>
+					<div class="BLCT_SL">
+						<p>Số lượng</p>
+						<div>
+							<input asp-for="SoLuong" type="text" placeholder="Số lượng" />
+							<span asp-validation-for="SoLuong" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="ThemLovaoBL">
+						<button type="submit">Thêm lo</button>
 					</div>
 				</div>
-				<div class="ThemLovaoBL">
-					<button type="submit">Thêm lo</button>
-				</div>
-			</div>
-		</form>
+			</form>
+		}
+		else
+		{
+			
+		}
+
+		
+		
+
+
 		<div class="BLCT_Table">
 			<div class="Tb-Container">
 				@await Component.InvokeAsync("BLCT_LOXUAT", Model.BIEN_LAI.MaBienLai)
 			</div>
 		</div>
+
+
+		<div class="flex-end">
+
+			@if (Model.BIEN_LAI.TrangThai == 0)
+			{
+				<div class="lg_DN">
+					<a asp-controller="BienLaiChiTiet" asp-action="XacNhanDanhSach" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="xacnhan">
+						<button>
+							Xác nhận danh sách
+						</button>
+					</a>
+				</div>
+			}
+			@if (Model.BIEN_LAI.TrangThai == 1)
+			{
+				<div class="lg_DN">
+					<a asp-controller="BienLaiChiTiet" asp-action="HoanThanh" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="hoanthanh">
+						<button>
+							Hoàn Thành
+						</button>
+					</a>
+				</div>
+			}
+			else
+			{
+
+			}
+		</div>
+
+
 	</div>
 
 
 
 </div>
+
+
+
+
+
+<script>
+	const form = document.getElementById("mid1");
+	function sendData() {
+		const XHR = new XMLHttpRequest();
+
+		// Bind the FormData object and the form element
+		const FD = new FormData(form);
+
+		// Define what happens on successful data submission
+		XHR.addEventListener("load", (event) => {
+			var obj = JSON.parse(event.target.responseText);
+			console.log(obj);
+			console.log(obj.type);
+			if (obj.type === "error") {
+				alert(obj.res);
+			}
+			else if (obj.type === "link") {
+				window.location.href = obj.res;
+			}
+		});
+
+		// Define what happens in case of error
+		XHR.addEventListener("error", (event) => {
+			alert("Oops! Something went wrong.");
+		});
+
+		// Set up our request
+		XHR.open("POST", "https://" + window.location.host + "/Lo/ThemLoXuat/" + @Model.BIEN_LAI.MaBienLai );
+
+		// The data sent is what the user provided in the form
+		XHR.send(FD);
+	}
+	form.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		sendData();
+	});
+</script>

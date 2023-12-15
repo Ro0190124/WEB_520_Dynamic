@@ -7,13 +7,14 @@
                 <p>Loại biên lai</p>
                 <div class="lg_TK magrin_Input">
                     <!--<p>Chọn loại biên lai</p>-->
-                    <select asp-for="LoaiBienLai" class="textbox">
-                        <option value="true">Đơn hàng xuất</option>
+                    <select asp-for="LoaiBienLai" id="selects"  class="textbox">
                         <option value="false">Đơn hàng nhập</option>
+                        <option value="true">Đơn hàng xuất</option>
+                        
                     </select>
 
                 </div>
-                <div class="lg_TK magrin_Input">
+                <div class="lg_TK magrin_Input" id="nhacungcap">
                     <p>Nhà cung cấp</p>
                     <!--<<p>Tên nhà cung cấp</p>-->
                     <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp">
@@ -45,4 +46,8 @@
             }
         </div>
     </form>
+    <script>
+        let f = (val) => { console.log(val); if (val == "false") document.getElementById("nhacungcap").style.visibility = "visible"; else document.getElementById("nhacungcap").style.visibility = "hidden"; }
+        document.getElementById("selects").onchange = function () { f(document.getElementById("selects").value) }
+    </script>
 </div>
