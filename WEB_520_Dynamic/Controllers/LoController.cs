@@ -195,6 +195,7 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return NotFound();
 			}
+			Console.WriteLine();
 			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID && x.BIEN_LAI.LoaiBienLai == true);
 			BIEN_LAI bienlai = _db.BIEN_LAIs.FirstOrDefault(x => x.MaBienLai == bienLaiCT.MaBienLai);
 			Console.WriteLine("Mã biên lai : " + bienLaiCT.MaBienLai);
