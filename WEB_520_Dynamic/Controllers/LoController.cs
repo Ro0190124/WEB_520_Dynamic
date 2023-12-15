@@ -170,7 +170,7 @@ namespace WEB_520_Dynamic.Controllers
 				_db.SaveChanges();
 				TempData["ThongBao"] = "Thêm lô thành công";
 				//return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
-				var j = Json(new PrivateResponse("link", "/BienLaiChiTiet/Index/" + bienLai.MaBienLai));
+				var j = Json(new PrivateResponse("link", "/BienLaiChiTiet/BienLaiCTXuat/" + bienLai.MaBienLai));
 
 				return j;
 			}
@@ -217,6 +217,7 @@ namespace WEB_520_Dynamic.Controllers
 					_db.SaveChanges();
 
 					TempData["ThongBaoXoak"] = "Xóa Sàn Phẩm thành công";
+
 				}
 			}
 			else
@@ -228,7 +229,7 @@ namespace WEB_520_Dynamic.Controllers
 			//Console.WriteLine("Loại Biên lai: " + bienLaiCT.BIEN_LAI.LoaiBienLai);
 			
 
-			return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLaiCT.MaBienLai });
+			return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienlai.MaBienLai });
 		}
 		
 

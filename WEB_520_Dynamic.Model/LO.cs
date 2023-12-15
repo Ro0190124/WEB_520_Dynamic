@@ -28,7 +28,7 @@ namespace WEB_520_Dynamic.Model
 
 
         [Required(ErrorMessage = "Số lượng Không được trống")]
-        [Range(0, int.MaxValue, ErrorMessage = "số lượng phải lớn hơn 0")]
+        [Range(1, int.MaxValue, ErrorMessage = "số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
 
         [Required(ErrorMessage = "Hạn sử dụng Không được trống")]
