@@ -108,7 +108,59 @@ namespace WEB_520_Dynamic.Controllers
 			Console.WriteLine("Mã biên lai : " + id);
 			Console.WriteLine("Mã lô: " + bienLai.MaLo);
 			Console.WriteLine("Số lượng: " + bienLai.SoLuong);
-			if (ModelState.IsValid)
+
+            BIEN_LAI? bienLaiLo = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).FirstOrDefault(b => b.MaBienLai == id);
+            if (bienLaiLo == null)
+            {
+                bienLaiLo = new BIEN_LAI();
+            }
+            var tenNhaCungCap = _db.NHA_CUNG_CAPs.FirstOrDefault(n => n.MaNhaCungCap == bienLaiLo.MaNhaCungCap)?.TenNhaCungCap;
+            var loBienLai = _db.BIEN_LAI_CHI_TIETs.Where(x => x.MaBienLai == id).Select(x => x.MaLo).ToList();
+
+            // trả về list lô 
+            List<LO> listSanPham = new List<LO>();
+            foreach (var item in loBienLai)
+            {
+                var lo = _db.LOs.Where(l => l.MaLo == item).Select(x => x.MaLo).ToString();
+                //var sanPham = _db.SAN_PHAMs.Where(s => s.MaSanPham == lo.MaSanPham).FirstOrDefault();
+                /*if (lo != null)
+				{
+					listSanPham.Add(new LO { MaLo = int.Parse(lo) });
+				}*/
+            }
+            _db.SaveChanges();
+
+            var modelview = new BIEN_LAI_CHI_TIET
+            {
+                BIEN_LAI = bienLaiLo,
+                LOs = listSanPham
+            };
+
+
+            var LovaSP = _db.LOs.Select(x => new
+            {
+                id = x.MaLo,
+                TenL = x.TenLo,
+                TenSP = x.SAN_PHAM.TenSanPham,
+                HSD = x.HanSuDung.ToString("dd/MM/yyyy")
+            }).ToList();
+            var modifiedList = LovaSP.Select(item => new
+            {
+                id = item.id,
+                TenL = $"{item.TenL} - {item.TenSP} (Hạn sử dụng: {item.HSD})"
+            }).ToList();
+
+            if (bienLai.SoLuong <= 0)
+            {
+				Console.WriteLine(bienLai.MaBienLai);
+                ModelState.AddModelError("SoLuong", "Số lượng phải lớn hơn 0");
+                ViewBag.LovaSP = new SelectList(modifiedList, "id", "TenL");
+                ViewBag.TenNhaCungCap = tenNhaCungCap;
+				Console.WriteLine(bienLaiLo.MaBienLai);
+				TempData["LoiSL"] = "Số lượng phải lớn hơn 0";
+				return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLaiLo.MaBienLai });
+            }
+            if (ModelState.IsValid)
 			{
 				
 				//thêm biên lai chi tiết với mã biên lai = 
@@ -133,6 +185,7 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return NotFound();
 			}
+			Console.WriteLine();
 			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID && x.BIEN_LAI.LoaiBienLai == true);
 			Console.WriteLine("Mã biên lai : " + bienLaiCT.MaBienLai);
 			Console.WriteLine("Mã lô: " + bienLaiCT.MaLo);
@@ -150,7 +203,7 @@ namespace WEB_520_Dynamic.Controllers
 				_db.SaveChanges();
 				_db.BIEN_LAI_CHI_TIETs.Remove(bienLaiCT);
 				_db.SaveChanges();
-
+				Console.WriteLine(bienLaiCT.MaBienLai);
 				TempData["ThongBaoXoa"] = "Xóa Sàn Phẩm thành công";
 			}
 
