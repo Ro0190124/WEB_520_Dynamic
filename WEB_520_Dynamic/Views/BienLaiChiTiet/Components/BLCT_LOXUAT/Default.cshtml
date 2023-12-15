@@ -13,22 +13,24 @@
 					<th> Số lượng</th>
 					<th> Đơn giá</th>
 					<th> Lô</th>
-					<th> Trạng thái</th>
 					<th> Chỉnh sửa</th>
 				</tr>
 			</thead>
 			<tbody>
+				@{
+					int j = 0;
+				}
 				@foreach (var i in Model)
 				{
+					j++;
 					<tr>
-						<td>@i.LO.SAN_PHAM.MaSanPham</td>
+						<td>@j</td>
 						<td>@i.LO.SAN_PHAM.TenSanPham</td>
 						<td>@i.LO.SAN_PHAM.QuyCach</td>
 						<td>@i.LO.SAN_PHAM.DonVi</td>
 						<td>@i.SoLuong</td>
 						<td>@i.LO.SAN_PHAM.DonGia</td>
 						<td>@i.LO.TenLo</td>
-						<td>TrangThai</td>
 						<td class="ND_Table_Icon">
 							<a class="btn-primary" asp-controller="Lo" asp-action="XoaLoXuat" asp-route-id="@i.MaBienLaiChiTiet">
 
