@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LO>
+﻿@model IEnumerable<BIEN_LAI_CHI_TIET>
 <div class="container">
 	<partial name="_Notification" />
 	<div class="Tb-Container">
@@ -28,13 +28,13 @@
 					j +=1;
 					<tr>
 						<td>@j</td>
-						<td>@i.SAN_PHAM.TenSanPham</td>
-						<td>@i.SAN_PHAM.QuyCach</td>
-						<td>@i.SAN_PHAM.DonVi</td>
-						<td>@i.SoLuong</td>
-						<td>@i.SAN_PHAM.DonGia</td>
-						<td>@i.TenLo</td>
-						<td>@i.HanSuDung</td>
+						<td>@i.LO.SAN_PHAM.TenSanPham</td>
+						<td>@i.LO.SAN_PHAM.QuyCach</td>
+						<td>@i.LO.SAN_PHAM.DonVi</td>
+						<td>@i.LO.SoLuong</td>
+						<td>@i.LO.SAN_PHAM.DonGia</td>
+						<td>@i.LO.TenLo</td>
+						<td>@i.LO.HanSuDung</td>
 						
 					</tr>
 

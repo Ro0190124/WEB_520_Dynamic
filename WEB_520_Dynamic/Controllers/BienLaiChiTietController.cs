@@ -160,7 +160,7 @@ namespace WEB_520_Dynamic.Controllers
 
 
 			var LovaSP = _db.BIEN_LAI_CHI_TIETs
-				.Where(n => n.BIEN_LAI.TrangThai ==1)
+				.Where(n => n.BIEN_LAI.TrangThai == 2)
 				.Select(x => new
 			{
 				id = x.MaLo,
@@ -193,8 +193,5 @@ namespace WEB_520_Dynamic.Controllers
 			_db.SaveChanges();
 			return RedirectToAction("Index", "BienLai");
 		}
-
-
-
 	}
 }
