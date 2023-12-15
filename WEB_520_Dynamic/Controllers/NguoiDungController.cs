@@ -27,10 +27,11 @@ namespace WEB_520_Dynamic.Controllers
 			else
 			{
                 //IEnumerable<NGUOI_DUNG> nguoiDung = _db.NGUOI_DUNGs.Where(x=>x.TrangThai == true).ToList();
-                var nguoiDung = from b in _db.NGUOI_DUNGs where b.TrangThai == true select b;
-                if (!string.IsNullOrEmpty(searchString))
+               // var nguoiDung = from b in _db.NGUOI_DUNGs where b.TrangThai == true  select b ;
+				var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TrangThai == true).OrderByDescending(x => x.MaNguoiDung).ToList();
+				if (!string.IsNullOrEmpty(searchString))
                 {
-                    nguoiDung = nguoiDung.Where(x => x.TenTaiKhoan.Contains(searchString) || x.TenNguoiDung.Contains(searchString) || x.SoDienThoai.Contains(searchString) );
+                    nguoiDung = (List<NGUOI_DUNG>)nguoiDung.Where(x => x.TenTaiKhoan.Contains(searchString) || x.TenNguoiDung.Contains(searchString) || x.SoDienThoai.Contains(searchString));
                 }
                 return View(nguoiDung);
 

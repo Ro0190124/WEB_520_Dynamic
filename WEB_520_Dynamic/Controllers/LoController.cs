@@ -28,7 +28,7 @@ namespace WEB_520_Dynamic.Controllers
 		{
 		
 			Console.WriteLine(ID);
-			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).ToList();
+			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).OrderByDescending(x=> x.MaLo).ToList();
 			return View(loBienLaiCT);
 			//IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM);
 			//return View(groupSpL);

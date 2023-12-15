@@ -24,7 +24,7 @@ namespace WEB_520_Dynamic.Controllers
             else
             {
 				//IEnumerable<SAN_PHAM> sanPham = _db.SAN_PHAMs.ToList();
-				var sanPham = _db.SAN_PHAMs.Where(x=> x.TrangThai == true).ToList();
+				var sanPham = _db.SAN_PHAMs.Where(x=> x.TrangThai == true).OrderByDescending(x=> x.MaSanPham).ToList();
 				if (!string.IsNullOrEmpty(searchString))
 				{
 					sanPham = sanPham.Where(x => x.TenSanPham.Contains(searchString) || x.DonGia.ToString().Contains(searchString) || x.QuyCach.Contains(searchString)).ToList();

@@ -23,7 +23,7 @@ namespace WEB_520_Dynamic.Controllers
 				return RedirectToAction("DangNhap", "Home");
 			}
 
-			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG);
+			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).OrderByDescending(x=> x.MaBienLai).ToList();
 			return View(bienLai);
 		}
 		public void TenNCC()
@@ -51,16 +51,16 @@ namespace WEB_520_Dynamic.Controllers
 			var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
 			if (nguoiDung == null) nguoiDung = new NGUOI_DUNG();
 			bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
-			if (bienLai.ThongTinGiaoHang == null)
-			{
-				bienLai.ThongTinGiaoHang = "";
-			}
+			
+			
+			
 
 			if (ModelState.IsValid)
 			{
 				if (bienLai.LoaiBienLai == true)
 				{
 					Console.WriteLine(bienLai.MaBienLai + "  " + bienLai.MaNhaCungCap + "  " + bienLai.MaNguoiDung + "  " + bienLai.NgayGiao + "  " + bienLai.NgayLap);
+					bienLai.MaNhaCungCap = null;
 					_db.BIEN_LAIs.Add(bienLai);
 					_db.SaveChanges();
 					TempData["ThongBao"] = "Thêm biên lai thành công";
