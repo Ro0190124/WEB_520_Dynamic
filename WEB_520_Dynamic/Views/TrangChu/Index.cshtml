@@ -21,11 +21,14 @@
         @{
             int Nhap = 0;
             int Xuat = 0;
+            int tong = 0;
             if(Model != null)
             {
-                 Xuat = Model.Count(i => i.BIEN_LAI.LoaiBienLai == true); // Đếm số lượng phần tử có LoaiBienLai là 1
-                 Nhap = Model.Count(i => i.BIEN_LAI.LoaiBienLai == false); // Đếm số lượng phần tử có LoaiBienLai là
+                Xuat = Model.Count(i => i.BIEN_LAI.LoaiBienLai == true); // Đếm số lượng phần tử có LoaiBienLai là 1
+                Nhap = Model.Count(i => i.BIEN_LAI.LoaiBienLai == false); // Đếm số lượng phần tử có LoaiBienLai là
                 Console.WriteLine(Xuat + " aaaaa" + Nhap);
+                tong = Model.Sum(i => i.SoLuong);
+                Console.WriteLine(tong);
             }
 
         }
@@ -38,7 +41,7 @@
                     <p>Tổng sản phẩm</p>
                 </div>
                 <div class="CT_So">
-                    <p>123</p>
+                    <p>@tong</p>
                 </div>
             </div>
 
@@ -85,103 +88,15 @@
         </div>
     </div>
 
-
+    <select id="yearSelect">
+    </select>
 
     <div class="CT_Canva">
         <canvas id="myChart_CT" width="10" height="0%"></canvas>
-    </div>
-
-    <div class="table_Home">
-        <div class="table_HSanPham">
-            <h2>Sản phẩm bán chạy</h2>
-            <table class="table_user responsive-table ">
-                <thead>
-                    <tr>                      
-                        <th> Tên sản phẩm</th>
-                        <th> Quy cách</th>
-                        <th> Số lượng</th>
-                        <th> Đơn vị</th>
-                        <th> Đơn giá</th>
-                        <th> Trạng Thái</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <tr>
-                       <td>12312312</td>
-                       <td>12312312</td>
-                       <td>12312312</td>
-                       <td>12312312</td>
-                       <td>12312312</td>
-                       <td>12312312</td>
-                   </tr>
-                </tbody>
-            </table>
-        </div>          
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    //const xLabels = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'];
-    //new Chart("myChart_CT", {
-    //    type: "line",
-    //    data: {
-    //        labels: xLabels,
-    //        datasets: [{
-    //            label:'Thu nhập',
-    //            data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-    //            borderColor: "orange",
-    //            fill: false
-    //        }, {
-    //            label:'Đã bán',
-    //            data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
-    //            borderColor: "green",
-    //            fill: false
-    //        }]
-    //    },
-    //    options: {
-    //        legend: { display: false }
-    //    }
-    //});
-    const bienLaiData = @Html.Raw(Json.Encode(Model)); // Lấy dữ liệu từ Model
-    const xLabels = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'];
 
-    // Tính tổng số lượng theo LoaiBienLai
-    const dataLoaiBienLai1 = [];
-    const dataLoaiBienLai0 = [];
-
-    for (let i = 0; i < xLabels.length; i++) {
-        const filteredLoai1 = bienLaiData.filter(item => new Date(item.NgayLap).getMonth() === i && item.LoaiBienLai === true);
-        const filteredLoai0 = bienLaiData.filter(item => new Date(item.NgayLap).getMonth() === i && item.LoaiBienLai === false);
-
-        const sumLoai1 = filteredLoai1.reduce((acc, curr) => acc + curr.BIEN_LAI_CHI_TIET.reduce((total, clt) => total + clt.SoLuong, 0), 0);
-        const sumLoai0 = filteredLoai0.reduce((acc, curr) => acc + curr.BIEN_LAI_CHI_TIET.reduce((total, clt) => total + clt.SoLuong, 0), 0);
-
-        dataLoaiBienLai1.push(sumLoai1);
-        dataLoaiBienLai0.push(sumLoai0);
-    }
-
-    new Chart("myChart_CT", {
-        type: "line",
-        data: {
-            labels: xLabels,
-            datasets: [
-                {
-                    label: 'LoaiBienLai 1',
-                    data: dataLoaiBienLai1,
-                    borderColor: "orange",
-                    fill: false
-                },
-                {
-                    label: 'LoaiBienLai 0',
-                    data: dataLoaiBienLai0,
-                    borderColor: "green",
-                    fill: false
-                }
-            ]
-        },
-        options: {
-            legend: { display: true }
-        }
-    });
 </script>
