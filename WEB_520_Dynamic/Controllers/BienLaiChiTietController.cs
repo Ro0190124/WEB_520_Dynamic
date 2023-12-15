@@ -159,12 +159,14 @@ namespace WEB_520_Dynamic.Controllers
 			};
 
 
-			var LovaSP = _db.LOs.Select(x => new
+			var LovaSP = _db.BIEN_LAI_CHI_TIETs
+				.Where(n => n.BIEN_LAI.TrangThai ==1)
+				.Select(x => new
 			{
 				id = x.MaLo,
-				TenL = x.TenLo,
-				TenSP = x.SAN_PHAM.TenSanPham,
-				HSD = x.HanSuDung.ToString("dd/MM/yyyy")
+				TenL = x.LO.TenLo,
+				TenSP = x.LO.SAN_PHAM.TenSanPham,
+				HSD = x.LO.HanSuDung.ToString("dd/MM/yyyy")
 			}).ToList();
 			var modifiedList = LovaSP.Select(item => new
 			{
