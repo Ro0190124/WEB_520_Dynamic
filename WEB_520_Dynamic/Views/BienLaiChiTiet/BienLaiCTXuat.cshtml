@@ -16,7 +16,7 @@
 		</div>
 		@if(Model.BIEN_LAI.TrangThai == 0)
 		{
-			<form method="post" asp-action="ThemLoXuat" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="mid1">
+			<form method="post" asp-action="ThemLoXuat" asp-controller="Lo" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="mid1" >
 				<div class="Form_ChonLo">
 					<select asp-for="MaLo" asp-items="@ViewBag.LovaSP" class="form-control">
 					</select>

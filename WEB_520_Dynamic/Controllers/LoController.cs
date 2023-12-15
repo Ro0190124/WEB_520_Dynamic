@@ -114,6 +114,7 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return NotFound();
 			}
+			// biên lai chi tiết có mã lô và mã loại biên lai == false 
 			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID && x.BIEN_LAI.LoaiBienLai == false );
 			BIEN_LAI bienlai = _db.BIEN_LAIs.FirstOrDefault(x => x.MaBienLai == bienLaiCT.MaBienLai);
 			if (bienlai.TrangThai == 0)
@@ -195,21 +196,23 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return NotFound();
 			}
-			Console.WriteLine();
-			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaLo == ID && x.BIEN_LAI.LoaiBienLai == true);
-			BIEN_LAI bienlai = _db.BIEN_LAIs.FirstOrDefault(x => x.MaBienLai == bienLaiCT.MaBienLai);
+			Console.WriteLine("mã biên lai chi tiết: " + ID);
+			
+			BIEN_LAI_CHI_TIET bienLaiCT = _db.BIEN_LAI_CHI_TIETs.FirstOrDefault(x => x.MaBienLaiChiTiet == ID);
+			BIEN_LAI bienlai = _db.BIEN_LAIs.FirstOrDefault(x => x.MaBienLai == bienLaiCT.MaBienLai );
 			Console.WriteLine("Mã biên lai : " + bienLaiCT.MaBienLai);
-			Console.WriteLine( "trạng thái biên lai: "+bienlai.TrangThai);
+			Console.WriteLine("trạng thái biên lai: " + bienlai.TrangThai);
 			if (bienlai.TrangThai == 0)
 			{
-				LO lo = _db.LOs.FirstOrDefault(x => x.MaLo == ID);
+				LO lo = _db.LOs.FirstOrDefault(x => x.MaLo == bienLaiCT.MaLo);
 				if (lo == null)
 				{
 					return NotFound();
 				}
 				else
 				{
-					LO lobandau = _db.LOs.Where(x => x.MaLo == ID).FirstOrDefault();
+					LO lobandau = _db.LOs.Where(x => x.MaLo == bienLaiCT.MaLo).FirstOrDefault();
+					Console.WriteLine("Mã lô " + lobandau.MaLo);
 					lobandau.SoLuong += bienLaiCT.SoLuong;
 					_db.LOs.Update(lobandau);
 					_db.SaveChanges();
