@@ -28,7 +28,7 @@ namespace WEB_520_Dynamic.Controllers
 		}
 		public void TenNCC()
 		{
-			IEnumerable<SelectListItem> NCC = _db.NHA_CUNG_CAPs.Select(
+			IEnumerable<SelectListItem> NCC = _db.NHA_CUNG_CAPs.Where(x=> x.TrangThai == true).Select(
 				u => new SelectListItem()
 				{
 					Text = u.TenNhaCungCap,

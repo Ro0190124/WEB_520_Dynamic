@@ -25,7 +25,7 @@ namespace WEB_520_Dynamic.Model
         
         public LO LO { get; set; } 
 
-        [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
+        [Range(1, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         public int SoLuong { get; set; }
 
         public IEnumerable<LO>? LOs { get; set; }

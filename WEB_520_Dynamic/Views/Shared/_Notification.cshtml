@@ -16,3 +16,23 @@
 
 	</script>
 }
+
+@if (TempData["ThongBaoXoaLok"] != null){
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script>
+		toastr.warning('@TempData["ThongBaoXoaLok"]')
+
+	</script>
+}
+@if (TempData["ThongBaoXoak"] != null)
+{
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script>
+		toastr.warning('@TempData["ThongBaoXoak"]')
+
+	</script>
+}

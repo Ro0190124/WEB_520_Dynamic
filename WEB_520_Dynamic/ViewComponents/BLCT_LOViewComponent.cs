@@ -17,7 +17,8 @@ namespace WEB_520_Dynamic.ViewComponents
 		[HttpGet]
 		public async Task<IViewComponentResult> InvokeAsync(int? ID)
 		{
-			Console.WriteLine(ID +" MÃ nhàaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdasdkljfhalsjd");
+			Console.WriteLine(ID +" Mã biên lai");
+			
 			//IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM).ToList();
 			IEnumerable<LO> groupSpL = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID).Select(x => x.lo).Include(x => x.SAN_PHAM).ToList();
 			//LO lo_BLCT = _db.LOs.Join(_db.BIEN_LAI_CHI_TIETs, lo => lo.MaLo, blct => blct.MaLo, (lo, blct) => new { lo, blct }).Where(x => x.blct.MaBienLai == ID).Select(x => x.lo).ToList().FirstOrDefault();*/
