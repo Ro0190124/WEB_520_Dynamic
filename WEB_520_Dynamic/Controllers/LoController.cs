@@ -161,19 +161,31 @@ namespace WEB_520_Dynamic.Controllers
 			}
 			if (ModelState.IsValid)
 			{
-				bienLai.MaBienLai = id;
-				Console.WriteLine(bienLai.MaBienLai + " " + bienLai.MaLo + " " + bienLai.SoLuong);
-				_db.BIEN_LAI_CHI_TIETs.Add(bienLai);
-				_db.SaveChanges();
-				LO lo = _db.LOs.Where(x=> x.MaLo ==  bienLai.MaLo).FirstOrDefault();
-				lo.SoLuong -= bienLai.SoLuong;
-				_db.LOs.Update(lo);
-				_db.SaveChanges();
-				TempData["ThongBao"] = "Thêm lô thành công";
-				//return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
-				var j = Json(new PrivateResponse("link", "/BienLaiChiTiet/BienLaiCTXuat/" + bienLai.MaBienLai));
+				LO lo = _db.LOs.Where(x => x.MaLo == bienLai.MaLo && x.SoLuong >= bienLai.SoLuong).FirstOrDefault();
+				if (lo != null)
+				{
+					bienLai.MaBienLai = id;
+					Console.WriteLine(bienLai.MaBienLai + " " + bienLai.MaLo + " " + bienLai.SoLuong);
+					_db.BIEN_LAI_CHI_TIETs.Add(bienLai);
+					_db.SaveChanges();
 
-				return j;
+
+					lo.SoLuong -= bienLai.SoLuong;
+					_db.LOs.Update(lo);
+					_db.SaveChanges();
+					TempData["ThongBao"] = "Thêm lô thành công";
+					//return RedirectToAction("BienLaiCTXuat", "BienLaiChiTiet", new { id = bienLai.MaBienLai });
+					var j = Json(new PrivateResponse("link", "/BienLaiChiTiet/BienLaiCTXuat/" + bienLai.MaBienLai));
+
+					return j;
+
+				}
+				else
+				{
+					ModelState["SoLuong"].Errors.Add("Số lượng đéo đủ cảm ơn");
+				}
+
+				
 			}
 			string s = "";
 			foreach (var i in ModelState.Values)
