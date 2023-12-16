@@ -16,7 +16,7 @@ namespace WEB_520_Dynamic.Model
 
         [MaxLength(50)]
         [Required(ErrorMessage = "Không được trống")]
-		[MinLength(5, ErrorMessage = "Tên nhà cung cấp k dưới 5 kí tự")]
+		[MinLength(7, ErrorMessage = "Tên nhà cung cấp k dưới 7 kí tự")]
 		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên nhà cung cấp chỉ chứa chữ ")]
 		public string TenNhaCungCap { get; set; }
 
