@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WEB_520_Dynamic.DataAccess.Data;
+using WEB_520_Dynamic.Model;
 
 namespace WEB_520_Dynamic.Controllers
 {
@@ -14,6 +15,24 @@ namespace WEB_520_Dynamic.Controllers
 
         public IActionResult Index()
         {
+            var tongSanPham = _db.BIEN_LAI_CHI_TIETs
+                                .Where(blct => blct.BIEN_LAI.TrangThai == 2)
+                                .Sum(blct => blct.SoLuong);
+
+            var tongSanPhamNhap = _db.BIEN_LAI_CHI_TIETs
+                                    .Where(blct => blct.BIEN_LAI.TrangThai == 2 && blct.BIEN_LAI.LoaiBienLai == true)
+                                    .Sum(blct => blct.SoLuong);
+
+            var tongSanPhamXuat = _db.BIEN_LAI_CHI_TIETs
+                                    .Where(blct => blct.BIEN_LAI.TrangThai == 2 && blct.BIEN_LAI.LoaiBienLai == false)
+                                    .Sum(blct => blct.SoLuong);
+
+            // Truyền các giá trị tính toán vào ViewBag hoặc ViewData
+            ViewBag.TongSanPham = tongSanPham;
+            ViewBag.TongSanPhamNhap = tongSanPhamNhap;
+            ViewBag.TongSanPhamXuat = tongSanPhamXuat;
+            Console.WriteLine(tongSanPham.ToString()+"    "+ tongSanPhamNhap.ToString()+"    "+tongSanPhamXuat.ToString());
+
             return View();
 
         }
