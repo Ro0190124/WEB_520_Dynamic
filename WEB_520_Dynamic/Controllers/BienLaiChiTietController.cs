@@ -106,37 +106,13 @@ namespace WEB_520_Dynamic.Controllers
 		public IActionResult BienLaiCTXuat(int id)
 		{
 
-			IEnumerable<SelectListItem> SP = _db.SAN_PHAMs.Where(x => x.TrangThai == true).Select(
-
-			   s => new SelectListItem()
-			   {
-				   Text = s.TenSanPham,
-				   Value = s.MaSanPham.ToString()
-			   });
-			ViewBag.SanPham = SP;
-
-			/*
-            var bienLai = _db.BIEN_LAIs.FirstOrDefault(b => b.MaBienLai == id);
-			var tenNhaCungCap = _db.NHA_CUNG_CAPs.FirstOrDefault(n => n.MaNhaCungCap == bienLai.MaNhaCungCap)?.TenNhaCungCap;
-
-			ViewBag.TenNhaCungCap = tenNhaCungCap;
-			return View(bienLai);*/
+			
 			BIEN_LAI? bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).FirstOrDefault(b => b.MaBienLai == id);
 			if (bienLai == null)
 			{
 				bienLai = new BIEN_LAI();
 			}
-			var tenNhaCungCap = _db.NHA_CUNG_CAPs.FirstOrDefault(n => n.MaNhaCungCap == bienLai.MaNhaCungCap)?.TenNhaCungCap;
-
-			ViewBag.TenNhaCungCap = tenNhaCungCap;
-
-			/*var Lo = _db.SAN_PHAMs.Join(_db.LOs, sp => sp.MaSanPham, lo => lo.MaSanPham, (sp, lo) => new LO_SAN_PHAM { lo = lo, sanPham = sp }).ToList();*/
-			// lấy lô có mã biên lai = id
-			//var Lo = _db.LOs.Where(l => l.MaBienLai == id).ToList();
-			//IEnumerable<LO>? lo = _db.LOs.Include(s => s.SAN_PHAM);
-
-
-			// lấy mã lô theo mã biên lai.
+		
 			var loBienLai = _db.BIEN_LAI_CHI_TIETs.Where(x => x.MaBienLai == id).Select(x => x.MaLo).ToList();
 
 			// trả về list lô 
@@ -144,11 +120,7 @@ namespace WEB_520_Dynamic.Controllers
 			foreach (var item in loBienLai)
 			{
 				var lo = _db.LOs.Where(l => l.MaLo == item).Select(x => x.MaLo).ToString();
-				//var sanPham = _db.SAN_PHAMs.Where(s => s.MaSanPham == lo.MaSanPham).FirstOrDefault();
-				/*if (lo != null)
-				{
-					listSanPham.Add(new LO { MaLo = int.Parse(lo) });
-				}*/
+				
 			}
 			_db.SaveChanges();
 

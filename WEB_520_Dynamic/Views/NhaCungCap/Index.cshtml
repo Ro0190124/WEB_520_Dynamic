@@ -6,9 +6,14 @@
 		<div>
 			<a asp-controller="NhaCungCap" asp-action="ThemNhaCungCap"><button class="Them-TK">Thêm nhà cung cấp</button></a>
 		</div>
-		<div class="ND_TimKiem">
-			<input type="text" placeholder="Tìm kiếm nhà cung cấp..." name="searchString">
-		</div>
+		<form method="get">
+			<div class="ND_TimKiem_Ten">
+				<div class="ND_TimKiem">
+					<input type="text" placeholder="Tìm kiếm nhà cung cấp..." name="searchString">
+				</div>
+			</div>
+		</form>
+	
 	</div>
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">

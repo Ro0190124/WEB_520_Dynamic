@@ -93,7 +93,11 @@ namespace WEB_520_Dynamic.Controllers
             {
                 // ke me t
             }
-            if (ModelState.IsValid)
+			if (lo.HanSuDung.Date < DateTime.Now.Date)
+			{
+				ModelState.AddModelError("lo.HanSuDung", "Hạn sử dụng không hợp lệ");
+			}
+			if (ModelState.IsValid)
 			{
 				_db.LOs.Add(lo);
 				_db.SaveChanges();
