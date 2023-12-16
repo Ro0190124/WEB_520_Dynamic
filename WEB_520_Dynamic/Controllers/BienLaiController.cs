@@ -13,7 +13,8 @@ namespace WEB_520_Dynamic.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Index()
+		[HttpGet]
+		public IActionResult Index(string searchString)
 		{
 			var cookie = Request.Cookies["ID"];
 			// check cookie
@@ -23,8 +24,34 @@ namespace WEB_520_Dynamic.Controllers
 				return RedirectToAction("DangNhap", "Home");
 			}
 
-			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).OrderByDescending(x=> x.MaBienLai).ToList();
-			return View(bienLai);
+			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).OrderByDescending(x => x.MaBienLai).ToList();
+			bool loaibienlai = true;
+			byte trangThai = 3;
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				if (searchString.Contains("nhập"))
+				{
+					loaibienlai = false;
+				}
+				else if (searchString.Contains("xuất"))
+				{
+					loaibienlai = true;
+				}
+				if (searchString == "tạo" || searchString == "đang tạo")
+				{
+					trangThai = 0;
+				}
+				else if (searchString == "giao" || searchString == "đang giao")
+				{
+					trangThai = 1;
+				}
+				else if (searchString== "hoàn thành" || searchString == "hoàn" || searchString =="thành")
+				{
+					trangThai = 2;
+				}
+				bienLai = bienLai.Where(x => x.NGUOI_DUNG.TenNguoiDung.Contains(searchString) || x.LoaiBienLai == loaibienlai || x.NHA_CUNG_CAP.TenNhaCungCap.Contains(searchString) || x.TrangThai == trangThai ).ToList();
+            }
+            return View(bienLai);
 		}
 		public void TenNCC()
 		{
@@ -51,10 +78,17 @@ namespace WEB_520_Dynamic.Controllers
 			var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TenTaiKhoan == cookie).FirstOrDefault();
 			if (nguoiDung == null) nguoiDung = new NGUOI_DUNG();
 			bienLai.MaNguoiDung = nguoiDung.MaNguoiDung;
-			
-			
-			
 
+			if (bienLai.NgayGiao.Date < DateTime.Now.Date )
+			{
+				ModelState.AddModelError("NgayGiao", "Ngày giao không hợp lệ");
+				return View();
+
+			}
+			if(bienLai.LoaiBienLai == true && bienLai.ThongTinGiaoHang == null)
+			{
+				ModelState.AddModelError("ThongTinGiaoHang", "Phải nhập thông tin giao hàng");
+			}
 			if (ModelState.IsValid)
 			{
 				if (bienLai.LoaiBienLai == true)
@@ -93,7 +127,5 @@ namespace WEB_520_Dynamic.Controllers
 
 			return View(bienLai);
 		}
-
-
 	}
 }

@@ -165,6 +165,7 @@ namespace WEB_520_Dynamic.Controllers
 				LO lo = _db.LOs.Where(x => x.MaLo == bienLai.MaLo && x.SoLuong >= bienLai.SoLuong).FirstOrDefault();
 				if (lo != null)
 				{
+				
 					bienLai.MaBienLai = id;
 					Console.WriteLine(bienLai.MaBienLai + " " + bienLai.MaLo + " " + bienLai.SoLuong);
 					_db.BIEN_LAI_CHI_TIETs.Add(bienLai);
