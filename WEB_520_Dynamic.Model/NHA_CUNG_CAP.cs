@@ -34,6 +34,7 @@ namespace WEB_520_Dynamic.Model
 
         [StringLength(10)]
         [Required(ErrorMessage = "Không được trống")]
+		[RegularExpression(@"^[0-9]+$", ErrorMessage = "Mã số thuế chỉ chứa số")]
 		[MinLength(10, ErrorMessage = "Mã số thuế phải có 10 kí tự")]
 		public string MaSoThue { get; set; }
 
