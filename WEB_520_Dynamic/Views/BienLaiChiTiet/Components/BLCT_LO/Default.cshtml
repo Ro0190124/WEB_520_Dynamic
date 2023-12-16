@@ -13,7 +13,7 @@
 					<th> Số lượng</th>
 					<th> Đơn giá</th>
 					<th> Lô</th>
-					<th> Trạng thái</th>
+					<th> Hạn sử dụng</th>
 					<th> Chỉnh sửa</th>
 				</tr>
 			</thead>
@@ -30,7 +30,7 @@
 						<td>@i.SoLuong</td>
 						<td>@i.SAN_PHAM.DonGia</td>
 						<td>@i.TenLo</td>
-						<td>TrangThai</td>
+						<td>@i.HanSuDung.ToString("dd/MM/yyyy")</td>
 						<td class="ND_Table_Icon">
 							<a class="btn-primary" asp-controller="Lo" asp-action="XoaLo" asp-route-id="@i.MaLo">
 
