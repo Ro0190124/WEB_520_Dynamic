@@ -24,11 +24,22 @@ namespace WEB_520_Dynamic.Controllers
 			_db = db;
 		}
 		[HttpGet]
-		public IActionResult Index(int? ID)
+		public IActionResult Index(string searchString)
 		{
-		
-			Console.WriteLine(ID);
+			var cookie = Request.Cookies["ID"];
+			// check cookie
+			Console.WriteLine(cookie);
+			if (cookie == null)
+			{
+				return RedirectToAction("DangNhap", "Home");
+			}
+			
 			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).OrderByDescending(x=> x.MaLo).ToList();
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				loBienLaiCT = (List<BIEN_LAI_CHI_TIET>)loBienLaiCT.Where(x => x.LO.SAN_PHAM.TenSanPham.Contains(searchString) || x.LO.TenLo.Contains(searchString));
+			}
+		
 			return View(loBienLaiCT);
 			//IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM);
 			//return View(groupSpL);
