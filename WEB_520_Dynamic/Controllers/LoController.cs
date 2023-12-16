@@ -196,7 +196,7 @@ namespace WEB_520_Dynamic.Controllers
 				}
 				else
 				{
-					ModelState["SoLuong"].Errors.Add("Số lượng đéo đủ cảm ơn");
+					ModelState["SoLuong"].Errors.Add("Số lượng trong lô không đủ");
 				}
 
 				

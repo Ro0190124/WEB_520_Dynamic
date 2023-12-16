@@ -74,26 +74,7 @@ namespace WEB_520_Dynamic.Controllers
         {
             return View();
         }
-        /*[HttpPost]
-		[ValidateAntiForgeryToken]
-        public IActionResult ThemBienLaiChiTiet(BIEN_LAI_CHI_TIET bl)
-        {
-            return View();
-        }
-        public IActionResult ChiTietBienLai(int id)
-        {
-            var cookie = Request.Cookies["ID"];
-            // check cookie
-            Console.WriteLine(cookie);
-            if (cookie == null)
-            {
-                return RedirectToAction("DangNhap", "Home");
-            }
-            var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).Where(x => x.MaBienLai == id).FirstOrDefault();
-            return View(bienLai);
-        }
-*/
-        //[HttpGet]
+  
 		public IActionResult LoIndex(int? ID)
 		{
             Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
