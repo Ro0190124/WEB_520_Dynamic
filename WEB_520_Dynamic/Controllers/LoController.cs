@@ -49,23 +49,10 @@ namespace WEB_520_Dynamic.Controllers
 					x.LO.SAN_PHAM.DonGia.ToString().Contains(searchString)
 				).ToList();
 			}
-			Console.WriteLine(ID);
-			//IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).OrderByDescending(x=> x.MaLo).ToList();
 			return View(loBienLaiCT);
 
 		}
-		/*public IActionResult ThemLo()
-		{
-			IEnumerable<SelectListItem> SP = _db.SAN_PHAMs.Where(x => x.TrangThai == true).Select(
-
-			   s => new SelectListItem()
-			   {
-				   Text = s.TenSanPham,
-				   Value = s.MaSanPham.ToString()
-			   });
-			ViewBag.SanPham = SP;
-			return View();
-		}*/
+		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult ThemLo(LO lo, int id)
