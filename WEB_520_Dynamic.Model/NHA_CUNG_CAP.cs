@@ -16,14 +16,14 @@ namespace WEB_520_Dynamic.Model
 
         [MaxLength(50)]
         [Required(ErrorMessage = "Không được trống")]
-		[MinLength(5, ErrorMessage = "Tên nhà cung cấp k dưới 5 kí tự")]
+		[MinLength(7, ErrorMessage = "Tên nhà cung cấp không dưới 7 kí tự")]
 		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên nhà cung cấp chỉ chứa chữ ")]
 		public string TenNhaCungCap { get; set; }
 
 
         [MaxLength(150)]
         [Required(ErrorMessage = "Không được trống")]
-		[MinLength(5, ErrorMessage = "Tên nhà cung cấp k dưới 5 kí tự")]
+		[MinLength(5, ErrorMessage = "Địa chỉ không dưới dưới 5 kí tự")]
         public string DiaChi { get; set; }
 
 
@@ -51,7 +51,7 @@ namespace WEB_520_Dynamic.Model
 
         [MaxLength(50)]
         [Required(ErrorMessage = "Không được trống")]
-		[MinLength(5, ErrorMessage = "Tên người đại diện k dưới 5 kí tự")]
+		[MinLength(5, ErrorMessage = "Tên người đại diện không dưới 5 kí tự")]
 		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên người đại diện chỉ chứa chữ ")]
 		public string NguoiDaiDien { get; set; }
         public bool TrangThai { get; set; } = true;
