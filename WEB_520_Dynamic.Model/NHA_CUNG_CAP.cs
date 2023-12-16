@@ -23,6 +23,7 @@ namespace WEB_520_Dynamic.Model
 
         [MaxLength(150)]
         [Required(ErrorMessage = "Không được trống")]
+		[MinLength(5, ErrorMessage = "Tên nhà cung cấp k dưới 5 kí tự")]
         public string DiaChi { get; set; }
 
 
@@ -37,12 +38,15 @@ namespace WEB_520_Dynamic.Model
         [Required(ErrorMessage = "Không được trống")]
 		[RegularExpression(@"^[0-9]+$", ErrorMessage = "Mã số thuế chỉ chứa số")]
 		[MinLength(10, ErrorMessage = "Mã số thuế phải có 10 kí tự")]
+
 		public string MaSoThue { get; set; }
 
 
         [MaxLength(30)]
+        [MinLength(8, ErrorMessage = "số tài khoản phải có ít nhất 8 kí tự")]
         [Required(ErrorMessage = "Không được trống")]
-        public string SoTaiKhoan { get; set; }
+		[RegularExpression(@"^[0-9a-zA-Z]+$", ErrorMessage = "Số tài khoản không chứa kí tự đặc biệt")]
+		public string SoTaiKhoan { get; set; }
 
 
         [MaxLength(50)]
