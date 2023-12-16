@@ -24,7 +24,7 @@
                     <p>Tổng đơn nhập</p>
                 </div>
                 <div class="CT_So">
-                    @ViewBag.TongSanPhamNhap
+                    <p>@ViewBag.TongDonNhap</p>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <p>Tổng đơn xuất</p>
                 </div>
                 <div class="CT_So">
-                    @ViewBag.TongSanPhamXuat
+                    <p>@ViewBag.TongDonXuat</p>
                 </div>
             </div>
         </div>
@@ -106,33 +106,41 @@
         document.addEventListener('DOMContentLoaded', function () {
             fetch('/TrangChu/Linechartctl?year=2023') // Replace ControllerName with your actual controller name
                 .then(response => response.json())
-                .then(data => {
-                    // Process data and create the chart
-                    //const labels = data.map(item => item.Month); // Assuming Month is used as labels
-                    //const values = data.map(item => item.TotalQuantity); 
-                     data.forEach(item => {
-                     console.log(item); // In ra từng phần tử trong mảng data
-                      });
-                    // Assuming TotalQuantity is the value to be plotted   
+                .then(data => { 
                     const y = data.map(item => item.month); // Assuming Month is used as labels
 
-                    const x = data.map(item => item.totalQuantity); // Assuming TotalQuantity is the value to be plotted
-                    console.log(y);
-                                        console.log(x);
-                  
+                const tsl = data.map(item => item.tongslbl); // Assuming TotalQuantity is the value to be plotted
+                const tsln = data.map(item => item.tongslbln); // Assuming TotalQuantity is the value to be plotted
+                const tslx = data.map(item => item.tongslblx); // Assuming TotalQuantity is the value to be plotted
+
+                data.forEach(item => { console.log(item); });
 
                     const ctx = document.getElementById('lineChart').getContext('2d');
                     const myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
                             labels: y,
-                            datasets: [{
-                                label: 'Tổng số lượng',
-                                data: x,
-                                backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                                borderColor: 'rgba(0, 123, 255, 1)',
-                                borderWidth: 1
-                            }]
+                        datasets: [{
+                            label: 'Tổng sản phẩm',
+                            data: tsl,
+                            backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                            borderColor: 'rgba(0, 123, 255, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Tổng sản phẩm nhập',
+                            data: tsln,
+                            backgroundColor: '#F2994A',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Tổng sản phẩm xuất',
+                            data: tslx,
+                            backgroundColor: '#33C863',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
                         },
                         options: {
                             scales: {

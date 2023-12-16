@@ -24,14 +24,27 @@ namespace WEB_520_Dynamic.Controllers
 			_db = db;
 		}
 		[HttpGet]
-		public IActionResult Index(int? ID)
+		public IActionResult Index(int? ID, string searchString)
 		{
-		
+			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2)
+												.Include(x => x.LO)
+												.ThenInclude(x => x.SAN_PHAM)
+												.OrderByDescending(x => x.MaLo)
+												.ToList();
+
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				loBienLaiCT = loBienLaiCT.Where(x =>
+					x.LO.SAN_PHAM.TenSanPham.Contains(searchString) ||
+					x.LO.TenLo.Contains(searchString) ||
+					x.LO.SoLuong.ToString().Contains(searchString) ||
+					x.LO.SAN_PHAM.DonGia.ToString().Contains(searchString)
+				).ToList();
+			}
 			Console.WriteLine(ID);
-			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).OrderByDescending(x=> x.MaLo).ToList();
+			//IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).OrderByDescending(x=> x.MaLo).ToList();
 			return View(loBienLaiCT);
-			//IEnumerable<LO> groupSpL = _db.LOs.Include(x => x.SAN_PHAM);
-			//return View(groupSpL);
+
 		}
 		/*public IActionResult ThemLo()
 		{
