@@ -57,7 +57,7 @@
 								{
 									<td>Đơn hàng nhập</td>
 								}
-								<td>@i.NgayGiao</td>
+								<td>@i.NgayGiao.ToString("dd/MM/yyyy")</td>
 								<td>@i.NGUOI_DUNG.TenNguoiDung</td>
 								@if(i.MaNhaCungCap != null)
 								{
@@ -69,7 +69,7 @@
 								}
 								
 								<td>@i.ThongTinGiaoHang</td>
-								<td>@i.NgayLap</td>
+								<td>@i.NgayLap.ToString("dd/MM/yyyy")</td>
 								<td>@i.GhiChu</td>
 								<td>@trangThai</td>
 								@if(i.LoaiBienLai == true)

@@ -160,7 +160,7 @@ namespace WEB_520_Dynamic.Controllers
 
 
 			var LovaSP = _db.BIEN_LAI_CHI_TIETs
-				.Where(n => n.BIEN_LAI.TrangThai == 2)
+				.Where(n => n.BIEN_LAI.TrangThai == 2 && n.LO.HanSuDung > DateTime.Now)
 				.Select(x => new
 			{
 				id = x.MaLo,

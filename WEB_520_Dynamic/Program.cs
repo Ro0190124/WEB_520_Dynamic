@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using WEB_520_Dynamic.DataAccess.Data;
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

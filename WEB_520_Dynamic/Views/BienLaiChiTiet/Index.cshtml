@@ -4,8 +4,8 @@
         <div class="BLCT_BL">
             <div class="BLCT_p">
                 <p>Loại biên lai: @(Model.BIEN_LAI.LoaiBienLai ? "Đơn hàng xuất" : "Đơn hàng nhập")</p>
-                <p>Ngày giao: @Model.BIEN_LAI.NgayGiao</p>
-                <p>Ngày tạo: @Model.BIEN_LAI.NgayLap</p>
+				<p>Ngày giao: @Model.BIEN_LAI.NgayGiao.ToString("dd/MM/yyyy")</p>
+				<p>Ngày tạo: @Model.BIEN_LAI.NgayLap.ToString("dd/MM/yyyy")</p>
             </div>
             <div class="BLCT_p">
                 <p>Tên nhà cung cấp: @ViewBag.TenNhaCungCap</p>

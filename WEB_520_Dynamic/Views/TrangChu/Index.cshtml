@@ -1,22 +1,5 @@
 ﻿@model IEnumerable<BIEN_LAI_CHI_TIET>
 <div class="container">
-   @* <div class="ND_TimKiem">
-        @using (Html.BeginForm())
-        {
-            @Html.TextBox("SearchString")
-            <input type="text"  placeholder="Tìm kiếm người dùng..." >
-            <input type="submit" placeholder="tìm"> 
-        }
-        
-    </div>*@
-@*   @using (Html.BeginForm())
-    {
-        <p>
-
-            Nhập thông tin: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
-
-        </p>
-    }*@
     <div class="CT_TT">
         @{
             int Nhap = 0;
@@ -24,10 +7,10 @@
             int tong = 0;
             if(Model != null)
             {
-                Xuat = Model.Count(i => i.BIEN_LAI.LoaiBienLai == true); // Đếm số lượng phần tử có LoaiBienLai là 1
-                Nhap = Model.Count(i => i.BIEN_LAI.LoaiBienLai == false); // Đếm số lượng phần tử có LoaiBienLai là
-                Console.WriteLine(Xuat + " aaaaa" + Nhap);
-                tong = Model.Sum(i => i.SoLuong);
+                //Xuat = Model.Count(i => i.BIEN_LAI.LoaiBienLai == true); // Đếm số lượng phần tử có LoaiBienLai là 1
+                //Nhap = Model.Count(i => i.BIEN_LAI.LoaiBienLai == false); // Đếm số lượng phần tử có LoaiBienLai là
+                //Console.WriteLine(Xuat + " aaaaa" + Nhap);
+                //tong = Model.Sum(i => i.SoLuong);
                 Console.WriteLine(tong);
             }
 
@@ -87,15 +70,19 @@
             </div>
         </div>
     </div>
-
-    <select id="yearSelect">
-    </select>
-
-    <div class="CT_Canva">
-        <canvas id="myChart_CT" width="10" height="0%"></canvas>
+    <div>
+        <select id="yearDropdown">
+        </select>
     </div>
 
-    <div class="table_Home">
+    <div>
+        <canvas id="lineChart" width="800" height="400"></canvas>
+    </div>
+@*    <div class="CT_Canva">
+        <canvas id="myChart_CT" width="10" height="0%"></canvas>
+    </div>
+*@
+  @*  <div class="table_Home">
         <div class="table_HSanPham">
             <h2>Sản phẩm bán chạy</h2>
             <table class="table_user responsive-table ">
@@ -121,5 +108,125 @@
                 </tbody>
             </table>
         </div>          
-    </div>
+    </div>*@
 </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    $(document).ready(function () {
+        var currentYear = new Date().getFullYear();
+
+        // Tạo một mảng chứa 5 năm gần đây, bao gồm 2 năm trước
+        var years = [];
+        for (var i = currentYear - 2; i <= currentYear; i++) {
+            years.push(i);
+        }
+
+        // Sử dụng mảng years để tạo danh sách các option cho dropdown
+        var dropdown = $('#yearDropdown');
+        $.each(years, function (index, value) {
+            dropdown.append($('<option></option>').attr('value', value).text(value));
+        });
+
+        // Đặt giá trị mặc định cho dropdown là năm hiện tại
+
+         dropdown.val(currentYear);
+        // Xử lý sự kiện khi thay đổi dropdown
+        $('#yearDropdown').change(function () {
+            var selectedYear = $(this).val();
+
+            $.ajax({
+                url: '@Url.Action("Linechartctl", "TrangChu")' + '?time=' + Date.now(),
+                method: 'GET',
+                data: { year: selectedYear },
+                success: function (data) {
+                    drawChart(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+
+
+    //    function drawChart(data) {
+    //        var ctx = document.getElementById('lineChart').getContext('2d');
+    //        var quantities = [];
+
+    //        if (data === null) {
+    //            // Gán giá trị 0 cho trục y
+    //            for (var i = 0; i < 12; i++) {
+    //                quantities.push(0);
+    //            }
+    //        } else {
+    //            // Nếu có dữ liệu, xử lý dữ liệu như bình thường
+    //            data.forEach(function (item) {
+    //                quantities.push(item.TotalQuantity);
+    //            });
+    //        }
+    //    Console.log(data+"123");
+    //    Console.WriteLine(data+"345");
+    //        var chart = new Chart(ctx, {
+    //            type: 'line',
+    //            data: {
+    //                labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+    //                datasets: [{
+    //                    label: 'Tổng Số Lượng Biên Lai',
+    //                    data: quantities,
+    //                    borderColor: 'rgba(75, 192, 192, 1)',
+    //                    borderWidth: 1
+    //                }]
+    //            },
+    //            options: {
+    //                scales: {
+    //                    y: {
+    //                        beginAtZero: true
+    //                    }
+    //                }
+    //            }
+    //        });
+    //    }
+    //});
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/TrangChu/Linechartctl?year=2023') // Replace ControllerName with your actual controller name
+                .then(response => response.json())
+                .then(data => {
+                    // Process data and create the chart
+                    //const labels = data.map(item => item.Month); // Assuming Month is used as labels
+                    //const values = data.map(item => item.TotalQuantity); 
+                     data.forEach(item => {
+                     console.log(item); // In ra từng phần tử trong mảng data
+                      });
+                    // Assuming TotalQuantity is the value to be plotted   
+                    const y = data.map(item => item.month); // Assuming Month is used as labels
+
+                    const x = data.map(item => item.totalQuantity); // Assuming TotalQuantity is the value to be plotted
+                    console.log(y);
+                                        console.log(x);
+                  
+
+                    const ctx = document.getElementById('lineChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: y,
+                            datasets: [{
+                                label: 'Total Quantity',
+                                data: x,
+                                backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                                borderColor: 'rgba(0, 123, 255, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+        });
+    </script>
