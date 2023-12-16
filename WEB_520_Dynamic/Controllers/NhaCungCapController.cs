@@ -11,7 +11,7 @@ namespace WEB_520_Dynamic.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Index()
+		public IActionResult Index(string searchString)
 		{
             // get cookies
             var cookie = Request.Cookies["ID"];
@@ -23,8 +23,12 @@ namespace WEB_520_Dynamic.Controllers
             }
             else
             {
-                IEnumerable<NHA_CUNG_CAP> obj = _db.NHA_CUNG_CAPs.Where(x=> x.TrangThai == true).OrderByDescending(x=> x.MaNhaCungCap).ToList();
-			    return View(obj);
+               var nhaCC = _db.NHA_CUNG_CAPs.Where(x=> x.TrangThai == true).OrderByDescending(x=> x.MaNhaCungCap).ToList();
+				if (!string.IsNullOrEmpty(searchString))
+				{
+					nhaCC= nhaCC.Where(x => x.TenNhaCungCap.Contains(searchString) || x.NguoiDaiDien.Contains(searchString) || x.SoDienThoai.Contains(searchString)).ToList();
+				}
+				return View(nhaCC);
 
             }
            

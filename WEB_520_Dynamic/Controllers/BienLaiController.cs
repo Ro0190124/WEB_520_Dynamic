@@ -55,6 +55,7 @@ namespace WEB_520_Dynamic.Controllers
 					trangThai = 2;
 					bienLai = bienLai.Where(x => x.TrangThai == trangThai).ToList();
 				}
+				bienLai = bienLai.Where(x=> x.NGUOI_DUNG.TenNguoiDung.Contains(searchString)).ToList();
 				Console.WriteLine(searchString);
 				Console.WriteLine(trangThai);
 				Console.WriteLine(loaibienlai);
