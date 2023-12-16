@@ -31,7 +31,7 @@ namespace WEB_520_Dynamic.Controllers
 				var nguoiDung = _db.NGUOI_DUNGs.Where(x => x.TrangThai == true).OrderByDescending(x => x.MaNguoiDung).ToList();
 				if (!string.IsNullOrEmpty(searchString))
                 {
-                    nguoiDung = (List<NGUOI_DUNG>)nguoiDung.Where(x => x.TenTaiKhoan.Contains(searchString) || x.TenNguoiDung.Contains(searchString) || x.SoDienThoai.Contains(searchString));
+                    nguoiDung = nguoiDung.Where(x => x.TenTaiKhoan.Contains(searchString) || x.TenNguoiDung.Contains(searchString) || x.SoDienThoai.Contains(searchString)).ToList();
                 }
                 return View(nguoiDung);
 

@@ -25,31 +25,40 @@ namespace WEB_520_Dynamic.Controllers
 			}
 
 			var bienLai = _db.BIEN_LAIs.Include(b => b.NHA_CUNG_CAP).Include(b => b.NGUOI_DUNG).OrderByDescending(x => x.MaBienLai).ToList();
-			bool loaibienlai = true;
+			bool loaibienlai = false;
 			byte trangThai = 3;
 			if (!string.IsNullOrEmpty(searchString))
 			{
+				
 				if (searchString.Contains("nhập"))
 				{
 					loaibienlai = false;
+					bienLai = bienLai.Where(x => x.LoaiBienLai == loaibienlai).ToList();
 				}
 				else if (searchString.Contains("xuất"))
 				{
 					loaibienlai = true;
+					bienLai = bienLai.Where(x => x.LoaiBienLai == loaibienlai).ToList();
 				}
-				if (searchString == "tạo" || searchString == "đang tạo")
+				else if (searchString == "tạo" || searchString == "đang tạo")
 				{
 					trangThai = 0;
+					bienLai = bienLai.Where(x => x.TrangThai == trangThai).ToList();
 				}
 				else if (searchString == "giao" || searchString == "đang giao")
 				{
 					trangThai = 1;
+					bienLai = bienLai.Where(x => x.TrangThai == trangThai).ToList();
 				}
-				else if (searchString == "hoàn thành" || searchString == "hoàn" || searchString == "thành")
+				else if (searchString == "hoàn thành" )
 				{
 					trangThai = 2;
+					bienLai = bienLai.Where(x => x.TrangThai == trangThai).ToList();
 				}
-				bienLai = bienLai.Where(x => x.NGUOI_DUNG.TenNguoiDung.Contains(searchString) || x.LoaiBienLai == loaibienlai || x.TrangThai == trangThai ).ToList();
+				Console.WriteLine(searchString);
+				Console.WriteLine(trangThai);
+				Console.WriteLine(loaibienlai);
+				
             }
             return View(bienLai);
 		}
