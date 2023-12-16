@@ -16,7 +16,8 @@ namespace WEB_520_Dynamic.Model
 
         [MaxLength(50)]
         [Required(ErrorMessage = "Không được trống")]
-        public string TenNhaCungCap { get; set; }
+		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên nhà cung cấp chỉ chứa chữ ")]
+		public string TenNhaCungCap { get; set; }
 
 
         [MaxLength(150)]
@@ -33,7 +34,8 @@ namespace WEB_520_Dynamic.Model
 
         [StringLength(10)]
         [Required(ErrorMessage = "Không được trống")]
-        public string MaSoThue { get; set; }
+		[MinLength(10, ErrorMessage = "Mã số thuế phải có 10 kí tự")]
+		public string MaSoThue { get; set; }
 
 
         [MaxLength(30)]
@@ -43,9 +45,8 @@ namespace WEB_520_Dynamic.Model
 
         [MaxLength(50)]
         [Required(ErrorMessage = "Không được trống")]
-        public string NguoiDaiDien { get; set; }
-
-
+		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên người đại diện chỉ chứa chữ ")]
+		public string NguoiDaiDien { get; set; }
         public bool TrangThai { get; set; } = true;
     }
 }
