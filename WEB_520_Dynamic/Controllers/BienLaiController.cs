@@ -45,11 +45,11 @@ namespace WEB_520_Dynamic.Controllers
 				{
 					trangThai = 1;
 				}
-				else if (searchString== "hoàn thành" || searchString == "hoàn" || searchString =="thành")
+				else if (searchString == "hoàn thành" || searchString == "hoàn" || searchString == "thành")
 				{
 					trangThai = 2;
 				}
-				bienLai = bienLai.Where(x => x.NGUOI_DUNG.TenNguoiDung.Contains(searchString) || x.LoaiBienLai == loaibienlai || x.NHA_CUNG_CAP.TenNhaCungCap.Contains(searchString) || x.TrangThai == trangThai ).ToList();
+				bienLai = bienLai.Where(x => x.NGUOI_DUNG.TenNguoiDung.Contains(searchString) || x.LoaiBienLai == loaibienlai || x.TrangThai == trangThai ).ToList();
             }
             return View(bienLai);
 		}
