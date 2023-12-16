@@ -52,14 +52,20 @@
 		<div class="flex-end">
 
 			@if (Model.BIEN_LAI.TrangThai == 0)
-			{
+			{//thêm popup
 				<div class="lg_DN">
-					<a asp-controller="BienLaiChiTiet" asp-action="XacNhanDanhSach" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="xacnhan">
-						<button>
-							Xác nhận danh sách
+					 <a asp-controller="BienLaiChiTiet" asp-action="XacNhanDanhSach" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="xacnhan">
+						<button class="open-btn" data-id="@Model.BIEN_LAI.MaBienLai">
+						  Xác nhận danh sách
 						</button>
-					</a>
+					  </a>
+					<div id="popup-@Model.BIEN_LAI.MaBienLai" class="popup" style="display:none;">
+						<p>Bạn có chắc chắn dừng thêm Lô không?</p>
+						<button onclick="dungThemLo(@Model.BIEN_LAI.MaBienLai)">Có</button>
+						<button onclick="closePopup(@Model.BIEN_LAI.MaBienLai)">Không</button>
+					</div>
 				</div>
+				
 			}
 			@if (Model.BIEN_LAI.TrangThai == 1)
 			{
@@ -87,6 +93,7 @@
 
 
 <script>
+
 	const form = document.getElementById("mid1");
 	function sendData() {
 		const XHR = new XMLHttpRequest();
@@ -123,4 +130,21 @@
 
 		sendData();
 	});
+</script>
+<!-- thêm popup-->
+<script>
+  document.querySelectorAll('.open-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const id = this.getAttribute('data-id');
+      const popup = document.getElementById(`popup-${id}`);
+      popup.style.display = 'block';
+    });
+  });
+
+  // Hàm đóng popup
+  function closePopup(id) {
+    const popup = document.getElementById(`popup-${id}`);
+    popup.style.display = 'none';
+  }
+
 </script>
