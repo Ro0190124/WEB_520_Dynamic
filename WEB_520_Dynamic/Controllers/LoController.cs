@@ -24,25 +24,22 @@ namespace WEB_520_Dynamic.Controllers
 			_db = db;
 		}
 		[HttpGet]
-		public IActionResult Index(int? ID, string searchString)
+		public IActionResult Index(string searchString)
 		{
-			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2)
-												.Include(x => x.LO)
-												.ThenInclude(x => x.SAN_PHAM)
-												.OrderByDescending(x => x.MaLo)
-												.ToList();
-
+			var cookie = Request.Cookies["ID"];
+			// check cookie
+			Console.WriteLine(cookie);
+			if (cookie == null)
+			{
+				return RedirectToAction("DangNhap", "Home");
+			}
+			
+			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).OrderByDescending(x=> x.MaLo).ToList();
 			if (!string.IsNullOrEmpty(searchString))
 			{
-				loBienLaiCT = loBienLaiCT.Where(x =>
-					x.LO.SAN_PHAM.TenSanPham.Contains(searchString) ||
-					x.LO.TenLo.Contains(searchString) ||
-					x.LO.SoLuong.ToString().Contains(searchString) ||
-					x.LO.SAN_PHAM.DonGia.ToString().Contains(searchString)
-				).ToList();
+				loBienLaiCT = (List<BIEN_LAI_CHI_TIET>)loBienLaiCT.Where(x => x.LO.SAN_PHAM.TenSanPham.Contains(searchString) || x.LO.TenLo.Contains(searchString));
 			}
-			Console.WriteLine(ID);
-			//IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2).Include(x => x.LO).ThenInclude(x => x.SAN_PHAM).OrderByDescending(x=> x.MaLo).ToList();
+		
 			return View(loBienLaiCT);
 
 		}
@@ -178,6 +175,7 @@ namespace WEB_520_Dynamic.Controllers
 				LO lo = _db.LOs.Where(x => x.MaLo == bienLai.MaLo && x.SoLuong >= bienLai.SoLuong).FirstOrDefault();
 				if (lo != null)
 				{
+				
 					bienLai.MaBienLai = id;
 					Console.WriteLine(bienLai.MaBienLai + " " + bienLai.MaLo + " " + bienLai.SoLuong);
 					_db.BIEN_LAI_CHI_TIETs.Add(bienLai);

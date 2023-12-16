@@ -4,9 +4,14 @@
 		<div>
 			<a asp-controller="BienLai" asp-action="ThemBienLai"><button class="Them-TK">Thêm biên lai</button></a>
 		</div>
-		<div class="ND_TimKiem">
-			<input type="text" placeholder="Tìm kiếm biên lai..." name="searchString">
-		</div>
+		<form method="get">
+			<div class="ND_TimKiem_Ten">
+				<div class="ND_TimKiem">
+					<input type="text" placeholder="Tìm kiếm biên lai..." name="searchString">
+				</div>
+			</div>
+		</form>
+	
 	</div>
 	<div class="Tb-Container">
 		<table class="table_user responsive-table">
@@ -44,7 +49,7 @@
 							}
 							if (i.TrangThai == 2)
 							{
-								trangThai = "Thành công";
+								trangThai = "hoàn thành";
 							}
 							j = j + 1;
 							<tr>

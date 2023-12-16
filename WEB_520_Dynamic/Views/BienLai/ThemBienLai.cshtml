@@ -14,16 +14,17 @@
                     </select>
 
                 </div>
-                <div class="lg_TK magrin_Input" id="nhacungcap">
+                <div class="lg_TK magrin_Input" >
                     <p>Nhà cung cấp</p>
                     <!--<<p>Tên nhà cung cấp</p>-->
-                    <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp">
+                    <select asp-for="MaNhaCungCap" asp-items="ViewBag.NhaCungCap" class="textbox" placeholder="Nhà cung cấp" id="nhacungcap">
                     </select>
                 </div>
                 <div class="ND_NgaySinh magrin_Input">
                     <p>Ngày giao</p>
                     <!--<<p>Ngày giao</p>-->
                     <input asp-for="NgayGiao" required type="date" style="padding-left: 20%;" placeholder="Ngày giao" />
+                    <span asp-validation-for="NgayGiao" class="text-danger"></span>
                 </div>
                 <div class="lg_TK magrin_Input">
                     <p>Thông tin giao hàng</p>
@@ -46,8 +47,42 @@
             }
         </div>
     </form>
-    <script>
+
+    
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the select element for LoaiBienLai
+        var loaiBienLaiSelect = document.getElementById('selects');
+
+        // Get the select element for MaNhaCungCap
+        var nhaCungCapSelect = document.getElementById('nhacungcap');
+
+        // Function to handle the change event
+        function handleLoaiBienLaiChange() {
+            // Disable or enable MaNhaCungCap based on the selected value of LoaiBienLai
+            nhaCungCapSelect.disabled = loaiBienLaiSelect.value === 'true';
+
+            // Set the value of MaNhaCungCap based on the selected value of LoaiBienLai
+            if (loaiBienLaiSelect.value === 'true') {
+                nhaCungCapSelect.value = null; // Set to null for Đơn hàng xuất
+            } else {
+                // Set to the first value in the ViewBag.NhaCungCap for Đơn hàng nhập
+                nhaCungCapSelect.value = document.getElementById('nhacungcap').options[0].value;
+            }
+        }
+
+        // Attach the event listener to the change event of LoaiBienLai
+        loaiBienLaiSelect.addEventListener('change', handleLoaiBienLaiChange);
+
+        // Call the function initially to set the initial state
+        handleLoaiBienLaiChange();
+    });
+</script>
+@*  <script>
         let f = (val) => { console.log(val); if (val == "false") document.getElementById("nhacungcap").style.visibility = "visible"; else document.getElementById("nhacungcap").style.visibility = "hidden"; }
         document.getElementById("selects").onchange = function () { f(document.getElementById("selects").value) }
-    </script>
-</div>
+    </script>*@
