@@ -53,6 +53,23 @@ namespace WEB_520_Dynamic.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult ThemNhaCungCap(NHA_CUNG_CAP nhaCungCap)
 		{
+			var cookie = Request.Cookies["ID"];
+			if (cookie == null)
+			{
+				return RedirectToAction("DangNhap", "Home");
+			}
+			var m = _db.NHA_CUNG_CAPs.Where(x => x.SoDienThoai == nhaCungCap.SoDienThoai && x.TrangThai == true).FirstOrDefault();
+			if (m != null)
+			{
+				ModelState.AddModelError("SoDienThoai", " Số điện thoại đã tồn tại");
+				return View(nhaCungCap);
+			}
+			var n = _db.NHA_CUNG_CAPs.Where(x => x.MaSoThue == nhaCungCap.MaSoThue && x.TrangThai == true).FirstOrDefault();
+			if (n != null)
+			{
+				ModelState.AddModelError("MaSoThue", "Mã số thuế đã tồn tại");
+				return View(nhaCungCap);
+			}
 			if (ModelState.IsValid)
 			{
 				_db.NHA_CUNG_CAPs.Add(nhaCungCap);
