@@ -102,25 +102,33 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				var lo = _db.LOs.Where(l => l.MaLo == item).Select(x => x.MaLo).ToString();
 				
-			}
-			_db.SaveChanges();
+			}_db.SaveChanges();
 
 			var modelview = new BIEN_LAI_CHI_TIET
 			{
 				BIEN_LAI = bienLai,
 				LOs = listSanPham
 			};
-
-
+			/*IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = loBienLaiCT = _db.BIEN_LAI_CHI_TIETs
+											.Where(x => x.BIEN_LAI.TrangThai == 2)
+											.Include(x => x.LO)
+											.ThenInclude(x => x.SAN_PHAM)
+											.OrderByDescending(x => x.MaLo)
+											.GroupBy(x => x.MaLo)
+											.Select(group => group.First())
+											.ToList();
+*/
 			var LovaSP = _db.BIEN_LAI_CHI_TIETs
-				.Where(n => n.BIEN_LAI.TrangThai == 2 && n.LO.HanSuDung > DateTime.Now)
+				.Where(n => n.BIEN_LAI.TrangThai == 2 && n.LO.HanSuDung > DateTime.Now && n.LO.SoLuong > 0)
+				
 				.Select(x => new
-			{
-				id = x.MaLo,
-				TenL = x.LO.TenLo,
-				TenSP = x.LO.SAN_PHAM.TenSanPham,
-				HSD = x.LO.HanSuDung.ToString("dd/MM/yyyy")
-			}).ToList();
+				{
+					id = x.MaLo,
+					TenL = x.LO.TenLo,
+					TenSP = x.LO.SAN_PHAM.TenSanPham,
+					HSD = x.LO.HanSuDung.ToString("dd/MM/yyyy")
+				})
+				.GroupBy(x => x.id).Select(group => group.First()).ToList();
 			var modifiedList = LovaSP.Select(item => new
 			{
 				id = item.id,
@@ -129,6 +137,9 @@ namespace WEB_520_Dynamic.Controllers
 
 			ViewBag.LovaSP = new SelectList(modifiedList, "id", "TenL");
 			return View(modelview);
+
+
+
 		}
 		public IActionResult XacNhanDanhSach(int ID)
 		{

@@ -11,6 +11,7 @@ namespace WEB_520_Dynamic.Model
 {
     public class BIEN_LAI_CHI_TIET
     {
+		
 
 		[Key]
 		public int MaBienLaiChiTiet { get; set; }

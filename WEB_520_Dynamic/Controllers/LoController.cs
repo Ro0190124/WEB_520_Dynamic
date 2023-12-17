@@ -33,13 +33,22 @@ namespace WEB_520_Dynamic.Controllers
 			{
 				return RedirectToAction("DangNhap", "Home");
 			}
+			/*
+						IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2)
+																		.Include(x => x.LO)
+																		.ThenInclude(x => x.SAN_PHAM)
+																		.OrderByDescending(x => x.MaLo)
+																		.ToList();
+			*/
 
-			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = _db.BIEN_LAI_CHI_TIETs.Where(x => x.BIEN_LAI.TrangThai == 2)
-															.Include(x => x.LO)
-															.ThenInclude(x => x.SAN_PHAM)
-															.OrderByDescending(x => x.MaLo)
-															.ToList();
-
+			IEnumerable<BIEN_LAI_CHI_TIET> loBienLaiCT = loBienLaiCT = _db.BIEN_LAI_CHI_TIETs
+														.Where(x => x.BIEN_LAI.TrangThai == 2)
+														.Include(x => x.LO)
+														.ThenInclude(x => x.SAN_PHAM)
+														.OrderByDescending(x => x.MaLo)
+														.GroupBy(x => x.MaLo)
+														.Select(group => group.First())
+														.ToList();
 			if (!string.IsNullOrEmpty(searchString))
 			{
 				loBienLaiCT = loBienLaiCT.Where(x =>
@@ -158,6 +167,7 @@ namespace WEB_520_Dynamic.Controllers
 		{
 
 			Console.WriteLine("Mã biên lai : " + id);
+			Console.WriteLine("Ma bien lai chi tiet : " + bienLai.MaBienLaiChiTiet);
 			Console.WriteLine("Mã lô: " + bienLai.MaLo);
 			Console.WriteLine("Số lượng: " + bienLai.SoLuong);
 			try
@@ -182,8 +192,6 @@ namespace WEB_520_Dynamic.Controllers
 					Console.WriteLine(bienLai.MaBienLai + " " + bienLai.MaLo + " " + bienLai.SoLuong);
 					_db.BIEN_LAI_CHI_TIETs.Add(bienLai);
 					_db.SaveChanges();
-
-
 					lo.SoLuong -= bienLai.SoLuong;
 					_db.LOs.Update(lo);
 					_db.SaveChanges();
