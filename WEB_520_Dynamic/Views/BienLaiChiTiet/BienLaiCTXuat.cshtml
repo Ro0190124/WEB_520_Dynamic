@@ -54,11 +54,13 @@
 			@if (Model.BIEN_LAI.TrangThai == 0)
 			{//thêm popup
 				<div class="lg_DN">
-					<button class="open-btn" data-id="@Model.BIEN_LAI.MaBienLai">
-						Xác nhận danh sách
-					</button>
-					<div id="confirmPopup-@Model.BIEN_LAI.MaBienLai" class="popup" style="display:none;">
-						<p>Bạn có chắc chắn dừng thêm Lô không?</p>
+					<a class="btn-primary open-btn" data-id="@Model.BIEN_LAI.MaBienLai" @*asp-controller="BienLaiChiTiet" asp-action="XacNhanDanhSach" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="XacNhanDanhSach"*@>
+						<button>
+							Xác nhận danh sách
+						</button>
+					</a>
+					<div id="xacnhanbl-@Model.BIEN_LAI.MaBienLai" class="popup" style="display:none;">
+						<p>Bạn có chắc chắn dừng thêm lô không?</p>
 						<button onclick="dungThemLo(@Model.BIEN_LAI.MaBienLai)">Có</button>
 						<button onclick="closePopup(@Model.BIEN_LAI.MaBienLai)">Không</button>
 					</div>
@@ -68,11 +70,16 @@
 			@if (Model.BIEN_LAI.TrangThai == 1)
 			{
 				<div class="lg_DN">
-					<a asp-controller="BienLaiChiTiet" asp-action="HoanThanh" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="hoanthanh">
+					<a class="btn-primary open-btn" data-id="@Model.BIEN_LAI.MaBienLai" @*asp-controller="BienLaiChiTiet" asp-action="HoanThanh" asp-route-id="@Model.BIEN_LAI.MaBienLai" id="hoanthanh"*@>
 						<button>
 							Hoàn Thành
 						</button>
 					</a>
+					<div id="xacnhanbl-@Model.BIEN_LAI.MaBienLai" class="popup" style="display:none;">
+						<p>Bạn có chắc chắn hoàn thành lô không?</p>
+						<button onclick="HoanThanhLo(@Model.BIEN_LAI.MaBienLai)">Có</button>
+						<button onclick="closePopup(@Model.BIEN_LAI.MaBienLai)">Không</button>
+					</div>
 				</div>
 			}
 			else
@@ -87,9 +94,6 @@
 
 
 </div>
-
-
-
 <script>
 
 	const form = document.getElementById("mid1");
@@ -134,15 +138,52 @@
 	document.querySelectorAll('.open-btn').forEach(button => {
 		button.addEventListener('click', function () {
 			const id = this.getAttribute('data-id');
-			const popup = document.getElementById(`confirmPopup-${id}`);
+			const popup = document.getElementById(`xacnhanbl-${id}`);
 			popup.style.display = 'block';
 		});
 	});
 
-	// Hàm đóng popup
+	// Đóng popup
 	function closePopup(id) {
-		const popup = document.getElementById(`confirmPopup-${id}`);
+		const popup = document.getElementById(`xacnhanbl-${id}`);
 		popup.style.display = 'none';
 	}
 
+	// Hàm xóa nhà cung cấp
+	function dungThemLo(id) {
+		// Gửi request đến server để xóa nhà cung cấp
+		// Sử dụng fetch hoặc AJAX để gửi request đến action XoaNhaCungCap trong controller của bạn
+		fetch(`/BienLaiChiTiet/XacNhanDanhSach?id=${id}`, {
+			method: 'GET' // hoặc 'POST' tùy thuộc vào cách bạn cấu hình route
+		})
+			.then(response => {
+				if (response.ok) {
+					// Nếu xóa thành công, cập nhật giao diện hoặc thông báo cho người dùng
+					// Ví dụ: có thể refresh trang hoặc cập nhật thông tin bằng JavaScript
+					window.location.reload(); // Refresh trang sau khi xóa
+				}
+			})
+			.catch(error => {
+				console.error('Lỗi khi xác nhận:', error);
+				// Xử lý lỗi nếu có
+			});
+	}
+	function HoanThanhLo(id) {
+		// Gửi request đến server để xóa nhà cung cấp
+		// Sử dụng fetch hoặc AJAX để gửi request đến action XoaNhaCungCap trong controller của bạn
+		fetch(`/BienLaiChiTiet/HoanThanh?id=${id}`, {
+			method: 'GET' // hoặc 'POST' tùy thuộc vào cách bạn cấu hình route
+		})
+			.then(response => {
+				if (response.ok) {
+					// Nếu xóa thành công, cập nhật giao diện hoặc thông báo cho người dùng
+					// Ví dụ: có thể refresh trang hoặc cập nhật thông tin bằng JavaScript
+					window.location.reload(); // Refresh trang sau khi xóa
+				}
+			})
+			.catch(error => {
+				console.error('Lỗi khi xác nhận:', error);
+				// Xử lý lỗi nếu có
+			});
+	}
 </script>

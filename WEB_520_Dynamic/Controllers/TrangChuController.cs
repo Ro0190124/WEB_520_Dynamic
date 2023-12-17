@@ -19,12 +19,12 @@ namespace WEB_520_Dynamic.Controllers
                                 .Where(blct => blct.BIEN_LAI.TrangThai == 2)
                                 .Sum(blct => blct.SoLuong);
 
-			var tongdonnhap = _db.BIEN_LAI_CHI_TIETs
-								.Where(blct => blct.BIEN_LAI.TrangThai == 2 && blct.BIEN_LAI.LoaiBienLai == true)
+			var tongdonnhap = _db.BIEN_LAIs
+								.Where(blct => blct.TrangThai == 2 && blct.LoaiBienLai == true)
 								.Count();
 
-			var tongdonxuat = _db.BIEN_LAI_CHI_TIETs
-								.Where(blct => blct.BIEN_LAI.TrangThai == 2 && blct.BIEN_LAI.LoaiBienLai == false)
+			var tongdonxuat = _db.BIEN_LAIs
+								.Where(blct => blct.TrangThai == 2 && blct.LoaiBienLai == false)
 								.Count();
 			Console.WriteLine(tongdonnhap + tongdonxuat);
 			// Truyền các giá trị tính toán vào ViewBag hoặc ViewData
