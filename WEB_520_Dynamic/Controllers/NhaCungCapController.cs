@@ -112,7 +112,19 @@ namespace WEB_520_Dynamic.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SuaNhaCungCap(NHA_CUNG_CAP nhaCC)
         {
-            if (ModelState.IsValid)
+			var m = _db.NHA_CUNG_CAPs.Where(x => x.SoDienThoai == nhaCC.SoDienThoai && x.TrangThai == true).FirstOrDefault();
+			if (m != null)
+			{
+				ModelState.AddModelError("SoDienThoai", " Số điện thoại đã tồn tại");
+				return View(nhaCC);
+			}
+			var n = _db.NHA_CUNG_CAPs.Where(x => x.MaSoThue == nhaCC.MaSoThue && x.TrangThai == true).FirstOrDefault();
+			if (n != null)
+			{
+				ModelState.AddModelError("MaSoThue", "Mã số thuế đã tồn tại");
+				return View(nhaCC);
+			}
+			if (ModelState.IsValid)
             {
                 _db.NHA_CUNG_CAPs.Update(nhaCC);
                 _db.SaveChanges();

@@ -17,7 +17,7 @@ namespace WEB_520_Dynamic.Model
         [MaxLength(50)]
         [Required(ErrorMessage = "Không được trống")]
 		[MinLength(7, ErrorMessage = "Tên nhà cung cấp không dưới 7 kí tự")]
-		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên nhà cung cấp chỉ chứa chữ ")]
+		[RegularExpression(@"^[\p{L}a-zA-Z\s]*$", ErrorMessage = "Chỉ cho phép nhập ký tự từ chữ.")]
 		public string TenNhaCungCap { get; set; }
 
 
@@ -52,7 +52,7 @@ namespace WEB_520_Dynamic.Model
         [MaxLength(50)]
         [Required(ErrorMessage = "Không được trống")]
 		[MinLength(5, ErrorMessage = "Tên người đại diện không dưới 5 kí tự")]
-		[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Tên người đại diện chỉ chứa chữ ")]
+		[RegularExpression(@"^[\p{L}a-zA-Z\s]*$", ErrorMessage = "Chỉ cho phép nhập ký tự từ chữ.")]
 		public string NguoiDaiDien { get; set; }
         public bool TrangThai { get; set; } = true;
     }
