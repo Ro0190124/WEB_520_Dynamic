@@ -21,9 +21,11 @@
 					<select asp-for="MaLo" asp-items="@ViewBag.LovaSP" class="form-control">
 					</select>
 					<div class="BLCT_SL">
-						<p>Số lượng</p>
 						<div>
-							<input asp-for="SoLuong" type="text" placeholder="Số lượng" />
+							<div class="input-box">
+                            <input required asp-for="SoLuong" type="text">
+                            <label>Số lượng</label>
+							</div>
 							<span asp-validation-for="SoLuong" class="text-danger"></span>
 						</div>
 					</div>
